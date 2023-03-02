@@ -1,0 +1,17 @@
+{
+	"name": "pm-box",
+	"version": "1.0.0",
+	"description": "pm-box project",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"gulp"
+	],
+	"author": "Arkadius-WD",
+	"license": "ISC",
+	"devDependencies": {
+		"gulp": "^4.0.2"
+	}
+}
