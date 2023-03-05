@@ -3,3 +3,5 @@ function sayHello(name) {
 }
 
 sayHello("Arek");
+
+console.log("Cześć");
