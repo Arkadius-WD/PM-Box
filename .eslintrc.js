@@ -4,8 +4,8 @@ module.exports = {
     es2021: true,
   },
   extends: ["airbnb-base", "plugin:prettier/recommended"],
-  overrides: [],
   plugins: ["prettier"],
+  overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -13,5 +13,7 @@ module.exports = {
   rules: {
     "no-unused-vars": "warn",
     "prettier/prettier": "error",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
   },
 };
