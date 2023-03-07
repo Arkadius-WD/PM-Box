@@ -2,6 +2,6 @@ function sayHello(name) {
   return `Hello${name}`;
 }
 
-sayHello("Arek");
+sayHello('Arek');
 
-console.log("Cześć");
+console.log('Cześć');
