@@ -1,5 +1,5 @@
 {
-  "name": "pm-box",
+  "name": "webpack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
