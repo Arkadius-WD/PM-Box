@@ -1,7 +1,3 @@
-function sayHello(name) {
-  return `Hello${name}`;
-}
+import generateJoke from './generateJoke';
 
-sayHello('Arek');
-
-console.log('Cześć');
+console.log(generateJoke());
