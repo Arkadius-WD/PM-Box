@@ -9,6 +9,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": ["dist/*.js"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -19,3 +20,4 @@
     "no-console": "off"
   }
 }
+
