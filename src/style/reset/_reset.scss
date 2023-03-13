@@ -1,0 +1,36 @@
+@use '../variables/colors' as *;
+@use '../variables/fonts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  // outline: 1px solid lime;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font;
+  background-color: $background;
+  color: $second;
+}
+
+a {
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
