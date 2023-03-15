@@ -43,12 +43,84 @@
     background-color: $first;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
   }
+
   &__box {
     position: absolute;
     top: 0.7rem;
     left: 0.7rem;
     width: 8.5rem;
     height: 8.5rem;
+  }
+}
+
+.comunicator {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  .talks {
+    position: relative;
+    bottom: -3.5rem;
+    right: -3.5rem;
+    width: 17rem;
+    height: 17rem;
+    background: linear-gradient(
+      135deg,
+      rgba(179, 179, 179, 0.9) 0%,
+      rgba(51, 63, 80, 1) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    border: 1px solid $second;
+    border-radius: 50%;
+    box-shadow: -10px 0px 25px 0px rgba(0, 0, 0, 0.75);
+    opacity: 0;
+  }
+
+  .envelope {
+    position: absolute;
+    bottom: -0.5rem;
+    left: 7.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    width: 10rem;
+    background: linear-gradient(
+      135deg,
+      rgba(179, 179, 179, 1) 0%,
+      rgba(51, 63, 80, 1) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    border: 1px solid $first;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 3.4rem;
+      width: 3.4rem;
+      bottom: 0;
+      right: 0;
+      border-top: 3.4rem solid transparent;
+      border-left: 3.4rem solid transparent;
+      border-bottom: 3.4rem solid #11171c;
+    }
+
+    &__inside {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 6rem;
+      width: 6rem;
+      background-color: $fourth;
+      border-radius: 50%;
+    }
+
+    .fa-envelope {
+      font-size: 3.2rem;
+    }
   }
 }
 
