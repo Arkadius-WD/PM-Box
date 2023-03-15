@@ -17,20 +17,5 @@ html {
 
 body {
   font-family: $font;
-  background-color: $background;
-  color: $second;
-}
-
-a {
-  text-decoration: none;
-
-  cursor: pointer;
-}
-
-ul {
-  list-style-type: none;
-}
-
-button {
-  cursor: pointer;
+  color: $third;
 }
