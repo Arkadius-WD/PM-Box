@@ -116,9 +116,16 @@
       width: 6rem;
       background-color: $fourth;
       border-radius: 50%;
+
+      &:hover {
+        .fa-envelope {
+          transform: scale(1.1);
+        }
+      }
     }
 
     .fa-envelope {
+      transition: transform 0.3s;
       font-size: 3.2rem;
     }
   }
