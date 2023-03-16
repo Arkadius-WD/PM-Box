@@ -18,10 +18,11 @@
   width: 100vw;
   background-color: $second;
   z-index: 0;
+  transition: transform 0.5s;
 }
 
 .beam-hidden {
-  opacity: 0;
+  transform: translateY(-7rem);
 }
 
 .nav {
@@ -31,13 +32,35 @@
   width: 4.5rem;
   background-color: $first;
   box-shadow: 5px 0px 20px 0px rgba(0, 0, 0, 0.75);
+
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    font-size: 1.7rem;
+    cursor: pointer;
+  }
+
+  &__container {
+    width: 4.5rem;
+    margin-top: 15rem;
+  }
 }
 
 .logo {
   position: absolute;
   top: -0.5rem;
   left: -0.5rem;
+  cursor: pointer;
   z-index: 5;
+
+  &:hover {
+    .logo__box {
+      transform: scale(1.1);
+    }
+  }
 
   &__circle {
     position: relative;
@@ -54,6 +77,7 @@
     left: 0.7rem;
     width: 8.5rem;
     height: 8.5rem;
+    transition: transform 0.3s;
   }
 }
 
@@ -77,11 +101,50 @@
     );
     border: 1px solid $second;
     border-radius: 50%;
-    box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.75);
+    transition: transform 0.5s;
+
+    i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.7rem;
+      font-size: 1.7rem;
+    }
+
+    &__mail,
+    &__chat,
+    &__phone,
+    &__video {
+      position: absolute;
+      width: 3.2rem;
+      height: 3.2rem;
+      cursor: pointer;
+    }
+
+    &__mail {
+      right: 4.3rem;
+      top: 0.7rem;
+    }
+
+    &__chat {
+      right: 9.5rem;
+      top: 0.9rem;
+    }
+
+    &__phone {
+      right: 12.9rem;
+      top: 4.5rem;
+    }
+
+    &__video {
+      right: 12.7rem;
+      top: 9.5rem;
+    }
   }
 
   .talks-hidden {
-    opacity: 0;
+    transform: scale(0);
   }
 
   .envelope {
