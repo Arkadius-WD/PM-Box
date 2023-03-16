@@ -4,16 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PM-Box</title>
-    <script defer type="module" src="./scripts/main.js"></script>
-    <script
-      src="https://kit.fontawesome.com/be47b86773.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <header class="header">
       <div class="upper-beam"></div>
-      <div class="lower-beam"></div>
+      <div class="lower-beam beam-hidden"></div>
       <nav class="nav"></nav>
       <div class="logo">
         <img
@@ -28,7 +23,7 @@
         />
       </div>
       <div class="comunicator">
-        <div class="talks"></div>
+        <div class="talks talks-hidden"></div>
 
         <div class="envelope">
           <div class="envelope__inside">
@@ -39,5 +34,11 @@
     </header>
 
     <main></main>
+
+    <script type="module" src="./scripts/main.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/be47b86773.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
