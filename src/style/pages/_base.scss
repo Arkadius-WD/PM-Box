@@ -27,6 +27,8 @@
 
 .nav {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: -4.5rem;
   height: calc(100vh + 4.5rem);
   width: 4.5rem;
@@ -41,11 +43,24 @@
     margin: 1rem 0;
     font-size: 1.7rem;
     cursor: pointer;
+    transition: transform 0.3s;
   }
 
   &__container {
     width: 4.5rem;
     margin-top: 15rem;
+  }
+
+  &__icon {
+    &:hover {
+      i {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__settings {
+    margin-top: auto;
   }
 }
 
@@ -58,7 +73,7 @@
 
   &:hover {
     .logo__box {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
 
@@ -110,6 +125,7 @@
       align-items: center;
       padding: 0.7rem;
       font-size: 1.7rem;
+      transition: transform 0.3s;
     }
 
     &__mail,
@@ -120,6 +136,12 @@
       width: 3.2rem;
       height: 3.2rem;
       cursor: pointer;
+
+      &:hover {
+        i {
+          transform: scale(1.1);
+        }
+      }
     }
 
     &__mail {
@@ -186,6 +208,7 @@
       width: 6rem;
       background-color: $fourth;
       border-radius: 50%;
+      cursor: pointer;
 
       &:hover {
         .fa-envelope {
@@ -199,6 +222,10 @@
       font-size: 3.2rem;
     }
   }
+}
+
+.build {
+  display: none;
 }
 
 main {
