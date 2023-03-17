@@ -12,6 +12,42 @@
   width: 100vw;
   background-color: $first;
   z-index: 5;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12rem;
+  }
+
+  &__weather,
+  &__search,
+  &__admin {
+    flex: 1;
+    margin: 0.5rem;
+    height: 3.5rem;
+  }
+
+  &__search-input {
+    display: block;
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 1rem;
+    border: none;
+    background-image: url('../../img/base/globalnav_search_image__grey.svg');
+    background-position: 1.5rem 1.4rem;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    background-color: $second;
+    font-family: $font;
+    font-size: 1.7rem;
+    font-weight: 300;
+  }
+
+  &__search-input::placeholder {
+    color: $third;
+    opacity: 0.3;
+  }
 }
 
 .lower-beam {

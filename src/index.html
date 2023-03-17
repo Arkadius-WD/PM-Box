@@ -11,7 +11,20 @@
   </head>
   <body>
     <header class="header">
-      <div class="upper-beam"></div>
+      <div class="upper-beam">
+        <div class="upper-beam__container">
+          <div class="upper-beam__weather"></div>
+          <div class="upper-beam__search">
+            <label for="upper-beam__search-input"></label>
+            <input
+              type="text"
+              class="upper-beam__search-input"
+              placeholder="Search in projects..."
+            />
+          </div>
+          <div class="upper-beam__admin"></div>
+        </div>
+      </div>
       <div class="lower-beam"></div>
       <nav class="nav">
         <div class="nav__container">
@@ -44,7 +57,7 @@
           </div>
         </div>
         <div class="nav__settings nav__icon">
-          <i class="fa-solid fa-gear"></i>
+          <i class="fa-solid fa-ellipsis"></i>
         </div>
       </nav>
       <div class="logo">
@@ -82,13 +95,6 @@
         </div>
       </div>
     </header>
-
-    <div class="build">
-      <h1>Strona w budowie</h1>
-      <p>Strone mobilna jest obecnie niedostępna</p>
-      <p>Proszę skorzystać z wersji dektop w rozdzielczości >992px</p>
-      <img src="./img/base/build.jpg" alt="build image" />
-    </div>
 
     <main></main>
 
