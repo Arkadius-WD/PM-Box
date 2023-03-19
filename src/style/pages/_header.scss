@@ -1,21 +1,22 @@
 @use '../variables/colors' as *;
 @use '../variables/fonts' as *;
 
-header {
+.header {
   position: absolute;
+  z-index: 0;
 }
 
 .upper-beam,
 .lower-beam {
+  position: relative;
   height: 4.5rem;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.75);
 }
 
 .upper-beam {
   width: 100vw;
-  // background-color: $first;
-  background-color: blue;
-  z-index: 5;
+  background-color: $first;
+  z-index: 0;
 
   &__container {
     display: flex;
@@ -56,10 +57,9 @@ header {
 
 .lower-beam {
   width: 100vw;
-  // background-color: $second;
-  background-color: red;
-  z-index: 0;
+  background-color: $second;
   transition: transform 0.5s;
+  z-index: -5;
 }
 
 .beam-hidden {

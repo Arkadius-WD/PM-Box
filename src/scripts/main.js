@@ -1,6 +1,4 @@
 import '../style/style.scss';
-import base from './base';
+import nav from './nav';
 
-base();
-
-console.log(123);
+nav();
