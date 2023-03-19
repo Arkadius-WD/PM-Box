@@ -1,133 +1,11 @@
 @use '../variables/colors' as *;
-@use '../variables/fonts' as *;
 
-.upper-beam,
-.lower-beam {
+main {
   position: relative;
-  height: 4.5rem;
-  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.75);
-}
-
-.upper-beam {
   width: 100vw;
-  background-color: $first;
-  z-index: 5;
-
-  &__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 11.5rem;
-  }
-
-  &__weather,
-  &__search,
-  &__admin {
-    flex: 1;
-    margin: 0.5rem;
-    height: 3.5rem;
-  }
-
-  &__search-input {
-    display: block;
-    width: 100%;
-    height: 3.5rem;
-    border-radius: 1rem;
-    border: none;
-    background-image: url('../../img/base/globalnav_search_image__grey.svg');
-    background-position: 1.5rem 1.4rem;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-    background-color: $second;
-    font-family: $font;
-    font-size: 1.7rem;
-    font-weight: 300;
-  }
-
-  &__search-input::placeholder {
-    color: $third;
-    opacity: 0.3;
-  }
-}
-
-.lower-beam {
-  width: 100vw;
-  background-color: $second;
-  z-index: 0;
-  transition: transform 0.5s;
-}
-
-.beam-hidden {
-  transform: translateY(-7rem);
-}
-
-.nav {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  top: 0;
-  left: 0;
   height: 100vh;
-  width: 4.5rem;
-  background-color: $first;
-  box-shadow: 5px 0px 20px 0px rgba(0, 0, 0, 0.75);
-
-  i {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    margin: 1rem 0;
-    font-size: 1.7rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-
-  &__container {
-    width: 4.5rem;
-    padding-top: 11rem;
-  }
-
-  &__icon {
-    &:hover {
-      i {
-        transform: scale(1.1);
-      }
-    }
-  }
-}
-
-.logo {
-  position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
-  cursor: pointer;
-  z-index: 5;
-
-  &:hover {
-    .logo__box {
-      transform: scale(1.05);
-    }
-  }
-
-  &__circle {
-    position: relative;
-    height: 10rem;
-    width: 10rem;
-    border-radius: 50%;
-    background-color: $first;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
-  }
-
-  &__box {
-    position: absolute;
-    top: 0.7rem;
-    left: 0.7rem;
-    width: 8.5rem;
-    height: 8.5rem;
-    transition: transform 0.3s;
-  }
+  background-color: yellow;
+  z-index: -5;
 }
 
 .comunicator {
@@ -256,16 +134,4 @@
       font-size: 3.2rem;
     }
   }
-}
-
-.build {
-  display: none;
-}
-
-main {
-  left: 4.5rem;
-  width: 100vw;
-  height: calc(100vh - 9rem);
-  background-color: yellow;
-  z-index: -5;
 }
