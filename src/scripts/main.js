@@ -1,4 +1,4 @@
 import '../style/style.scss';
-import nav from './nav';
+import headNav from './headNav';
 
-nav();
+headNav();

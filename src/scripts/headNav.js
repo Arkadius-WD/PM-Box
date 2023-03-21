@@ -1,4 +1,4 @@
-const nav = () => {
+const headNav = () => {
   const lowerBeam = document.querySelector('.lower-beam');
   const logo = document.querySelector('.logo');
   const talks = document.querySelector('.talks');
@@ -16,4 +16,4 @@ const nav = () => {
   envelopeInside.addEventListener('click', showTalks);
 };
 
-export default nav;
+export default headNav;
