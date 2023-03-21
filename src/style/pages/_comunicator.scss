@@ -1,13 +1,6 @@
 @use '../variables/colors' as *;
 @use '../variables/fonts' as *;
 
-main {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  z-index: -5;
-}
-
 .comunicator {
   position: absolute;
   right: 0;

@@ -3,7 +3,7 @@
 
 header {
   position: absolute;
-  z-index: 0;
+  z-index: 5;
 }
 
 .upper-beam,
@@ -133,4 +133,11 @@ header {
     height: 8.5rem;
     transition: transform 0.3s;
   }
+}
+
+main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }
