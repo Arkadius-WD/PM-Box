@@ -33,6 +33,18 @@ header {
     height: 3.5rem;
   }
 
+  &__weather {
+    display: flex;
+    align-items: center;
+    max-width: 20rem;
+  }
+
+  &__weather-img {
+    img {
+      height: 3rem;
+    }
+  }
+
   &__search-input {
     display: block;
     width: 100%;
