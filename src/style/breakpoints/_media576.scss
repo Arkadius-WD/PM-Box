@@ -6,12 +6,14 @@
   .upper-beam__admin {
     max-width: 14rem;
   }
-  .upper-beam__weather {
-    display: block;
-    max-width: 6rem;
-  }
 
   .upper-beam__admin-icons {
     display: block;
+  }
+
+  .upper-beam__weather {
+    display: flex;
+    align-items: center;
+    max-width: 8rem;
   }
 }

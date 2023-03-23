@@ -3,11 +3,13 @@
     max-width: 22rem;
   }
   .upper-beam__weather {
-    display: flex;
-    max-width: 22rem;
+    max-width: 25rem;
   }
-  .upper-beam__weather-date {
-    display: block;
+  .upper-beam__weather-tomorrow {
+    display: flex;
+  }
+  .upper-beam__weather-afterTomorrow {
+    display: flex;
   }
   .upper-beam__admin-login {
     display: block;
