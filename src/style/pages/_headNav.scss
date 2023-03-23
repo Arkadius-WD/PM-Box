@@ -36,34 +36,104 @@ header {
   &__weather {
     display: flex;
     align-items: center;
-    max-width: 20rem;
-  }
+    display: none;
 
-  &__weather-img {
-    img {
-      height: 3rem;
+    &-date {
+      font-size: 1.4rem;
+      padding-left: 2rem;
+      display: none;
+    }
+
+    &-forecast {
+      padding-left: 1rem;
+      img {
+        height: 3rem;
+      }
     }
   }
 
-  &__search-input {
-    display: block;
-    width: 100%;
-    height: 3.5rem;
-    border-radius: 1rem;
-    border: none;
-    background-image: url('../../img/base/globalnav_search_image__grey.svg');
-    background-position: 1.5rem 1.4rem;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-    background-color: $second;
-    font-family: $font;
-    font-size: 1.7rem;
-    font-weight: 300;
+  &__search {
+    &-input {
+      display: block;
+      width: 100%;
+      height: 3.5rem;
+      border-radius: 1.7rem;
+      border: none;
+      background-image: url('../img/base/globalnav_search_image__grey.svg');
+      background-position: 1.5rem 1.1rem;
+      background-repeat: no-repeat;
+      padding-left: 4rem;
+      background-color: $second;
+      font-family: $font;
+      color: $third;
+      font-size: 1.7rem;
+      font-weight: 300;
+    }
+
+    &-input::placeholder {
+      color: $third;
+      opacity: 0.3;
+    }
   }
 
-  &__search-input::placeholder {
-    color: $third;
-    opacity: 0.3;
+  &__admin {
+    max-width: 6rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    &-menu {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-right: 0.7rem;
+      cursor: pointer;
+      i {
+        transition: transform 0.3s;
+      }
+      &:hover {
+        i {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &-icons {
+      padding: 0 1.5rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: none;
+      i {
+        padding: 0 0.3rem;
+        transition: transform 0.3s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &-count {
+      display: flex;
+      align-items: center;
+    }
+
+    &-login {
+      padding: 0.4rem 1rem 0.4rem 1.5rem;
+      font-size: 1.4rem;
+      border-left: 1px solid $third;
+      display: none;
+    }
+
+    &-avatar {
+      height: 3rem;
+      width: 3rem;
+      margin-right: 1rem;
+      background-image: url('../../img/avatars/Aro.jpg');
+      background-size: contain;
+      background-position: center;
+      border-radius: 50%;
+      border: 1px solid $third;
+      cursor: pointer;
+    }
   }
 }
 
