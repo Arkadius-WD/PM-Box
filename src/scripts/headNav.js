@@ -12,8 +12,13 @@ const headNav = () => {
     talks.classList.toggle('talks-hidden');
   };
 
-  logo.addEventListener('click', showMenu);
-  envelopeInside.addEventListener('click', showTalks);
+  if (logo) {
+    logo.addEventListener('click', showMenu);
+  }
+
+  if (envelopeInside) {
+    envelopeInside.addEventListener('click', showTalks);
+  }
 };
 
 export default headNav;
