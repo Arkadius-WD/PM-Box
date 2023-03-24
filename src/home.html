@@ -8,37 +8,12 @@
       content="PM-Box is a desktop application for project management."
     />
     <title>PM-Box</title>
-    <script type="module" crossorigin src="./assets/index-dddaa750.js"></script>
-    <link rel="stylesheet" href="./assets/index-6aff213c.css">
   </head>
   <body>
     <header class="header">
       <div class="upper-beam">
         <div class="upper-beam__container">
-          <div class="upper-beam__weather">
-            <div class="upper-beam__weather-today">
-              <img src="./assets/sun-28865ff3.png" alt="weather icon" />
-              <div class="upper-beam__weather-today-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-today">Today</p>
-            </div>
-            <div class="upper-beam__weather-tomorrow">
-              <img src="./assets/sun-28865ff3.png" alt="weather icon" />
-              <div class="upper-beam__weather-tomorrow-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-tomorrow">Tue</p>
-            </div>
-            <div class="upper-beam__weather-afterTomorrow">
-              <img src="./assets/sun-28865ff3.png" alt="weather icon" />
-              <div class="upper-beam__weather-afterTomorrow-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-after">Wen</p>
-            </div>
-          </div>
-
+          <div class="upper-beam__empty"></div>
           <div class="upper-beam__search">
             <label for="upper-beam__search-input"></label>
             <input
@@ -101,18 +76,45 @@
       <div class="logo">
         <img
           class="logo__circle"
-          src="./assets/kolo-barw-kolorowe-1beced84.png"
+          src="./img/base/kolo-barw-kolorowe.png"
           alt="circle of colors"
         />
         <img
           class="logo__box"
-          src="./assets/1_WljD7gLyX2gr_60o501Z1A-2d719e53.png"
+          src="./img/base/1_WljD7gLyX2gr_60o501Z1A.png"
           alt="box in circle"
         />
       </div>
     </header>
 
     <main class="main">
+      <!-- <div class="upper-beam__weather">
+        <div class="upper-beam__weather-today">
+          <img src="./img/weather/sun.png" alt="weather icon" />
+          <div class="upper-beam__weather-today-temperature">
+            <p>7℃/5℃</p>
+          </div>
+          <p class="text-today">Today</p>
+        </div>
+        <div class="upper-beam__weather-tomorrow">
+          <img src="./img/weather/sun.png" alt="weather icon" />
+          <div class="upper-beam__weather-tomorrow-temperature">
+            <p>7℃/5℃</p>
+          </div>
+          <p class="text-tomorrow">Tue</p>
+        </div>
+        <div class="upper-beam__weather-afterTomorrow">
+          <img src="./img/weather/sun.png" alt="weather icon" />
+          <div class="upper-beam__weather-afterTomorrow-temperature">
+            <p>7℃/5℃</p>
+          </div>
+          <p class="text-after">Wen</p>
+          <p class="upper-beam__weather-city">
+            <i class="fa-solid fa-location-dot"></i>Katowice
+          </p>
+        </div>
+      </div> -->
+
       <div class="comunicator">
         <div class="talks talks-hidden">
           <div class="talks__mail">
@@ -136,10 +138,11 @@
       </div>
     </main>
 
-    
+    <script type="module" src="./scripts/app2.js"></script>
     <script
       src="https://kit.fontawesome.com/be47b86773.js"
       crossorigin="anonymous"
+      defer
     ></script>
   </body>
 </html>

@@ -25,56 +25,11 @@ header {
     margin-left: 11.5rem;
   }
 
-  &__weather,
   &__search,
   &__admin {
     flex: 1;
     margin: 0.5rem;
     height: 3.5rem;
-  }
-
-  &__weather {
-    display: none;
-
-    &-today {
-      position: relative;
-      display: flex;
-      font-size: 1.2rem;
-      img {
-        height: 3rem;
-      }
-      &-temperature {
-        padding-left: 0.5rem;
-      }
-      .text-today {
-        position: absolute;
-        right: 0.4rem;
-        bottom: 0;
-        padding-top: 0.5rem;
-      }
-    }
-
-    &-tomorrow,
-    &-afterTomorrow {
-      position: relative;
-      font-size: 1rem;
-      padding-bottom: 1.2rem;
-      padding-left: 2rem;
-      display: none;
-      img {
-        height: 2rem;
-      }
-      &-temperature {
-        padding-left: 0.7rem;
-      }
-
-      .text-tomorrow,
-      .text-after {
-        position: absolute;
-        right: 0.7rem;
-        bottom: 0.7rem;
-      }
-    }
   }
 
   &__search {

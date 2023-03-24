@@ -1,19 +1,13 @@
 @media (min-width: 576px) {
-  .upper-beam__admin-menu {
-    display: none;
-  }
-
   .upper-beam__admin {
     max-width: 14rem;
   }
 
-  .upper-beam__admin-icons {
-    display: block;
+  .upper-beam__admin-menu {
+    display: none;
   }
 
-  .upper-beam__weather {
-    display: flex;
-    align-items: center;
-    max-width: 8rem;
+  .upper-beam__admin-icons {
+    display: block;
   }
 }

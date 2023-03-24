@@ -1,16 +1,12 @@
 @media (min-width: 992px) {
+  .upper-beam__empty {
+    min-width: 10rem;
+  }
+
   .upper-beam__admin {
     max-width: 22rem;
   }
-  .upper-beam__weather {
-    max-width: 25rem;
-  }
-  .upper-beam__weather-tomorrow {
-    display: flex;
-  }
-  .upper-beam__weather-afterTomorrow {
-    display: flex;
-  }
+
   .upper-beam__admin-login {
     display: block;
   }

@@ -1,0 +1,53 @@
+// &__weather {
+//   cursor: pointer;
+//   display: none;
+
+//   &-today {
+//     position: relative;
+//     display: flex;
+//     font-size: 1.1rem;
+//     img {
+//       height: 3rem;
+//     }
+//     &-temperature {
+//       padding-left: 0.8rem;
+//     }
+//     .text-today {
+//       position: absolute;
+//       right: 0.4rem;
+//       bottom: 0;
+//       padding-top: 0.5rem;
+//     }
+//   }
+
+//   &-tomorrow,
+//   &-afterTomorrow {
+//     position: relative;
+//     font-size: 0.9rem;
+//     padding-bottom: 1.2rem;
+//     padding-left: 2rem;
+//     display: none;
+//     img {
+//       height: 2rem;
+//     }
+//     &-temperature {
+//       padding-left: 0.7rem;
+//     }
+
+//     .text-tomorrow,
+//     .text-after {
+//       position: absolute;
+//       right: 0.4rem;
+//       bottom: 0.9rem;
+//     }
+//   }
+
+//   &-city {
+//     position: absolute;
+//     bottom: -0.3rem;
+//     left: 0;
+//     i {
+//       padding-right: 0.3rem;
+//     }
+//   }
+// }

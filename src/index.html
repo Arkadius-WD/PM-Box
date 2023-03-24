@@ -8,133 +8,15 @@
       content="PM-Box is a desktop application for project management."
     />
     <title>PM-Box</title>
-  </head>
+     </head>
   <body>
-    <header class="header">
-      <div class="upper-beam">
-        <div class="upper-beam__container">
-          <div class="upper-beam__weather">
-            <div class="upper-beam__weather-today">
-              <img src="./img/weather/sun.png" alt="weather icon" />
-              <div class="upper-beam__weather-today-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-today">Today</p>
-            </div>
-            <div class="upper-beam__weather-tomorrow">
-              <img src="./img/weather/sun.png" alt="weather icon" />
-              <div class="upper-beam__weather-tomorrow-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-tomorrow">Tue</p>
-            </div>
-            <div class="upper-beam__weather-afterTomorrow">
-              <img src="./img/weather/sun.png" alt="weather icon" />
-              <div class="upper-beam__weather-afterTomorrow-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-after">Wen</p>
-            </div>
-          </div>
-
-          <div class="upper-beam__search">
-            <label for="upper-beam__search-input"></label>
-            <input
-              type="text"
-              class="upper-beam__search-input"
-              placeholder="Search..."
-            />
-          </div>
-          <div class="upper-beam__admin">
-            <div class="upper-beam__admin-menu">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
-            <div class="upper-beam__admin-icons">
-              <i class="fa-regular fa-bell"></i>
-              <i class="fa-regular fa-circle-question"></i>
-              <i class="fa-solid fa-gear"></i>
-            </div>
-            <div class="upper-beam__admin-count">
-              <p class="upper-beam__admin-login">Arkadius</p>
-              <div class="upper-beam__admin-avatar"></div>
-            </div>
-          </div>
-        </div>
+    <div class="modal-window">
+        <button class="login__button">
+          <a href="./home.html"><h1>HOME PAGE</h1></a>
       </div>
-      <div class="lower-beam"></div>
-      <nav class="nav">
-        <div class="nav__container">
-          <div class="nav__home nav__icon">
-            <i class="fa-solid fa-house"></i>
-          </div>
-          <div class="nav__schedule nav__icon">
-            <i class="fa-regular fa-calendar-days"></i>
-          </div>
-          <div class="nav__todo nav__icon">
-            <i class="fa-solid fa-list-check"></i>
-          </div>
-          <div class="nav__projects nav__icon">
-            <i class="fa-brands fa-r-project"></i>
-          </div>
-          <div class="nav__decizions nav__icon">
-            <i class="fa-regular fa-thumbs-up"></i>
-          </div>
-          <div class="nav__budget nav__icon">
-            <i class="fa-solid fa-sack-dollar"></i>
-          </div>
-          <div class="nav__files nav__icon">
-            <i class="fa-regular fa-folder-open"></i>
-          </div>
-          <div class="nav__teams nav__icon">
-            <i class="fa-solid fa-people-group"></i>
-          </div>
-          <div class="nav__history nav__icon">
-            <i class="fa-solid fa-book"></i>
-          </div>
-        </div>
-        <div class="nav__settings nav__icon">
-          <i class="fa-solid fa-ellipsis"></i>
-        </div>
-      </nav>
-      <div class="logo">
-        <img
-          class="logo__circle"
-          src="./img/base/kolo-barw-kolorowe.png"
-          alt="circle of colors"
-        />
-        <img
-          class="logo__box"
-          src="./img/base/1_WljD7gLyX2gr_60o501Z1A.png"
-          alt="box in circle"
-        />
-      </div>
-    </header>
+    </div>
 
-    <main class="main">
-      <div class="comunicator">
-        <div class="talks talks-hidden">
-          <div class="talks__mail">
-            <i class="fa-regular fa-envelope"></i>
-          </div>
-          <div class="talks__chat">
-            <i class="fa-regular fa-comments"></i>
-          </div>
-          <div class="talks__phone">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-          <div class="talks__video">
-            <i class="fa-solid fa-video"></i>
-          </div>
-        </div>
-        <div class="envelope">
-          <div class="envelope__inside">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/app.js"></script>
     <script
       src="https://kit.fontawesome.com/be47b86773.js"
       crossorigin="anonymous"
