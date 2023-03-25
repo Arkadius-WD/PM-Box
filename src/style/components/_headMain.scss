@@ -1,6 +1,13 @@
 .headMain {
+  display: flex;
+  justify-content: center;
   font-size: 2rem;
-  padding-top: 5rem;
+  padding-top: 10rem;
   padding-left: 10rem;
   color: black;
+}
+
+.page-title {
+  margin-right: 3rem;
+  margin-left: auto;
 }
