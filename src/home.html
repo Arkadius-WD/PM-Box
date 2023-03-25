@@ -15,8 +15,9 @@
       defer
     ></script>
   </head>
+
   <body>
-    <header class="header">
+    <div class="headNav">
       <div class="upper-beam">
         <div class="upper-beam__container">
           <div class="upper-beam__empty"></div>
@@ -91,35 +92,46 @@
           alt="box in circle"
         />
       </div>
-    </header>
+    </div>
 
     <main class="main">
-      <!-- <div class="upper-beam__weather">
-        <div class="upper-beam__weather-today">
-          <img src="./img/weather/sun.png" alt="weather icon" />
-          <div class="upper-beam__weather-today-temperature">
-            <p>7℃/5℃</p>
-          </div>
-          <p class="text-today">Today</p>
+      <header class="headMain">
+        <div class="page-title">
+          <h2>Notifications</h2>
         </div>
-        <div class="upper-beam__weather-tomorrow">
-          <img src="./img/weather/sun.png" alt="weather icon" />
-          <div class="upper-beam__weather-tomorrow-temperature">
-            <p>7℃/5℃</p>
+        <div class="weather">
+          <div class="weather__today">
+            <img src="./img/weather/sun.png" alt="weather icon" />
+            <div class="weather__today-temperature">
+              <p>7℃/5℃</p>
+            </div>
+            <p class="text-today">Today</p>
           </div>
-          <p class="text-tomorrow">Tue</p>
-        </div>
-        <div class="upper-beam__weather-afterTomorrow">
-          <img src="./img/weather/sun.png" alt="weather icon" />
-          <div class="upper-beam__weather-afterTomorrow-temperature">
-            <p>7℃/5℃</p>
+          <div class="weather__tomorrow">
+            <img src="./img/weather/sun.png" alt="weather icon" />
+            <div class="weather__tomorrow-temperature">
+              <p>7℃/5℃</p>
+            </div>
+            <p class="text-tomorrow">Tue</p>
           </div>
-          <p class="text-after">Wen</p>
-          <p class="upper-beam__weather-city">
-            <i class="fa-solid fa-location-dot"></i>Katowice
-          </p>
+          <div class="weather__afterTomorrow">
+            <img src="./img/weather/sun.png" alt="weather icon" />
+            <div class="weather__afterTomorrow-temperature">
+              <p>7℃/5℃</p>
+            </div>
+            <p class="text-after">Wen</p>
+            <p class="weather__city">
+              <i class="fa-solid fa-location-dot"></i>Katowice
+            </p>
+          </div>
         </div>
-      </div> -->
+      </header>
+
+      <div class="notifi-window">
+        <div class="meetings"></div>
+        <div class="tasks"></div>
+        <div class="approval"></div>
+      </div>
 
       <div class="comunicator">
         <div class="talks talks-hidden">
