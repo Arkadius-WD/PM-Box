@@ -3,18 +3,25 @@ main {
   width: 100vw;
   height: 100vh;
   padding-top: 10rem;
-  padding-left: 10rem;
-  color: black;
+  padding-left: 5rem;
   z-index: 0;
+}
+
+.main-container {
+  transition: transform 0.5s;
+}
+
+.main-transform {
+  transform: translateY(-4.5rem);
 }
 
 .headMain {
   display: flex;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1rem;
+  color: black;
 }
 
-.page-title {
-  margin-right: 3rem;
-  margin-left: auto;
+.weather {
+  border: 1px solid black;
 }

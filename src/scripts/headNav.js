@@ -3,9 +3,11 @@ const headNav = () => {
   const logo = document.querySelector('.logo');
   const talks = document.querySelector('.talks');
   const envelopeInside = document.querySelector('.envelope__inside');
+  const mainContainer = document.querySelector('.main-container');
 
   const showMenu = () => {
     lowerBeam.classList.toggle('beam-hidden');
+    mainContainer.classList.toggle('main-transform');
   };
 
   const showTalks = () => {
