@@ -163,6 +163,12 @@
       }
     }
   }
+
+  .active-nav-icon {
+    color: $fifth;
+    border-top: 1px dotted $fifth;
+    border-bottom: 1px dotted $fifth;
+  }
 }
 
 .logo {
