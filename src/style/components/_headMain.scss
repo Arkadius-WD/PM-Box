@@ -1,7 +1,7 @@
 @use '../variables/colors' as *;
-@use '../variables/fonts' as *;
+// @use '../variables/fonts' as *;
 
-main {
+.head-main {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -10,6 +10,7 @@ main {
 
 .main-container {
   padding: 11rem 1rem 1rem 6rem;
+  color: $first;
   transition: transform 0.5s;
 }
 
@@ -17,11 +18,10 @@ main {
   transform: translateY(-4.5rem);
 }
 
-.headMain {
+.header {
   display: flex;
   justify-content: end;
   padding-bottom: 2rem;
-  color: $first;
 }
 
 .page-title {
@@ -33,9 +33,4 @@ main {
     font-weight: 700;
     text-transform: uppercase;
   }
-}
-
-.weather {
-  border: 1px solid $first;
-  border-radius: 0.5rem;
 }
