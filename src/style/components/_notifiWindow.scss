@@ -1,7 +1,7 @@
 @use '../variables/colors' as *;
 
-.notifi-window {
-  max-height: 8npm0vh;
+.notify-window {
+  max-height: 75vh;
   overflow: auto;
 }
 
@@ -13,6 +13,7 @@
   height: 20rem;
   border: 1px solid $first;
   border-radius: 0.5rem;
+  background-color: #6e6b6b;
 }
 
 .weather {
