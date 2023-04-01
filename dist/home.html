@@ -14,8 +14,8 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="./assets/index-c8ff7301.js"></script>
-    <link rel="stylesheet" href="./assets/index-947b4b53.css">
+    <script type="module" crossorigin src="./assets/index-8dbed555.js"></script>
+    <link rel="stylesheet" href="./assets/index-2b45521a.css">
   </head>
 
   <body>
@@ -100,37 +100,44 @@
       <div class="main-container">
         <header class="header">
           <div class="page-title">
-            <h2>notifications</h2>
+            <h2>Notifications</h2>
           </div>
         </header>
 
-        <div class="notifi-window">
+        <div class="notify-window">
           <div class="weather">
-            <div class="weather__today">
-              <img src="./assets/sun-28865ff3.png" alt="weather icon" />
-              <div class="weather__today-temperature">
-                <p>7℃/5℃</p>
+            <h3>weather app</h3>
+            <div class="weather__forecast">
+              <div class="weather__today">
+                <img src="./assets/sun-28865ff3.png" alt="weather icon" />
+                <div class="weather__today-temperature">
+                  <p>7℃/5℃</p>
+                </div>
+                <p class="text-today">Today</p>
               </div>
-              <p class="text-today">Today</p>
+              <div class="weather__tomorrow">
+                <img src="./assets/sun-28865ff3.png" alt="weather icon" />
+                <div class="weather__tomorrow-temperature">
+                  <p>7℃/5℃</p>
+                </div>
+                <p class="text-tomorrow">Tue</p>
+              </div>
+              <div class="weather__afterTomorrow">
+                <img src="./assets/sun-28865ff3.png" alt="weather icon" />
+                <div class="weather__afterTomorrow-temperature">
+                  <p>7℃/5℃</p>
+                </div>
+                <p class="text-after">Wen</p>
+              </div>
             </div>
-            <div class="weather__tomorrow">
-              <img src="./assets/sun-28865ff3.png" alt="weather icon" />
-              <div class="weather__tomorrow-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-tomorrow">Tue</p>
-            </div>
-            <div class="weather__afterTomorrow">
-              <img src="./assets/sun-28865ff3.png" alt="weather icon" />
-              <div class="weather__afterTomorrow-temperature">
-                <p>7℃/5℃</p>
-              </div>
-              <p class="text-after">Wen</p>
-              <p class="weather__city">
-                <i class="fa-solid fa-location-dot"></i>Katowice
-              </p>
+            <div class="weather__city">
+              <h4><i class="fa-solid fa-location-dot"></i>Katowice</h4>
+              <input type="text" placeholder="Wpisz nazwę miasta..." />
+              <button>Wyslij</button>
+              <p class="warning"></p>
             </div>
           </div>
+
           <div class="meetings">meetings</div>
           <div class="tasks">tasks</div>
           <div class="approval">approval</div>

@@ -10,17 +10,34 @@
 .tasks,
 .approval {
   margin: 2rem 0;
-  height: 20rem;
   border: 1px solid $first;
   border-radius: 0.5rem;
-  background-color: #6e6b6b;
+  background-color: #d4d3d3;
+  h3 {
+    text-align: center;
+  }
+  h4 {
+    text-align: center;
+  }
 }
 
 .weather {
-  display: flex;
   color: $first;
-  img {
-    width: 3rem;
-    height: 3rem;
+
+  &__forecast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__city {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
