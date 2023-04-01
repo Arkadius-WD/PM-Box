@@ -29,7 +29,15 @@ const weather = () => {
     document.querySelector('.text-after').textContent =
       formattedAfterTomorrowDate;
   };
+
+  const forecast = () => {
+    const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?lat=';
+    const API_KEY = '&appid=8ce19327be3e6730718f881dd238de8b';
+    const API_UNITS = '&units=metric';
+  };
+
   date();
+  forecast();
 };
 
 export default weather;
