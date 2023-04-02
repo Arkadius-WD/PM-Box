@@ -24,10 +24,13 @@
 .weather {
   color: $first;
 
-  &__forecast {
+  &__days {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__day {
     img {
       width: 3rem;
       height: 3rem;
