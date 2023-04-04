@@ -6,4 +6,4 @@
       <div class="weather__day-temperature">
       <p class="temp">${y}°C</p>
       </div>
-    `,e.appendChild(f)}})};window.location.pathname==="/dist/home.html"&&(Ue(),Qt());
+    `,e.appendChild(f)}})};window.location.pathname.endsWith("/home.html")&&(Ue(),Qt());
