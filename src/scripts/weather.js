@@ -1,4 +1,5 @@
 import axios from 'axios';
+import sunIcon from '../img/weather/sun.png';
 
 const weather = () => {
   const daysContainer = document.querySelector('.weather__days');
@@ -18,7 +19,7 @@ const weather = () => {
   const API_UNITS = '&units=metric';
 
   /// GET WEATHER ///
-  const city = inputCity.value || 'London';
+  const city = inputCity.value || 'Katowice';
   const URL = API_LINK + city + API_KEY + API_UNITS;
 
   axios.get(URL).then(res => {
@@ -30,16 +31,17 @@ const weather = () => {
         'en-US',
         options,
       );
-      const temp = Math.floor(res.data.list[index * 6 + 6].main.temp);
+      const temp = Math.floor(res.data.list[index * 8].main.temp);
+      console.log(res.data.list[index * 8]);
 
       const div = document.createElement('div');
       div.classList.add('weather__day');
       div.setAttribute('id', `weather__day-${index}`);
       div.innerHTML = `
       <p class="text-day">${formattedCurrentDate}</p>
-      <img src="./img/weather/sun.png" alt="weather icon" />
+      <img src="${sunIcon}" alt="weather icon" />
       <div class="weather__day-temperature">
-      <p class="temp">${temp}C</p>
+      <p class="temp">${temp}°C</p>
       </div>
     `;
       daysContainer.appendChild(div);
