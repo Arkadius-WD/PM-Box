@@ -23,7 +23,6 @@ const weather = () => {
   const URL = API_LINK + city + API_KEY + API_UNITS;
 
   axios.get(URL).then(res => {
-    console.log(res.data);
     /// CREATE ELEMENTS ///
     for (let index = 0; index < 5; index++) {
       nextDate.setDate(currentDate.getDate() + index);
@@ -32,7 +31,6 @@ const weather = () => {
         options,
       );
       const temp = Math.floor(res.data.list[index * 8].main.temp);
-      console.log(res.data.list[index * 8]);
 
       const div = document.createElement('div');
       div.classList.add('weather__day');

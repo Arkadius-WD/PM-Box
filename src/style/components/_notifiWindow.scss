@@ -12,19 +12,23 @@
 .weather,
 .meetings,
 .tasks,
-.approval {
+.approvals,
+.messages {
+  display: flex;
+  flex-direction: column;
   min-width: 27rem;
-  max-width: 50rem;
-  margin: 2rem 1rem 2rem 1.5rem;
+  max-width: 32rem;
+  margin: 2rem 1rem;
   color: $first;
   background: linear-gradient(
     325deg,
-    rgba(255, 255, 255, 0.7) 0%,
-    rgba(81, 90, 101, 0.7) 70%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(81, 90, 101, 0.5) 50%,
+    rgba(81, 90, 101, 0.7) 75%,
     rgba(51, 63, 80, 1) 100%
   );
   border-radius: 0.5rem;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
 
   h3 {
     color: $third;
@@ -57,6 +61,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 35rem;
     padding: 0.9rem;
     img {
       width: 3rem;
