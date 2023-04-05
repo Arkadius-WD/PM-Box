@@ -18,52 +18,56 @@ const weatherIcons = {
 const weather = () => {
   const daysContainer = document.querySelector('.weather__days');
   const inputCity = document.querySelector('.weather__city-input');
+  const btnWeather = document.querySelector('.weather__button');
+  const cityName = document.querySelector('.weather__localisation');
 
-  /// DATE ///
-  const currentDate = new Date();
-  const nextDate = new Date(currentDate);
   const options = {
     month: 'short',
     day: 'numeric',
   };
 
-  /// API ///
-  const API_LINK = 'https://api.openweathermap.org/data/2.5/forecast?q=';
-  const API_KEY = '&appid=8ce19327be3e6730718f881dd238de8b';
-  const API_UNITS = '&units=metric';
+  const getWeather = () => {
+    const city = inputCity.value || 'Katowice';
+    const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=8ce19327be3e6730718f881dd238de8b&units=metric`;
 
-  /// GET WEATHER ///
-  const city = inputCity.value || 'Katowice';
-  const URL = API_LINK + city + API_KEY + API_UNITS;
+    axios
+      .get(URL)
+      .then(res => {
+        cityName.textContent = res.data.city.name;
 
-  axios.get(URL).then(res => {
-    console.log(res.data.list[0].weather);
+        for (let index = 0; index < 5; index++) {
+          const nextDate = new Date();
+          nextDate.setDate(nextDate.getDate() + index);
 
-    /// Create elements ///
-    for (let index = 0; index < 5; index++) {
-      nextDate.setDate(currentDate.getDate() + index);
-      const formattedCurrentDate = nextDate.toLocaleDateString(
-        'en-US',
-        options,
-      );
-      const temp = Math.floor(res.data.list[index * 8].main.temp);
-      const status = { ...res.data.list[index * 8].weather[0] };
+          const formattedCurrentDate = nextDate.toLocaleDateString(
+            'en-US',
+            options,
+          );
 
-      console.log(status.main);
+          const temp = Math.floor(res.data.list[index * 8].main.temp);
+          const status = res.data.list[index * 8].weather[0].main;
 
-      const div = document.createElement('div');
-      div.classList.add('weather__day');
-      div.setAttribute('id', `weather__day-${index}`);
-      div.innerHTML = `
-      <p class="text-day">${formattedCurrentDate}</p>
-      <img src="${weatherIcons[status.main]}" alt="weather icon" />
-      <div class="weather__day-temperature">
-      <p class="temp">${temp}°C</p>
-      </div>
-    `;
-      daysContainer.appendChild(div);
-    }
-  });
+          const div = document.createElement('div');
+          div.classList.add('weather__day');
+          div.setAttribute('id', `weather__day-${index}`);
+          div.innerHTML = `
+          <p class="text-day">${formattedCurrentDate}</p>
+          <img src="${weatherIcons[status]}" alt="weather icon" />
+          <div class="weather__day-temperature">
+            <p class="temp">${temp}°C</p>
+          </div>
+        `;
+          daysContainer.appendChild(div);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        cityName.textContent = 'Error: City not found';
+      });
+  };
+
+  getWeather();
+  btnWeather.addEventListener('click', getWeather);
 };
 
 export default weather;
