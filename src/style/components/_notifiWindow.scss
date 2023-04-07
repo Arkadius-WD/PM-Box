@@ -1,4 +1,5 @@
 @use '../variables/colors' as *;
+@use '../variables/fonts' as *;
 
 .notify-window {
   display: flex;
@@ -32,16 +33,22 @@
   );
   border-radius: 0.5rem;
   box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
 
   h3 {
-    color: $third;
+    position: relative;
+    width: 10rem;
+    padding: 0.5rem 1.5rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.75);
     text-transform: uppercase;
-    padding: 1rem;
+    color: $third;
   }
 
   h4 {
-    padding: 1rem;
+    width: 100%;
     text-align: center;
+    padding-top: 0.7rem;
   }
 
   &__container {
@@ -55,6 +62,10 @@
   &__title {
     display: flex;
     justify-content: space-between;
+    h3 {
+      background-color: purple;
+    }
+    margin-bottom: 1rem;
   }
 
   &__days {
@@ -73,17 +84,19 @@
     img {
       width: 3rem;
       height: 3rem;
-      margin: 0.5rem 0;
+      margin: 1rem 0;
     }
 
     &#weather__day-0 {
+      font-size: 1.6rem;
       img {
         width: 6rem;
         height: 6rem;
       }
 
       .weather__day-temperature {
-        padding-bottom: 1.1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 1.3rem;
       }
     }
   }
@@ -94,7 +107,7 @@
     justify-content: center;
     right: 1rem;
     bottom: 0rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.8rem;
 
     input {
       width: 11.5rem;
@@ -104,8 +117,10 @@
     }
 
     ::placeholder {
-      color: $first;
       padding-left: 0.7rem;
+      font-family: $font;
+      color: $third;
+      color: $first;
     }
 
     button {
@@ -117,5 +132,26 @@
       border: inherit;
       border-radius: 1.5rem;
     }
+  }
+}
+
+.meetings {
+  h3 {
+    background-color: blue;
+  }
+}
+.tasks {
+  h3 {
+    background-color: green;
+  }
+}
+.approvals {
+  h3 {
+    background-color: orange;
+  }
+}
+.messages {
+  h3 {
+    background-color: red;
   }
 }
