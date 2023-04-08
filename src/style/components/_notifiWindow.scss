@@ -6,7 +6,7 @@
   justify-content: space-around;
   align-items: start;
   flex-wrap: wrap;
-  max-height: 75vh;
+  max-height: calc(100vh - 15.5rem);
   overflow: auto;
 }
 
@@ -92,6 +92,11 @@
         width: 6rem;
         height: 6rem;
       }
+      p {
+        background-color: #fff;
+        padding: 0.2rem 1rem;
+        border-radius: 1.5rem;
+      }
 
       .weather__day-temperature {
         padding-top: 0.5rem;
@@ -146,7 +151,7 @@
 }
 .approvals {
   h3 {
-    background-color: $nineth;
+    background-color: $ninth;
   }
 }
 .messages {
