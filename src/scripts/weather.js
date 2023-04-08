@@ -20,6 +20,7 @@ const weather = () => {
   const inputCity = document.querySelector('.weather__city-input');
   const btnWeather = document.querySelector('.weather__button');
   const cityName = document.querySelector('.weather__localisation');
+  const locationIcon = document.querySelector('.fa-location-dot');
 
   const options = {
     month: 'short',
@@ -27,20 +28,23 @@ const weather = () => {
   };
 
   const days = [];
-  for (let index = 0; index < 5; index++) {
-    const div = document.createElement('div');
-    div.classList.add('weather__day');
-    div.setAttribute('id', `weather__day-${index}`);
-    div.innerHTML = `
-      <p class="text-day"></p>
-      <img src="" alt="weather icon" />
-      <div class="weather__day-temperature">
-        <p class="temp"></p>
-      </div>
-    `;
-    daysContainer.appendChild(div);
-    days.push(div);
-  }
+
+  const createWeatherDays = () => {
+    for (let index = 0; index < 5; index++) {
+      const div = document.createElement('div');
+      div.classList.add('weather__day');
+      div.setAttribute('id', `weather__day-${index}`);
+      div.innerHTML = `
+        <p class="text-day"></p>
+        <img src="" alt="weather icon" />
+        <div class="weather__day-temperature">
+          <p class="temp"></p>
+        </div>
+      `;
+      daysContainer.appendChild(div);
+      days.push(div);
+    }
+  };
 
   const updateDay = (day, data) => {
     const { date, status, temp } = data;
@@ -57,6 +61,8 @@ const weather = () => {
       .get(URL)
       .then(res => {
         cityName.textContent = res.data.city.name;
+        cityName.style.color = '#333f50';
+        locationIcon.style.color = '#333f50';
 
         for (let index = 0; index < 5; index++) {
           const nextDate = new Date();
@@ -76,15 +82,24 @@ const weather = () => {
             temp,
           });
         }
+        inputCity.value = '';
       })
       .catch(error => {
         console.error(error);
-        cityName.textContent = 'Error: City not found';
-        daysContainer.innerHTML = '';
+        cityName.textContent = 'Valid name';
+        cityName.style.color = '#e43666';
+        locationIcon.style.color = '#e43666';
       });
   };
-
+  createWeatherDays();
   getWeather();
+
+  const enterCheck = e => {
+    if (e.key === 'Enter') {
+      getWeather();
+    }
+  };
+  inputCity.addEventListener('keyup', enterCheck);
   btnWeather.addEventListener('click', getWeather);
 };
 
