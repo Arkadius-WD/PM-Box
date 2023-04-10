@@ -1,41 +1,62 @@
 @use '../variables/colors' as *;
 
 .start {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   height: 100vh;
   background-image: url('../img/base/152-1524031_kenshin-himura-wallpaper-samurai-x-wallpaper-hd.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  color: $first;
+
+  a {
+    color: $first;
+  }
 
   &__logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10rem;
-    height: 10rem;
+    margin-top: 10rem;
 
     &-img {
-      width: 20rem;
-      height: 10rem;
-      background-color: aqua;
+      width: 11rem;
+      height: 11rem;
+      background-image: url('../img/base/1_WljD7gLyX2gr_60o501Z1A.png');
+      background-size: 9.5rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 0.5rem solid $first;
+      border-radius: 50%;
+      box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
     }
 
     h1 {
-      font-size: 3.4rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-left: 2rem;
+      font-weight: 500;
       text-transform: uppercase;
-    }
-  }
 
-  &__login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    h2 {
-      text-transform: uppercase;
+      &::before {
+        position: absolute;
+        content: 'TM';
+        right: -0.5rem;
+        top: -0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    p {
+      font-size: 4.7rem;
+    }
+
+    span {
+      margin-top: -0.5rem;
+      font-size: 3.2rem;
+      padding-left: 0.2rem;
     }
   }
 }
