@@ -2,4 +2,11 @@
   .upper-beam__empty {
     min-width: 2rem;
   }
+
+  .start {
+    background-size: 100rem;
+    &__logo {
+      margin-top: 25rem;
+    }
+  }
 }

@@ -1,3 +1,5 @@
+@use '../variables/colors' as *;
+
 @media (min-width: 992px) {
   .upper-beam__empty {
     min-width: 10rem;
@@ -9,5 +11,27 @@
 
   .upper-beam__admin-login {
     display: block;
+  }
+
+  .start {
+    background-size: cover;
+    background-position-y: 2rem;
+    &__logo {
+      margin-top: 25rem;
+      &-img {
+        width: 14rem;
+        height: 14rem;
+        background-size: 12.2rem;
+        border: 0.6rem solid $first;
+      }
+
+      p {
+        font-size: 5.7rem;
+      }
+
+      span {
+        font-size: 4rem;
+      }
+    }
   }
 }

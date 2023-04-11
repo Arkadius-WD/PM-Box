@@ -7,24 +7,39 @@
   align-items: start;
   height: 100vh;
   background-image: url('../img/base/152-1524031_kenshin-himura-wallpaper-samurai-x-wallpaper-hd.jpg');
-  background-size: cover;
+  background-size: 90rem;
+  background-position-y: bottom;
   background-repeat: no-repeat;
+  color: $first;
 
-  a {
-    color: $first;
+  &__login {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 100vw;
+    gap: 1rem;
+    background-color: $tenth;
+
+    input {
+      max-width: 10rem;
+      padding: 0.5rem 1rem;
+      border-radius: 1.5rem;
+    }
   }
 
   &__logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10rem;
+    margin-top: 15rem;
 
     &-img {
-      width: 11rem;
-      height: 11rem;
+      width: 12rem;
+      height: 12rem;
       background-image: url('../img/base/1_WljD7gLyX2gr_60o501Z1A.png');
-      background-size: 9.5rem;
+      background-size: 10.2rem;
       background-repeat: no-repeat;
       background-position: center;
       border: 0.5rem solid $first;
