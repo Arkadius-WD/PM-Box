@@ -19,14 +19,38 @@
     align-items: center;
     height: 5rem;
     width: 100vw;
-    gap: 1rem;
     background-color: $tenth;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    transition: transform 0.5s;
 
     input {
-      max-width: 10rem;
-      padding: 0.5rem 1rem;
+      max-width: 17rem;
+      padding: 0.8rem 2rem;
       border-radius: 1.5rem;
+      background-color: $third;
+      border: 2px solid $tenth;
+
+      &::placeholder {
+        color: $first;
+      }
     }
+
+    #password {
+      margin-left: -3rem;
+    }
+
+    button {
+      background-color: $first;
+      color: $third;
+      border: none;
+      border-radius: 1.5rem;
+      padding: 0.4em 0.8rem;
+      margin-left: -5.2rem;
+      cursor: pointer;
+    }
+  }
+  .login-hidden {
+    transform: translateY(-7rem);
   }
 
   &__logo {
@@ -34,6 +58,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 15rem;
+    cursor: pointer;
 
     &-img {
       width: 12rem;
