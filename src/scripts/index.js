@@ -4,7 +4,10 @@ import headNav from './headNav';
 import weather from './weather';
 import login from './login';
 
-if (window.location.pathname.endsWith('/index.html')) {
+if (
+  window.location.pathname.endsWith('/index.html') ||
+  window.location.pathname.endsWith('/')
+) {
   login();
 }
 
