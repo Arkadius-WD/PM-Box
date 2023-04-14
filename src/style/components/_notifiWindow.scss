@@ -143,7 +143,40 @@
   h3 {
     background-color: $fifth;
   }
+
+  p {
+    font-size: 1.1rem;
+    padding: 0.5em 1rem;
+  }
+
+  &__container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__meeting {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid $second;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &-time {
+      background-color: $third;
+      border-radius: 1.5rem;
+    }
+
+    &-project {
+      margin-right: 0;
+      margin-left: auto;
+      color: $fifth;
+    }
+  }
 }
+
 .tasks {
   h3 {
     background-color: $seventh;
