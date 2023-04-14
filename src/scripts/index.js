@@ -5,8 +5,8 @@ import weather from './weather';
 import login from './login';
 
 if (
-  window.location.pathname.endsWith('/index.html') ||
-  window.location.pathname.endsWith('/')
+  window.location.pathname.endsWith('/') ||
+  window.location.pathname.endsWith('/index.html')
 ) {
   login();
 }

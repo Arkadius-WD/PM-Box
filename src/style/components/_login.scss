@@ -24,14 +24,20 @@
     transition: transform 0.5s;
 
     input {
-      max-width: 17rem;
+      max-width: 18rem;
       padding: 0.8rem 2rem;
       border-radius: 1.5rem;
       background-color: $third;
       border: 2px solid $tenth;
 
       &::placeholder {
-        color: $first;
+        color: $first 0.5;
+      }
+    }
+
+    .error {
+      &::placeholder {
+        color: red;
       }
     }
 
