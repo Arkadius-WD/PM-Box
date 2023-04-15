@@ -189,23 +189,52 @@
   }
 
   &__container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     padding: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
 
   &__task {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
     background-color: $third;
     margin: 1rem 0rem;
     box-shadow: linear;
     border-radius: 0.5rem;
     border-bottom: 1px solid $first;
     border-right: 1px solid $first;
+
+    &-progres {
+      background-color: $eighth;
+      color: $third;
+      border-radius: 1.5rem;
+    }
+    &:nth-child(2) {
+      .tasks__task-progres {
+        background-color: $fifth;
+      }
+    }
+    &:nth-child(3) {
+      .tasks__task-progres {
+        background-color: $ninth;
+      }
+    }
+    &:nth-child(4) {
+      .tasks__task-progres {
+        background-color: $sixth;
+      }
+    }
+
+    &-project {
+      color: $seventh;
+      margin-right: 0;
+      margin-left: auto;
+    }
   }
 }
+
 .approvals {
   h3 {
     background-color: $ninth;
@@ -214,25 +243,5 @@
 .messages {
   h3 {
     background-color: $eighth;
-  }
-}
-
-.notifi-add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 7rem;
-  margin-left: auto;
-  margin-right: 1rem;
-  margin-bottom: 1.5rem;
-  background-color: $first;
-  font-size: 1.2rem;
-  color: $third;
-  border: inherit;
-  border-radius: 1.5rem;
-  cursor: pointer;
-  i,
-  p {
-    font-size: 1.2rem;
   }
 }
