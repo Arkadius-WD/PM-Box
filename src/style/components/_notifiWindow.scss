@@ -22,16 +22,8 @@
   margin: 2rem 1rem;
   font-size: 1.1rem;
   color: $first;
-  background: linear-gradient(
-    340deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(81, 90, 101, 0.4) 40%,
-    rgba(81, 90, 101, 0.6) 60%,
-    rgba(51, 63, 80, 0.8) 80%,
-    rgba(51, 63, 80, 1) 100%
-  );
+  background: linear-gradient(135deg, $second 0%, $third 100%);
   border-radius: 1.5rem;
-  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
   overflow: hidden;
 
   h3 {
@@ -135,6 +127,7 @@
       color: $third;
       border: inherit;
       border-radius: 1.5rem;
+      cursor: pointer;
     }
   }
 }
@@ -170,9 +163,17 @@
     }
 
     &-project {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-right: 0;
       margin-left: auto;
       color: $fifth;
+      i {
+        padding: 0.5rem;
+        color: $first;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -180,6 +181,29 @@
 .tasks {
   h3 {
     background-color: $seventh;
+  }
+
+  p {
+    font-size: 1.1rem;
+    padding: 0.5em 1rem;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__task {
+    background-color: $third;
+    margin: 1rem 0rem;
+    box-shadow: linear;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid $first;
+    border-right: 1px solid $first;
   }
 }
 .approvals {
@@ -190,5 +214,25 @@
 .messages {
   h3 {
     background-color: $eighth;
+  }
+}
+
+.notifi-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7rem;
+  margin-left: auto;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: $first;
+  font-size: 1.2rem;
+  color: $third;
+  border: inherit;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  i,
+  p {
+    font-size: 1.2rem;
   }
 }
