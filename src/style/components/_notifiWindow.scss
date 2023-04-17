@@ -24,6 +24,7 @@
   color: $first;
   background: linear-gradient(135deg, $second 0%, $third 100%);
   border-radius: 1.5rem;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   overflow: hidden;
 
   h3 {
@@ -138,7 +139,7 @@
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 0.5em 1rem;
   }
 
@@ -172,7 +173,6 @@
       i {
         padding: 0.5rem;
         color: $first;
-        cursor: pointer;
       }
     }
   }
@@ -184,7 +184,7 @@
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 0.5em 1rem;
   }
 
@@ -203,8 +203,7 @@
     margin: 1rem 0rem;
     box-shadow: linear;
     border-radius: 0.5rem;
-    border-bottom: 1px solid $first;
-    border-right: 1px solid $first;
+    border: 1px solid $second;
 
     &-progres {
       background-color: $eighth;
@@ -218,7 +217,7 @@
     }
     &:nth-child(3) {
       .tasks__task-progres {
-        background-color: $ninth;
+        background-color: $nineth;
       }
     }
     &:nth-child(4) {
@@ -228,7 +227,7 @@
     }
 
     &-project {
-      color: $seventh;
+      color: $fifth;
       margin-right: 0;
       margin-left: auto;
     }
@@ -237,11 +236,73 @@
 
 .approvals {
   h3 {
-    background-color: $ninth;
+    background-color: $nineth;
+  }
+
+  p {
+    font-size: 1.2rem;
+    padding: 0.5em 1rem;
+  }
+
+  &__container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__approval {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid $second;
+
+    &-icon {
+      padding: 0.3rem 0.5rem;
+      background-color: $third;
+      font-size: 1.6rem;
+      border-radius: 1.5rem;
+      color: $seventh;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      .approvals__approval-icon {
+        color: $nineth;
+        transform: rotate(180deg);
+      }
+    }
+
+    &-project {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 0;
+      margin-left: auto;
+      color: $fifth;
+    }
   }
 }
 .messages {
   h3 {
     background-color: $eighth;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  &__message {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 30%;
+    flex-direction: column;
+    align-items: start;
+    min-width: 27rem;
+    background-color: $third;
+    border-radius: 0.5rem;
+    border: 1px solid $second;
   }
 }
