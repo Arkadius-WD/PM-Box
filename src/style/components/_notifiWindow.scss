@@ -296,13 +296,36 @@
 
   &__message {
     display: flex;
+    flex-shrink: auto;
     flex-grow: 1;
     flex-basis: 30%;
     flex-direction: column;
     align-items: start;
+    justify-content: center;
     min-width: 27rem;
+    padding: 1rem;
     background-color: $third;
     border-radius: 0.5rem;
     border: 1px solid $second;
+
+    span {
+      color: $eighth;
+    }
+
+    &-date {
+      padding: 0.5em 2rem 0.5rem 0;
+      border-bottom: 1px solid $second;
+    }
+    &-sign {
+      font-weight: 700;
+      margin-top: 1rem;
+      p {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &-text {
+      padding: 1rem 0;
+    }
   }
 }
