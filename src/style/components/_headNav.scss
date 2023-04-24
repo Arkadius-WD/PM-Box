@@ -252,6 +252,10 @@
     }
   }
 
+  .hidden-nav-icon {
+    display: none;
+  }
+
   .active-nav-icon {
     color: $fifth;
     border-top: 1px dotted $fifth;
