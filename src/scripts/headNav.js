@@ -7,6 +7,8 @@ const headNav = () => {
   const menuSettings = document.querySelector('.nav__menu-settings');
   const navSettingsIcon = document.querySelector('.nav__settings');
   const upperBeamSettings = document.querySelector('.upper-beam__settings');
+  const upperBeamLogout = document.querySelector('.upper-beam__logout');
+  const upperBeamAvatar = document.querySelector('.upper-beam__admin-avatar');
   const adminMenu = document.querySelector('.upper-beam__admin-menu');
   const menuList = document.querySelectorAll('.nav__menu-list li');
   const icons = document.querySelectorAll('.nav__icon');
@@ -74,13 +76,20 @@ const headNav = () => {
     menuSettings.classList.toggle('menu-settings-active');
   };
 
+  const showLogout = () => {
+    upperBeamLogout.classList.toggle('logout-active');
+    upperBeamSettings.classList.remove('admin-menu-active');
+  };
+
   const showAdminMenu = () => {
     upperBeamSettings.classList.toggle('admin-menu-active');
+    upperBeamLogout.classList.remove('logout-active');
   };
 
   logo.addEventListener('click', showMenu);
   envelopeInside.addEventListener('click', showTalks);
   navSettingsIcon.addEventListener('click', showMenuSettings);
+  upperBeamAvatar.addEventListener('click', showLogout);
   adminMenu.addEventListener('click', showAdminMenu);
 };
 
