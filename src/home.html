@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <div class="headNav">
+    <section class="headNav">
       <div class="upper-beam">
         <div class="upper-beam__container">
           <div class="upper-beam__empty"></div>
@@ -71,10 +71,12 @@
         </div>
         <div class="nav__container">
           <div class="nav__home nav__icon active-nav-icon">
-            <i class="fa-solid fa-house"></i>
+            <a href="./home.html"><i class="fa-solid fa-house"></i></a>
           </div>
           <div class="nav__schedule nav__icon">
-            <i class="fa-regular fa-calendar-days"></i>
+            <a href="./schedule.html"
+              ><i class="fa-regular fa-calendar-days"></i
+            ></a>
           </div>
           <div class="nav__todo nav__icon">
             <i class="fa-solid fa-list-check"></i>
@@ -118,8 +120,7 @@
           alt="box in circle"
         />
       </div>
-    </div>
-
+    </section>
     <main class="head-main">
       <section class="main-container">
         <header class="header">
@@ -127,7 +128,6 @@
             <h2>Notifications</h2>
           </div>
         </header>
-
         <div class="notify-window">
           <div class="weather">
             <div class="weather__title">
@@ -137,7 +137,6 @@
                 <span class="weather__localisation">Katowice</span>
               </h4>
             </div>
-
             <div class="weather__days"></div>
             <div class="weather__city">
               <input
@@ -148,7 +147,6 @@
               <button class="weather__button">Search</button>
             </div>
           </div>
-
           <div class="meetings">
             <h3>meetings</h3>
             <ul class="meetings__container">
@@ -194,7 +192,6 @@
               </li>
             </ul>
           </div>
-
           <div class="tasks">
             <h3>tasks</h3>
             <ul class="tasks__container">
@@ -244,7 +241,6 @@
               </li>
             </ul>
           </div>
-
           <div class="approvals">
             <h3>approvals</h3>
             <ul class="approvals__container">
@@ -272,7 +268,6 @@
               </li>
             </ul>
           </div>
-
           <div class="messages">
             <h3>messages</h3>
             <ul class="messages__container">
@@ -341,8 +336,7 @@
           </div>
         </div>
       </section>
-
-      <div class="comunicator">
+      <section class="comunicator">
         <div class="talks talks-hidden">
           <div class="talks__mail">
             <i class="fa-regular fa-envelope"></i>
@@ -362,7 +356,7 @@
             <i class="fa-solid fa-envelope"></i>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   </body>
 </html>
