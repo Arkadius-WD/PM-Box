@@ -14,12 +14,12 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="./assets/index-19ccb2c4.js"></script>
-    <link rel="stylesheet" href="./assets/index-15ac192b.css">
+    <script type="module" crossorigin src="./assets/index-d2a2da2b.js"></script>
+    <link rel="stylesheet" href="./assets/index-174913a7.css">
   </head>
 
   <body>
-    <div class="headNav">
+    <section class="headNav">
       <div class="upper-beam">
         <div class="upper-beam__container">
           <div class="upper-beam__empty"></div>
@@ -73,35 +73,52 @@
         </div>
         <div class="nav__container">
           <div class="nav__home nav__icon active-nav-icon">
-            <i class="fa-solid fa-house"></i>
+            <a href="./home.html"><i class="fa-solid fa-house"></i></a>
           </div>
           <div class="nav__schedule nav__icon">
-            <i class="fa-regular fa-calendar-days"></i>
+            <a href="./schedule.html"
+              ><i class="fa-regular fa-calendar-days"></i
+            ></a>
           </div>
           <div class="nav__todo nav__icon">
-            <i class="fa-solid fa-list-check"></i>
+            <a href="./todo.html">
+              <i class="fa-solid fa-list-check"></i>
+            </a>
           </div>
-          <div class="nav__projects nav__icon">
-            <i class="fa-brands fa-r-project"></i>
+          <div class="nav__portfolio nav__icon">
+            <a href="./portfolio.html">
+              <i class="fa-brands fa-r-project"></i>
+            </a>
           </div>
-          <div class="nav__decizions nav__icon">
-            <i class="fa-regular fa-thumbs-up"></i>
-            <i class="fa-solid fa-check"></i>
+          <div class="nav__approvals nav__icon">
+            <a href="./approvals.html">
+              <i class="fa-regular fa-thumbs-up"></i>
+            </a>
           </div>
           <div class="nav__budget nav__icon">
-            <i class="fa-solid fa-sack-dollar"></i>
+            <a href="./budget.html">
+              <i class="fa-solid fa-sack-dollar"></i>
+            </a>
           </div>
           <div class="nav__files nav__icon">
-            <i class="fa-regular fa-folder-open"></i>
+            <a href="./files.html">
+              <i class="fa-regular fa-folder-open"></i>
+            </a>
           </div>
           <div class="nav__teams nav__icon">
-            <i class="fa-solid fa-people-group"></i>
+            <a href="./teams.html">
+              <i class="fa-solid fa-people-group"></i>
+            </a>
           </div>
           <div class="nav__history nav__icon">
-            <i class="fa-solid fa-book"></i>
+            <a href="./history.html">
+              <i class="fa-solid fa-book"></i>
+            </a>
           </div>
           <div class="nav__git nav__icon">
-            <i class="fa-brands fa-github"></i>
+            <a href="./git.html">
+              <i class="fa-brands fa-github"></i>
+            </a>
           </div>
         </div>
         <div class="nav__settings nav__icon">
@@ -120,8 +137,7 @@
           alt="box in circle"
         />
       </div>
-    </div>
-
+    </section>
     <main class="head-main">
       <section class="main-container">
         <header class="header">
@@ -129,8 +145,7 @@
             <h2>Notifications</h2>
           </div>
         </header>
-
-        <div class="notify-window">
+        <div class="notify-window window">
           <div class="weather">
             <div class="weather__title">
               <h3>weather</h3>
@@ -139,7 +154,6 @@
                 <span class="weather__localisation">Katowice</span>
               </h4>
             </div>
-
             <div class="weather__days"></div>
             <div class="weather__city">
               <input
@@ -150,7 +164,6 @@
               <button class="weather__button">Search</button>
             </div>
           </div>
-
           <div class="meetings">
             <h3>meetings</h3>
             <ul class="meetings__container">
@@ -196,7 +209,6 @@
               </li>
             </ul>
           </div>
-
           <div class="tasks">
             <h3>tasks</h3>
             <ul class="tasks__container">
@@ -246,7 +258,6 @@
               </li>
             </ul>
           </div>
-
           <div class="approvals">
             <h3>approvals</h3>
             <ul class="approvals__container">
@@ -274,7 +285,6 @@
               </li>
             </ul>
           </div>
-
           <div class="messages">
             <h3>messages</h3>
             <ul class="messages__container">
@@ -343,8 +353,7 @@
           </div>
         </div>
       </section>
-
-      <div class="comunicator">
+      <section class="comunicator">
         <div class="talks talks-hidden">
           <div class="talks__mail">
             <i class="fa-regular fa-envelope"></i>
@@ -364,7 +373,7 @@
             <i class="fa-solid fa-envelope"></i>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   </body>
 </html>

@@ -15,7 +15,7 @@
 
 .main-transform {
   transform: translateY(-4.5rem);
-  .notify-window {
+  .window {
     max-height: calc(100vh - 13rem);
   }
 }
@@ -35,4 +35,10 @@
     font-weight: 700;
     text-transform: uppercase;
   }
+}
+
+.window {
+  max-height: calc(100vh - 17.5rem);
+  overflow: auto;
+  transition: max-height 0.5s;
 }

@@ -255,25 +255,6 @@
     padding-top: 11rem;
   }
 
-  &__decizions {
-    position: relative;
-
-    i {
-      font-size: 1.4rem;
-    }
-
-    .fa-thumbs-up {
-      margin-top: 2rem;
-      margin-left: -0.7rem;
-    }
-
-    .fa-check {
-      top: -2rem;
-      right: 0.5rem;
-      position: absolute;
-    }
-  }
-
   &__icon {
     &:hover {
       i {
