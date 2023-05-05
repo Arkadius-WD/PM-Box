@@ -1,16 +1,17 @@
+/* eslint-disable class-methods-use-this */
 const schedule = () => {
   class Calendar {
     setup() {
       this.setupTimes();
+      this.setupDays();
     }
 
-    // eslint-disable-next-line class-methods-use-this
     setupTimes() {
       const header = document.createElement('div');
-      header.classList.add('columnHeader');
-
       const slots = document.createElement('div');
-      slots.classList.add('slots');
+
+      header.classList.add('calendar__column-header');
+      slots.classList.add('calendar__slots');
 
       for (let hour = 0; hour < 24; hour++) {
         const timeSlot = document.createElement('div');
@@ -21,8 +22,49 @@ const schedule = () => {
       }
 
       const dayTime = document.querySelector('.calendar__days-time');
+
       dayTime.appendChild(header);
       dayTime.appendChild(slots);
+    }
+
+    setupDays() {
+      const cal = this;
+      const calendarDays = document.querySelectorAll('.calendar__day');
+
+      calendarDays.forEach(day => {
+        const dayIndex = parseInt(day.getAttribute('data-dayIndex'), 10);
+        const name = day.getAttribute('data-name');
+        const header = document.createElement('div');
+        header.classList.add('calendar__column-header');
+        header.textContent = name;
+        const slots = document.createElement('div');
+        slots.classList.add('calendar__slots');
+
+        for (let hour = 0; hour < 24; hour++) {
+          const slot = document.createElement('div');
+          slot.setAttribute('data-hour', hour);
+          slot.classList.add('calendar__slot');
+          slot.addEventListener('click', () => cal.clickSlot(hour, dayIndex));
+          slot.addEventListener('mouseover', () => cal.hoverOver(hour));
+          slot.addEventListener('mouseout', () => cal.hoverOut());
+          slots.appendChild(slot);
+        }
+
+        day.appendChild(header);
+        day.appendChild(slots);
+      });
+    }
+
+    clickSlot(hour, dayIndex) {
+      console.log('click!', hour, dayIndex);
+    }
+
+    hoverOver(hour) {
+      console.log('hover!', hour);
+    }
+
+    hoverOut() {
+      // todo
     }
   }
 
