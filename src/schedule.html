@@ -143,45 +143,59 @@
             <h2>Schedule</h2>
           </div>
         </header>
-        <div class="schedule-window window">
-          <div class="week controls">
-            <i class="week__btn-prev fas fa-angle-double-left"></i>
-            <span class="week__start-display"></span>
-            -
-            <span class="week__end-display"></span>
-            <i class="week__btn-next fas fa-angle-double-right"></i>
+        <div class="schedule">
+          <div class="schedule__header">
+            <div class="week-controls">
+              <i class="week-controls__btn-prev fas fa-angle-double-left"></i>
+              <span class="week__start-display"></span>
+              -
+              <span class="week-controls__end-display"></span>
+              <i class="week-controls__btn-next fas fa-angle-double-right"></i>
+            </div>
+            <h3>Calendar</h3>
+            <div class="general-controls">
+              <i class="general-controls__btn-add fas fa-plus"></i>
+              <i class="general-controls__btn-trash fas fa-trash-alt"></i>
+            </div>
           </div>
-          <h3>Calendar</h3>
-          <div class="general controls">
-            <i class="general__btn-add fas fa-plus"></i>
-            <i class="general__btn-trash fas fa-trash-alt"></i>
+          <div class="calendar">
+            <div class="calendar__days-time"></div>
+            <div
+              data-name="Monday"
+              data-dayIndex="0"
+              class="calendar__day"
+            ></div>
+            <div
+              data-name="Tuesday"
+              data-dayIndex="1"
+              class="calendar__day"
+            ></div>
+            <div
+              data-name="Wednesday"
+              data-dayIndex="2"
+              class="calendar__day"
+            ></div>
+            <div
+              data-name="Thursday"
+              data-dayIndex="3"
+              class="calendar__day"
+            ></div>
+            <div
+              data-name="Friday"
+              data-dayIndex="4"
+              class="calendar__day"
+            ></div>
+            <div
+              data-name="Saturday"
+              data-dayIndex="5"
+              class="calendar__day"
+            ></div>
+            <div
+              data-name="Sunday"
+              data-dayIndex="6"
+              class="calendar__day"
+            ></div>
           </div>
-        </div>
-        <div class="calendar">
-          <div class="calendar__days-time"></div>
-          <div data-name="Monday" data-dayIndex="0" class="calendar__day"></div>
-          <div
-            data-name="Tuesday"
-            data-dayIndex="1"
-            class="calendar__day"
-          ></div>
-          <div
-            data-name="Wednesday"
-            data-dayIndex="2"
-            class="calendar__day"
-          ></div>
-          <div
-            data-name="Thurstday"
-            data-dayIndex="3"
-            class="calendar__day"
-          ></div>
-          <div data-name="Friday" data-dayIndex="4" class="calendar__day"></div>
-          <div
-            data-name="Saturday"
-            data-dayIndex="5"
-            class="calendar__day"
-          ></div>
-          <div data-name="Sunday" data-dayIndex="6" class="calendar__day"></div>
         </div>
       </section>
       <section class="comunicator">

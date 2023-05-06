@@ -1,9 +1,88 @@
 @use '../variables/colors' as *;
 
-.calendar {
-  &__slot {
-    width: 5rem;
-    height: 3rem;
-    border: 1px solid red;
+.schedule {
+  margin: 0 1rem;
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    text-align: center;
+
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    i {
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.5s;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
+}
+
+.week-controls,
+.general-controls {
+  position: absolute;
+  font-size: 1.4rem;
+}
+
+.week-controls {
+  left: 0.5rem;
+}
+
+.general-controls {
+  right: 1rem;
+  i {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.75rem;
+    border: 1px solid $first;
+    border-radius: 50%;
+  }
+}
+
+.calendar {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid $first;
+  transition: opacity 0.2s ease-in;
+
+  &__days-time {
+    width: 100%;
+    max-width: 10rem;
+    text-align: center;
+    color: $second;
+  }
+
+  &__day {
+    width: 100%;
+    text-align: center;
+    border-left: 1px solid $first;
+    border-top: 1px solid $first;
+
+    .calendar__column-header {
+      color: $third;
+      background-color: $second;
+    }
+  }
+
+  &__column-header {
+    height: 3rem;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1rem;
+    overflow: hidden;
+  }
+}
+
+.opaque {
+  opacity: 0.4;
 }
