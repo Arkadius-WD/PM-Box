@@ -7,12 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0;
     text-align: center;
-
-    h3 {
-      font-size: 1.6rem;
-    }
 
     i {
       cursor: pointer;
@@ -28,12 +23,11 @@
 
 .week-controls,
 .general-controls {
-  position: absolute;
   font-size: 1.4rem;
 }
 
 .week-controls {
-  left: 0.5rem;
+  left: 10.5rem;
 }
 
 .general-controls {
@@ -51,25 +45,34 @@
 .calendar {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid $first;
+  border-bottom: 1px solid rgba($color: $first, $alpha: 0.2);
   transition: opacity 0.2s ease-in;
+  border-right: 1px solid rgba($color: $first, $alpha: 0.2);
 
   &__days-time {
     width: 100%;
     max-width: 10rem;
+    min-width: 10rem;
     text-align: center;
     color: $second;
   }
 
+  &__days-container {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+  }
+
   &__day {
     width: 100%;
+    min-width: 10rem;
     text-align: center;
-    border-left: 1px solid $first;
-    border-top: 1px solid $first;
+    border-left: 1px solid rgba($color: $first, $alpha: 0.2);
 
     .calendar__column-header {
       color: $third;
       background-color: $second;
+      overflow: hidden;
     }
   }
 
@@ -80,6 +83,30 @@
     font-size: 1.4rem;
     line-height: 1rem;
     overflow: hidden;
+  }
+
+  &__slots {
+    position: relative;
+  }
+
+  &__slot,
+  &__time {
+    border-top: 1px solid rgba($color: $first, $alpha: 0.2);
+    height: 2rem;
+  }
+
+  &__slot {
+    cursor: pointer;
+    &:hover {
+      background-color: rgba($color: $first, $alpha: 0.2);
+    }
+  }
+
+  &__time {
+    color: rgba($color: $first, $alpha: 0.6);
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    border-left: 1px solid rgba($color: $first, $alpha: 0.2);
   }
 }
 

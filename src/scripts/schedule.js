@@ -16,7 +16,7 @@ const schedule = () => {
       for (let hour = 0; hour < 24; hour++) {
         const timeSlot = document.createElement('div');
         timeSlot.setAttribute('data-hour', hour);
-        timeSlot.classList.add('time');
+        timeSlot.classList.add('calendar__time');
         timeSlot.textContent = `${hour}:00 - ${hour + 1}:00`;
         slots.appendChild(timeSlot);
       }
