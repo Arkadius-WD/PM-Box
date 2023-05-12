@@ -18,13 +18,12 @@
   }
 
   form {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 0.5rem 1rem;
   }
 
   select {
-    padding: 0 0.5rem;
-    font-size: 1.1rem;
+    font-size: inherit;
     color: $third;
     background-color: rgba($color: $second, $alpha: 0.3);
     border: none;
@@ -97,7 +96,7 @@
     align-items: center;
     flex-direction: column;
     max-width: 35rem;
-    padding: 0.9rem;
+    padding: 0.8rem;
     img {
       width: 3rem;
       height: 3rem;
@@ -112,7 +111,7 @@
       }
       p {
         background-color: #fff;
-        padding: 0.2rem 1rem;
+        padding: 0.4rem 1rem;
         border-radius: 1.5rem;
       }
 
@@ -147,7 +146,7 @@
 
     button {
       margin-left: 0.5rem;
-      padding: 0.5rem 1.2rem;
+      padding: 0.6rem 1.2rem;
       background-color: $first;
       font-size: 1.2rem;
       color: $third;
