@@ -8,6 +8,33 @@
   flex-wrap: wrap;
 }
 
+.notify-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 9rem;
+  i {
+    margin-right: 0.5rem;
+  }
+
+  form {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  select {
+    padding: 0 0.5rem;
+    font-size: 1.1rem;
+    color: $third;
+    background-color: rgba($color: $second, $alpha: 0.3);
+    border: none;
+  }
+
+  .notify-view {
+    border-left: 1px solid $third;
+  }
+}
+
 .weather,
 .meetings,
 .tasks,

@@ -14,8 +14,8 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="./assets/index-daa302db.js"></script>
-    <link rel="stylesheet" href="./assets/index-e1e0124b.css">
+    <script type="module" crossorigin src="./assets/index-4eaeb7fb.js"></script>
+    <link rel="stylesheet" href="./assets/index-1834d14a.css">
   </head>
 
   <body>
@@ -55,7 +55,41 @@
       <div class="upper-beam__logout">
         <a href="./index.html"><i class="fa-solid fa-power-off"></i></a>
       </div>
-      <div class="lower-beam"></div>
+      <div class="lower-beam">
+        <div class="notify-settings">
+          <form class="notify-projects">
+            <label for="notify-projects__select"
+              ><i class="fa-solid fa-filter"></i> Filter:
+            </label>
+            <select
+              name="filter-projects"
+              id="notify-projects__select"
+              class="select-form"
+            >
+              <option selected value="all-projects">All projects</option>
+              <option disabled value="#0010">#0010</option>
+              <option disabled value="#0011">#0011</option>
+              <option disabled value="#0015">#0015</option>
+              <option disabled value="priv">Priv</option>
+            </select>
+          </form>
+          <form class="notify-view">
+            <label for="notify-view__select">View: </label>
+            <select
+              name="filter-view"
+              id="notify-view__select"
+              class="select-form"
+            >
+              <option selected value="all-boxes">All boxes</option>
+              <option disabled value="weather">Weather</option>
+              <option disabled value="meetings">Meetings</option>
+              <option disabled value="tasks">Tasks</option>
+              <option disabled value="approvals">Approvals</option>
+              <option disabled value="messages">Messages</option>
+            </select>
+          </form>
+        </div>
+      </div>
       <nav class="nav">
         <div class="nav__menu-settings">
           <ul class="nav__menu-list">
@@ -310,7 +344,7 @@
               </li>
               <li class="messages__message">
                 <div class="messages__message-project">
-                  <p>Project: <span>#0010</span></p>
+                  <p>Project: <span>#0015</span></p>
                 </div>
                 <div class="messages__message-from">
                   <h4><span>From:</span> Liam Johnson</h4>
@@ -331,7 +365,7 @@
               </li>
               <li class="messages__message">
                 <div class="messages__message-project">
-                  <p>Project: <span>#0010</span></p>
+                  <p>Project: <span>#0011</span></p>
                 </div>
                 <div class="messages__message-from">
                   <h4><span>From:</span> Olivia Braun</h4>

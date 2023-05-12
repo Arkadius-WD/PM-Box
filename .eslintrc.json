@@ -20,6 +20,7 @@
     "no-console": "off",
     "no-unused-vars": "warn",
     "no-plusplus": "off",
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "class-methods-use-this": "warn"
   }
 }

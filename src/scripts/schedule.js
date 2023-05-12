@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 const schedule = () => {
   class Calendar {
     setup() {
@@ -28,7 +27,6 @@ const schedule = () => {
     }
 
     setupDays() {
-      const cal = this;
       const calendarDays = document.querySelectorAll('.calendar__day');
 
       calendarDays.forEach(day => {
@@ -44,9 +42,9 @@ const schedule = () => {
           const slot = document.createElement('div');
           slot.setAttribute('data-hour', hour);
           slot.classList.add('calendar__slot');
-          slot.addEventListener('click', () => cal.clickSlot(hour, dayIndex));
-          slot.addEventListener('mouseover', () => cal.hoverOver(hour));
-          slot.addEventListener('mouseout', () => cal.hoverOut());
+          slot.addEventListener('click', () => this.clickSlot(hour, dayIndex));
+          slot.addEventListener('mouseover', () => this.hoverOver(hour));
+          slot.addEventListener('mouseout', () => this.hoverOut());
           slots.appendChild(slot);
         }
 
