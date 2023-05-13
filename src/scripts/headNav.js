@@ -13,6 +13,10 @@ const headNav = () => {
   const menuList = document.querySelectorAll('.nav__menu-list li');
   const icons = document.querySelectorAll('.nav__icon');
 
+  icons.forEach((icon, index) => {
+    icon.setAttribute('data-id', index);
+  });
+
   function saveStateToLocalStorage() {
     const state = {};
     menuList.forEach((menuItem, index) => {
@@ -48,10 +52,6 @@ const headNav = () => {
       saveStateToLocalStorage();
       loadStateFromLocalStorage();
     });
-  });
-
-  icons.forEach((icon, index) => {
-    icon.setAttribute('data-id', index);
   });
 
   menuList.forEach((menuItem, index) => {
