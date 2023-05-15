@@ -1,8 +1,24 @@
 const schedule = () => {
+  const dayInMillis = 1000 * 60 * 60 * 24;
+
+  const addDays = (date, number) => {
+    return new Date(date.getTime() + number * dayInMillis);
+  };
+
+  const getDayIndex = date => {
+    const falseIndex = date.getDay();
+  };
+
   class Calendar {
+    constructor() {
+      this.weekStart = null;
+      this.weekEnd = null;
+    }
+
     setup() {
       this.setupTimes();
       this.setupDays();
+      this.calculateCurrentWeek();
     }
 
     setupTimes() {
@@ -64,6 +80,8 @@ const schedule = () => {
     hoverOut() {
       // todo
     }
+
+    calculateCurrentWeek() {}
   }
 
   document.addEventListener('DOMContentLoaded', () => {

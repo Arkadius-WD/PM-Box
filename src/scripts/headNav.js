@@ -17,15 +17,15 @@ const headNav = () => {
     icon.setAttribute('data-id', index);
   });
 
-  function saveStateToLocalStorage() {
+  const saveStateToLocalStorage = () => {
     const state = {};
     menuList.forEach((menuItem, index) => {
       state[index] = menuItem.querySelector('input').checked;
     });
     localStorage.setItem('state', JSON.stringify(state));
-  }
+  };
 
-  function loadStateFromLocalStorage() {
+  const loadStateFromLocalStorage = () => {
     const state = JSON.parse(localStorage.getItem('state'));
     if (state) {
       menuList.forEach((menuItem, index) => {
@@ -36,7 +36,7 @@ const headNav = () => {
         }
       });
     }
-  }
+  };
 
   window.addEventListener('load', loadStateFromLocalStorage);
 
