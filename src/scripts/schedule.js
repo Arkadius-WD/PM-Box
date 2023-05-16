@@ -1,4 +1,5 @@
 const schedule = () => {
+  // Date functions
   const dayInMillis = 1000 * 60 * 60 * 24;
 
   const addDays = (date, number) => {
@@ -7,8 +8,10 @@ const schedule = () => {
 
   const getDayIndex = date => {
     const falseIndex = date.getDay();
+    return falseIndex === 0 ? 6 : falseIndex - 1;
   };
 
+  // Creating of calendar in schedule-window
   class Calendar {
     constructor() {
       this.weekStart = null;
@@ -37,7 +40,6 @@ const schedule = () => {
       }
 
       const dayTime = document.querySelector('.calendar__days-time');
-
       dayTime.appendChild(header);
       dayTime.appendChild(slots);
     }
@@ -55,12 +57,13 @@ const schedule = () => {
         slots.classList.add('calendar__slots');
 
         for (let hour = 0; hour < 24; hour++) {
+          const call = this;
           const slot = document.createElement('div');
           slot.setAttribute('data-hour', hour);
           slot.classList.add('calendar__slot');
-          slot.addEventListener('click', () => this.clickSlot(hour, dayIndex));
-          slot.addEventListener('mouseover', () => this.hoverOver(hour));
-          slot.addEventListener('mouseout', () => this.hoverOut());
+          slot.addEventListener('click', () => call.clickSlot(hour, dayIndex));
+          slot.addEventListener('mouseover', () => call.hoverOver(hour));
+          slot.addEventListener('mouseout', () => call.hoverOut());
           slots.appendChild(slot);
         }
 
@@ -81,7 +84,11 @@ const schedule = () => {
       // todo
     }
 
-    calculateCurrentWeek() {}
+    calculateCurrentWeek() {
+      const now = new Date();
+      this.weekStart = addDays(now, -getDayIndex(now));
+      this.weekEnd = addDays(this.weekStart, 6);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
