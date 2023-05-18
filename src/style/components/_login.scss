@@ -65,6 +65,11 @@
     align-items: center;
     margin-top: 15rem;
     cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     &-img {
       width: 12rem;
