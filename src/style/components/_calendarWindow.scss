@@ -1,7 +1,8 @@
 @use '../variables/colors' as *;
 
-.schedule {
+.calendar {
   margin: 0 1rem;
+
   &__header {
     position: relative;
     display: flex;
@@ -19,35 +20,13 @@
       }
     }
   }
-}
 
-.week-controls,
-.general-controls {
-  font-size: 1.4rem;
-}
-
-.week-controls {
-  left: 10.5rem;
-}
-
-.general-controls {
-  right: 1rem;
-  i {
-    display: inline-block;
-    width: 3rem;
-    height: 3rem;
-    padding: 0.75rem;
-    border: 1px solid $first;
-    border-radius: 50%;
+  &__window {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgba($color: $first, $alpha: 0.2);
+    transition: opacity 0.2s ease-in;
   }
-}
-
-.calendar {
-  display: flex;
-  width: 100%;
-  border-bottom: 1px solid rgba($color: $first, $alpha: 0.2);
-  transition: opacity 0.2s ease-in;
-  // border-right: 1px solid rgba($color: $first, $alpha: 0.2);
 
   &__days-time {
     width: 100%;
@@ -108,6 +87,27 @@
     font-size: 1.2rem;
     border-left: 1px solid rgba($color: $first, $alpha: 0.2);
     border-right: 1px solid rgba($color: $first, $alpha: 0.2);
+  }
+}
+
+.week-controls,
+.general-controls {
+  font-size: 1.4rem;
+}
+
+.week-controls {
+  left: 10.5rem;
+}
+
+.general-controls {
+  right: 1rem;
+  i {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.75rem;
+    border: 1px solid $first;
+    border-radius: 50%;
   }
 }
 

@@ -7,7 +7,7 @@ export default defineConfig({
       input: {
         main: './src/index.html',
         home: './src/home.html',
-        chedule: './src/schedule.html',
+        chedule: './src/calendar.html',
         todo: './src/todo.html',
         portfolio: './src/portfolio.html',
         approvals: './src/approvals.html',

@@ -1,4 +1,4 @@
-const schedule = () => {
+const calendar = () => {
   // Date functions
   const dayInMillis = 1000 * 60 * 60 * 24;
 
@@ -11,7 +11,7 @@ const schedule = () => {
     return falseIndex === 0 ? 6 : falseIndex - 1;
   };
 
-  // Creating of calendar in schedule-window
+  // Creating of calendar in calendar-window
   class Calendar {
     constructor() {
       this.weekStart = null;
@@ -89,6 +89,10 @@ const schedule = () => {
       this.weekStart = addDays(now, -getDayIndex(now));
       this.weekEnd = addDays(this.weekStart, 6);
     }
+
+    // showWeek() {
+    //   ('#weekStartDisplay').text(this.weekStart);
+    // }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -96,4 +100,4 @@ const schedule = () => {
   });
 };
 
-export default schedule;
+export default calendar;
