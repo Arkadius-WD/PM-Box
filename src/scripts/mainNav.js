@@ -1,4 +1,4 @@
-const headNav = () => {
+const mainNav = () => {
   const lowerBeam = document.querySelector('.lower-beam');
   const logo = document.querySelector('.logo');
   const talks = document.querySelector('.talks');
@@ -93,4 +93,4 @@ const headNav = () => {
   adminMenu.addEventListener('click', showAdminMenu);
 };
 
-export default headNav;
+export default mainNav;

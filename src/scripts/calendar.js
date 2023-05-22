@@ -22,6 +22,7 @@ const calendar = () => {
       this.setupTimes();
       this.setupDays();
       this.calculateCurrentWeek();
+      this.showWeek();
     }
 
     setupTimes() {
@@ -90,9 +91,17 @@ const calendar = () => {
       this.weekEnd = addDays(this.weekStart, 6);
     }
 
-    // showWeek() {
-    //   ('#weekStartDisplay').text(this.weekStart);
-    // }
+    showWeek() {
+      const options = {
+        month: '2-digit',
+        day: '2-digit',
+        year: 'numeric',
+      };
+      document.querySelector('.week__start-display').textContent =
+        this.weekStart.toLocaleDateString(undefined, options);
+      document.querySelector('.week__end-display').textContent =
+        this.weekEnd.toLocaleDateString();
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {

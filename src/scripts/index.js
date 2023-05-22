@@ -1,13 +1,13 @@
 import '../style/style.scss';
 import login from './login';
-import headNav from './headNav';
+import mainNav from './mainNav';
 import weather from './weather';
 import calendar from './calendar';
 
 const path = window.location.pathname;
 
 if (!(path.endsWith('/') || path.endsWith('index.html'))) {
-  headNav();
+  mainNav();
 }
 if (path.endsWith('/') || path.endsWith('index.html')) {
   login();
