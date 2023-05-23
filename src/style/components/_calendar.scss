@@ -6,13 +6,14 @@
   &__header {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
+    width: 100%;
+    margin-left: 10rem;
 
     i {
       cursor: pointer;
-      padding: 1rem;
+      padding: 0.5rem;
       transition: color 0.5s;
 
       &:hover {
@@ -90,26 +91,24 @@
   }
 }
 
-.week-controls,
-.general-controls {
-  font-size: 1.4rem;
-}
+// .week-controls,
+// .general-controls {
+//   font-size: 1.2rem;
+// }
 
-.week-controls {
-  left: 10.5rem;
-}
+// .week-controls {
+//   margin-left: 8rem;
+// }
 
-.general-controls {
-  right: 1rem;
-  i {
-    display: inline-block;
-    width: 3rem;
-    height: 3rem;
-    padding: 0.75rem;
-    border: 1px solid $first;
-    border-radius: 50%;
-  }
-}
+// .general-controls {
+//   margin-right: 1rem;
+//   margin-left: auto;
+//   border-left: 1px solid $third;
+//   height: 2.5rem;
+//   i {
+//     margin-top: -0.3rem;
+//   }
+// }
 
 .opaque {
   opacity: 0.4;

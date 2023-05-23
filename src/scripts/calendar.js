@@ -100,7 +100,7 @@ const calendar = () => {
       document.querySelector('.week__start-display').textContent =
         this.weekStart.toLocaleDateString(undefined, options);
       document.querySelector('.week__end-display').textContent =
-        this.weekEnd.toLocaleDateString();
+        this.weekEnd.toLocaleDateString(undefined, options);
     }
   }
 
