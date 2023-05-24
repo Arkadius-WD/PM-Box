@@ -4,12 +4,10 @@
   margin: 0 1rem;
 
   &__header {
-    position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-left: 6rem;
     width: 100%;
-    margin-left: 5rem;
     font-size: 1.2rem;
 
     i {
@@ -20,6 +18,24 @@
       &:hover {
         transform: scale(1.1);
       }
+    }
+
+    .week-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .general-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 6rem;
+      margin-right: 1rem;
+      margin-left: auto;
+      padding: 0.2rem 1rem;
+
+      border-left: 1px solid $third;
     }
   }
 
