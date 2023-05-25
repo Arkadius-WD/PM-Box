@@ -101,6 +101,7 @@ const calendar = () => {
         this.weekStart.toLocaleDateString(undefined, options);
       document.querySelector('.week__end-display').textContent =
         this.weekEnd.toLocaleDateString(undefined, options);
+      for (let dayIndex = 0; dayIndex < 7; dayIndex++) {}
     }
   }
 
