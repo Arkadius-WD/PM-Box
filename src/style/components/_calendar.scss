@@ -75,7 +75,7 @@
 
   &__column-header {
     height: 3rem;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     text-align: center;
     font-size: 1.4rem;
     line-height: 1rem;
@@ -108,24 +108,10 @@
   }
 }
 
-// .week-controls,
-// .general-controls {
-//   font-size: 1.2rem;
-// }
-
-// .week-controls {
-//   margin-left: 8rem;
-// }
-
-// .general-controls {
-//   margin-right: 1rem;
-//   margin-left: auto;
-//   border-left: 1px solid $third;
-//   height: 2.5rem;
-//   i {
-//     margin-top: -0.3rem;
-//   }
-// }
+.dayDisplay {
+  font-size: 1rem;
+  padding-top: 0.3rem;
+}
 
 .opaque {
   opacity: 0.4;

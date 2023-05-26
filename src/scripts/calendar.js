@@ -52,10 +52,13 @@ const calendar = () => {
         const dayIndex = parseInt(day.getAttribute('data-dayIndex'), 10);
         const name = day.getAttribute('data-name');
         const header = document.createElement('div');
+        const slots = document.createElement('div');
+        const dayDisplay = document.createElement('div');
+
         header.classList.add('calendar__column-header');
         header.textContent = name;
-        const slots = document.createElement('div');
         slots.classList.add('calendar__slots');
+        dayDisplay.classList.add('dayDisplay');
 
         for (let hour = 0; hour < 24; hour++) {
           const call = this;
@@ -70,6 +73,7 @@ const calendar = () => {
 
         day.appendChild(header);
         day.appendChild(slots);
+        header.appendChild(dayDisplay);
       });
     }
 
@@ -101,7 +105,17 @@ const calendar = () => {
         this.weekStart.toLocaleDateString(undefined, options);
       document.querySelector('.week__end-display').textContent =
         this.weekEnd.toLocaleDateString(undefined, options);
-      for (let dayIndex = 0; dayIndex < 7; dayIndex++) {}
+      for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+        const date = addDays(this.weekStart, dayIndex);
+        const display = date.toLocaleDateString(undefined, {
+          month: '2-digit',
+          day: '2-digit',
+        });
+        const dayElement = document.querySelector(
+          `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
+        );
+        dayElement.textContent = display;
+      }
     }
   }
 
