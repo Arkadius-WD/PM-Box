@@ -51,7 +51,6 @@
     max-width: 10rem;
     min-width: 10rem;
     text-align: center;
-    color: $second;
   }
 
   &__days-container {
@@ -107,10 +106,20 @@
     border-right: 1px solid rgba($color: $first, $alpha: 0.2);
   }
 }
-
 .dayDisplay {
   font-size: 1rem;
   padding-top: 0.3rem;
+}
+
+.currentDay {
+  .calendar__column-header {
+    background-color: $fourth;
+    color: $third;
+  }
+}
+
+.currentTime {
+  background-color: rgba($color: $first, $alpha: 0.2);
 }
 
 .opaque {

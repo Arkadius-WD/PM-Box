@@ -16,6 +16,7 @@ const calendar = () => {
     constructor() {
       this.weekStart = null;
       this.weekEnd = null;
+      this.weekOffSet = 0;
     }
 
     setup() {
@@ -23,6 +24,7 @@ const calendar = () => {
       this.setupDays();
       this.calculateCurrentWeek();
       this.showWeek();
+      this.setupControls();
     }
 
     setupTimes() {
@@ -61,13 +63,13 @@ const calendar = () => {
         dayDisplay.classList.add('dayDisplay');
 
         for (let hour = 0; hour < 24; hour++) {
-          const call = this;
+          const self = this;
           const slot = document.createElement('div');
           slot.setAttribute('data-hour', hour);
           slot.classList.add('calendar__slot');
-          slot.addEventListener('click', () => call.clickSlot(hour, dayIndex));
-          slot.addEventListener('mouseover', () => call.hoverOver(hour));
-          slot.addEventListener('mouseout', () => call.hoverOut());
+          slot.addEventListener('click', () => self.clickSlot(hour, dayIndex));
+          slot.addEventListener('mouseover', () => self.hoverOver(hour));
+          slot.addEventListener('mouseout', () => self.hoverOut());
           slots.appendChild(slot);
         }
 
@@ -82,11 +84,17 @@ const calendar = () => {
     }
 
     hoverOver(hour) {
-      console.log('hover!', hour);
+      const calendarTime = document.querySelector(
+        `.calendar__time[data-hour="${hour}"]`,
+      );
+      calendarTime.classList.add('currentTime');
     }
 
     hoverOut() {
-      // todo
+      const calendarTime = document.querySelector(
+        `.calendar__time.currentTime`,
+      );
+      calendarTime.classList.remove('currentTime');
     }
 
     calculateCurrentWeek() {
@@ -115,6 +123,41 @@ const calendar = () => {
           `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
         );
         dayElement.textContent = display;
+      }
+
+      if (this.weekOffSet === 0) {
+        this.setCurrentDay(true); // Pokazuje aktualny dzień
+      } else {
+        this.setCurrentDay(false); // Ukrywa aktualny dzień
+      }
+    }
+
+    setupControls() {
+      const nextButton = document.querySelector('.week-controls__btn-next');
+      const prevButton = document.querySelector('.week-controls__btn-prev');
+
+      nextButton.addEventListener('click', () => this.changeWeek(1));
+      prevButton.addEventListener('click', () => this.changeWeek(-1));
+    }
+
+    changeWeek(number) {
+      this.weekOffSet += number;
+      this.weekStart = addDays(this.weekStart, 7 * number);
+      this.weekEnd = addDays(this.weekEnd, 7 * number);
+      this.showWeek();
+    }
+
+    setCurrentDay(isVisible) {
+      const now = new Date();
+      const dayIndex = getDayIndex(now);
+      const dayElement = document.querySelector(
+        `.calendar__day[data-dayIndex="${dayIndex}"]`,
+      );
+
+      if (isVisible) {
+        dayElement.classList.add('currentDay');
+      } else {
+        dayElement.classList.remove('currentDay');
       }
     }
   }
