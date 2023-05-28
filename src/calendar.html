@@ -72,7 +72,7 @@
         <div class="nav__menu-settings">
           <ul class="nav__menu-list">
             <li><input type="checkbox" checked /> Home</li>
-            <li><input type="checkbox" checked /> calendar</li>
+            <li><input type="checkbox" checked /> Calendar</li>
             <li><input type="checkbox" checked /> To-Do</li>
             <li><input type="checkbox" checked /> Portfolio</li>
             <li><input type="checkbox" checked /> Approvals</li>
@@ -157,7 +157,7 @@
             <h2>calendar</h2>
           </div>
         </header>
-        <div class="calendar">
+        <div class="calendar" style="display: none">
           <div class="calendar__window">
             <div class="calendar__days-time"></div>
             <div class="calendar__days-container">
@@ -199,6 +199,50 @@
             </div>
           </div>
         </div>
+
+        <div class="event-modal">
+          <h2 class="event-modal__header"></h2>
+          <label for="title" class="event-modal__descriptor">Title</label>
+          <div>
+            <input
+              type="text"
+              required
+              id="eventTitle"
+              name="title"
+              class="event-modal__shortInput"
+            />
+          </div>
+          <label for="date" class="event-modal__descriptor">Date</label>
+          <div>
+            <input
+              type="date"
+              required
+              id="eventDate"
+              name="date"
+              class="event-modal__shortInput"
+            />
+          </div>
+          <label for="time" class="event-modal__descriptor">Time</label>
+          <div>
+            <input
+              type="time"
+              required
+              id="eventStart"
+              name="time"
+              class="event-modal__shortInput"
+            />
+            -
+            <input
+              type="time"
+              required
+              id="eventEnd"
+              name="time"
+              class="event-modal__shortInput"
+            />
+          </div>
+        </div>
+
+        <!-- next section -->
       </section>
       <section class="comunicator">
         <div class="talks talks-hidden">
