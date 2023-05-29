@@ -200,14 +200,14 @@
           </div>
         </div>
 
-        <div class="event-modal">
+        <form class="event-modal">
           <h2 class="event-modal__header"></h2>
           <label for="title" class="event-modal__descriptor">Title</label>
           <div>
             <input
               type="text"
               required
-              id="eventTitle"
+              id="event-modal__title"
               name="title"
               class="event-modal__shortInput"
             />
@@ -217,7 +217,7 @@
             <input
               type="date"
               required
-              id="eventDate"
+              id="event-modal__date"
               name="date"
               class="event-modal__shortInput"
             />
@@ -227,7 +227,7 @@
             <input
               type="time"
               required
-              id="eventStart"
+              id="event-modal__start"
               name="time"
               class="event-modal__shortInput"
             />
@@ -235,14 +235,63 @@
             <input
               type="time"
               required
-              id="eventEnd"
+              id="event-modal__end"
               name="time"
               class="event-modal__shortInput"
             />
           </div>
-        </div>
-
-        <!-- next section -->
+          <label for="event-modal__description">Description</label>
+          <div>
+            <textarea
+              name="description"
+              id="event-modal__description"
+            ></textarea>
+          </div>
+          <label for="event-modal__colors">Color</label>
+          <div class="event-modal__colors">
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--red"
+              data-color="red"
+            />
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--blue"
+              data-color="blue"
+            />
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--green"
+              data-color="green"
+            />
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--orange"
+              data-color="orange"
+            />
+          </div>
+          <div class="event-modal__controls">
+            <input type="text" value="Submit" class="event-modal__button" />
+            <input
+              type="text"
+              value="cancelButton"
+              class="event-modal__button"
+            />
+            <input
+              type="text"
+              class="event-modal__button event-modal__button--copy"
+            />
+            <input
+              type="text"
+              class="event-modal__button event-modal__button--delete"
+            />
+          </div>
+          <div class="event-modal__errors"></div>
+        </form>
       </section>
       <section class="comunicator">
         <div class="talks talks-hidden">
