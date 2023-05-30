@@ -14,8 +14,8 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="./assets/index-96a108b6.js"></script>
-    <link rel="stylesheet" href="./assets/index-3676449a.css">
+    <script type="module" crossorigin src="./assets/index-d9c01e3c.js"></script>
+    <link rel="stylesheet" href="./assets/index-df786c25.css">
   </head>
 
   <body>
@@ -63,10 +63,10 @@
             -
             <span class="week__end-display"></span>
             <i class="week-controls__btn-next fas fa-angle-double-right"></i>
-          </div>
-          <div class="general-controls">
-            <i class="general-controls__btn-add fas fa-plus"></i>
-            <i class="general-controls__btn-trash fas fa-trash-alt"></i>
+            <div class="general-controls">
+              <i class="general-controls__btn-add fas fa-plus"></i>
+              <i class="general-controls__btn-trash fas fa-trash-alt"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
         <div class="nav__menu-settings">
           <ul class="nav__menu-list">
             <li><input type="checkbox" checked /> Home</li>
-            <li><input type="checkbox" checked /> calendar</li>
+            <li><input type="checkbox" checked /> Calendar</li>
             <li><input type="checkbox" checked /> To-Do</li>
             <li><input type="checkbox" checked /> Portfolio</li>
             <li><input type="checkbox" checked /> Approvals</li>
@@ -201,6 +201,99 @@
             </div>
           </div>
         </div>
+        <form class="event-modal">
+          <h2 class="event-modal__header">Create Something !</h2>
+          <label for="title" class="event-modal__descriptor">Title</label>
+          <div>
+            <input
+              type="text"
+              required
+              id="event-modal__title"
+              name="title"
+              class="event-modal__title event-modal__shortInput"
+            />
+          </div>
+          <label for="date" class="event-modal__descriptor">Date</label>
+          <div>
+            <input
+              type="date"
+              required
+              id="event-modal__date"
+              name="date"
+              class="event-modal__date event-modal__shortInput"
+            />
+          </div>
+          <label for="time" class="event-modal__descriptor">Time</label>
+          <div>
+            <input
+              type="time"
+              required
+              id="event-modal__start"
+              name="time"
+              class="event-modal__start event-modal__shortInput"
+            />
+            -
+            <input
+              type="time"
+              required
+              id="event-modal__end"
+              name="time"
+              class="event-modal__end event-modal__shortInput"
+            />
+          </div>
+          <label for="event-modal__description">Description</label>
+          <div>
+            <textarea
+              name="description"
+              id="event-modal__description"
+              class="event-modal__description"
+            ></textarea>
+          </div>
+          <label for="event-modal__colors">Color</label>
+          <div class="event-modal__colors">
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--red"
+              data-color="red"
+            />
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--blue"
+              data-color="blue"
+            />
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--green"
+              data-color="green"
+            />
+            <input
+              type="button"
+              name="color"
+              class="event-modal__color event-modal__color--orange"
+              data-color="orange"
+            />
+          </div>
+          <div class="event-modal__controls">
+            <input type="text" value="Submit" class="event-modal__button" />
+            <input
+              type="text"
+              value="cancelButton"
+              class="event-modal__button"
+            />
+            <input
+              type="text"
+              class="event-modal__button event-modal__button--copy"
+            />
+            <input
+              type="text"
+              class="event-modal__button event-modal__button--delete"
+            />
+          </div>
+          <div class="event-modal__errors"></div>
+        </form>
       </section>
       <section class="comunicator">
         <div class="talks talks-hidden">
