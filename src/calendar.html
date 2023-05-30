@@ -61,10 +61,10 @@
             -
             <span class="week__end-display"></span>
             <i class="week-controls__btn-next fas fa-angle-double-right"></i>
-          </div>
-          <div class="general-controls">
-            <i class="general-controls__btn-add fas fa-plus"></i>
-            <i class="general-controls__btn-trash fas fa-trash-alt"></i>
+            <div class="general-controls">
+              <i class="general-controls__btn-add fas fa-plus"></i>
+              <i class="general-controls__btn-trash fas fa-trash-alt"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -157,7 +157,7 @@
             <h2>calendar</h2>
           </div>
         </header>
-        <div class="calendar" style="display: none">
+        <div class="calendar">
           <div class="calendar__window">
             <div class="calendar__days-time"></div>
             <div class="calendar__days-container">
@@ -199,9 +199,8 @@
             </div>
           </div>
         </div>
-
         <form class="event-modal">
-          <h2 class="event-modal__header"></h2>
+          <h2 class="event-modal__header">Create Something !</h2>
           <label for="title" class="event-modal__descriptor">Title</label>
           <div>
             <input
@@ -209,7 +208,7 @@
               required
               id="event-modal__title"
               name="title"
-              class="event-modal__shortInput"
+              class="event-modal__title event-modal__shortInput"
             />
           </div>
           <label for="date" class="event-modal__descriptor">Date</label>
@@ -219,7 +218,7 @@
               required
               id="event-modal__date"
               name="date"
-              class="event-modal__shortInput"
+              class="event-modal__date event-modal__shortInput"
             />
           </div>
           <label for="time" class="event-modal__descriptor">Time</label>
@@ -229,7 +228,7 @@
               required
               id="event-modal__start"
               name="time"
-              class="event-modal__shortInput"
+              class="event-modal__start event-modal__shortInput"
             />
             -
             <input
@@ -237,7 +236,7 @@
               required
               id="event-modal__end"
               name="time"
-              class="event-modal__shortInput"
+              class="event-modal__end event-modal__shortInput"
             />
           </div>
           <label for="event-modal__description">Description</label>
@@ -245,6 +244,7 @@
             <textarea
               name="description"
               id="event-modal__description"
+              class="event-modal__description"
             ></textarea>
           </div>
           <label for="event-modal__colors">Color</label>

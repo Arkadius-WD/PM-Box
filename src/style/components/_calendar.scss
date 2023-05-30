@@ -6,7 +6,7 @@
   &__header {
     display: flex;
     justify-content: center;
-    margin-left: 6rem;
+    margin-left: 8rem;
     width: 100%;
     font-size: 1.2rem;
 
@@ -31,11 +31,15 @@
       justify-content: center;
       align-items: center;
       width: 6rem;
-      margin-right: 1rem;
-      margin-left: auto;
       padding: 0.2rem 1rem;
-
-      border-left: 1px solid $third;
+      margin-left: 2rem;
+      i {
+        font-size: 1rem;
+        padding: 0.6rem;
+        border: 1px solid $third;
+        margin: 0 0.5rem;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -105,23 +109,64 @@
     border-left: 1px solid rgba($color: $first, $alpha: 0.2);
     border-right: 1px solid rgba($color: $first, $alpha: 0.2);
   }
-}
-.dayDisplay {
-  font-size: 1rem;
-  padding-top: 0.3rem;
-}
 
-.currentDay {
-  .calendar__column-header {
-    background-color: $fourth;
-    color: $third;
+  .dayDisplay {
+    font-size: 1rem;
+    padding-top: 0.3rem;
+  }
+
+  .currentDay {
+    .calendar__column-header {
+      background-color: $fourth;
+      color: $third;
+    }
+  }
+
+  .currentTime {
+    background-color: rgba($color: $first, $alpha: 0.2);
+  }
+
+  .opaque {
+    opacity: 0.4;
   }
 }
 
-.currentTime {
-  background-color: rgba($color: $first, $alpha: 0.2);
-}
+.event-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 45rem;
+  min-width: 25rem;
+  padding: 2rem;
+  background-color: $third;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 1.5rem;
+  z-index: 10;
 
-.opaque {
-  opacity: 0.4;
+  &__errors {
+    color: $fourth;
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__descriptor {
+    display: inline-block;
+    margin: 2rem 1rem 0.5rem 0;
+    font-weight: bold;
+  }
+
+  &__shortInput {
+    padding: 0.2rem 0.1rem;
+    border-bottom: 1px solid rgba($color: $first, $alpha: 0.4);
+
+    &:focus {
+      color: $second;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $second;
+    }
+  }
 }
