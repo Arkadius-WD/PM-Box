@@ -135,11 +135,12 @@
 .event-modal {
   position: absolute;
   top: 55%;
-  left: 55%;
+  left: 50%;
   transform: translate(-50%, -50%);
   max-width: 45rem;
-  min-width: 25rem;
+  min-width: 27rem;
   padding: 2rem;
+  margin-left: 2rem;
   background-color: $third;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 1.5rem;
@@ -201,17 +202,70 @@
 
   &__controls {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    width: 95%;
-    background-color: yellow;
+    gap: 1rem;
   }
 
   &__button {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
+    max-width: 40%;
     background-color: $second;
     color: $third;
+    border-radius: 2rem;
     cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+
+    &--delete {
+      background-color: $nineth;
+      color: $third;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3rem;
+    max-width: 15rem;
+    margin-bottom: 1rem;
+  }
+
+  &__color {
+    box-sizing: content-box;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid $third;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    .active-color,
+    &:focus,
+    &:hover {
+      border: 2px solid rgba($color: $first, $alpha: 0.6);
+    }
+
+    &--red {
+      background-color: $nineth;
+    }
+
+    &--blue {
+      background-color: $fifth;
+    }
+
+    &--green {
+      background-color: $seventh;
+    }
+
+    &--orange {
+      background-color: $eighth;
+    }
   }
 }
