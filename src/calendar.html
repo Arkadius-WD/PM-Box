@@ -157,7 +157,7 @@
             <h2>calendar</h2>
           </div>
         </header>
-        <div class="calendar">
+        <section class="calendar">
           <div class="calendar__window">
             <div class="calendar__days-time"></div>
             <div class="calendar__days-container">
@@ -198,7 +198,7 @@
               ></div>
             </div>
           </div>
-        </div>
+        </section>
         <form class="event-modal">
           <h2 class="event-modal__header">Create Something !</h2>
           <label for="title" class="event-modal__descriptor">Title</label>
@@ -239,7 +239,9 @@
               class="event-modal__end event-modal__shortInput"
             />
           </div>
-          <label for="event-modal__description">Description</label>
+          <label for="event-modal__description" class="event-modal__descriptor"
+            >Description</label
+          >
           <div>
             <textarea
               name="description"
@@ -275,18 +277,28 @@
             />
           </div>
           <div class="event-modal__controls">
-            <input type="text" value="Submit" class="event-modal__button" />
             <input
-              type="text"
-              value="cancelButton"
+              type="button"
+              id="submitButton"
+              value="Submit"
               class="event-modal__button"
             />
             <input
-              type="text"
+              type="button"
+              id="cancelButton"
+              value="Cancel"
+              class="event-modal__button"
+            />
+            <input
+              type="button"
+              id="copyButton"
+              value="Copy"
               class="event-modal__button event-modal__button--copy"
             />
             <input
-              type="text"
+              type="button"
+              id="deleteButton"
+              value="Delete"
               class="event-modal__button event-modal__button--delete"
             />
           </div>
