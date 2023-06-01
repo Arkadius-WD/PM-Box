@@ -1,5 +1,5 @@
 const calendar = () => {
-  // Date functions
+  // DATE FUNCTIONS
   const dayInMillis = 1000 * 60 * 60 * 24;
 
   const addDays = (date, number) => {
@@ -11,12 +11,25 @@ const calendar = () => {
     return falseIndex === 0 ? 6 : falseIndex - 1;
   };
 
-  // Creating of calendar in calendar-window
+  const dateString = date => {
+    return `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+  };
+
+  const MODE = {
+    VIEW: 1,
+    UPDATE: 2,
+    CREATE: 3,
+  };
+
+  // CREATING OF CALENDAR
   class Calendar {
     constructor() {
       this.weekStart = null;
       this.weekEnd = null;
       this.weekOffSet = 0;
+      this.mode = MODE.VIEW;
     }
 
     setup() {
@@ -80,7 +93,90 @@ const calendar = () => {
     }
 
     clickSlot(hour, dayIndex) {
-      console.log('click!', hour, dayIndex);
+      if (this.mode !== MODE.VIEW) {
+        return;
+      }
+      this.mode = MODE.CREATE;
+      const start = `${hour.toString().padStart(2, '0')}:00`;
+      const end =
+        hour < 23
+          ? `${(hour + 1).toString().padStart(2, '0')}:00`
+          : `${hour.toString().padStart(2, '0')}:59`;
+      const date = dateString(addDays(this.weekStart, dayIndex));
+      const event = {
+        start,
+        end,
+        date,
+        title: '',
+        description: '',
+        color: 'red',
+      };
+
+      this.openModal(event);
+    }
+
+    openModal(event) {
+      const eventModalHeader = document.querySelector('.event-modal__header');
+      const eventModal = document.querySelector('.event-modal');
+
+      eventModalHeader.textContent =
+        this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
+      eventModal.style.display = 'block';
+
+      function fadeIn(element, duration) {
+        element.style.opacity = 0;
+        const start = performance.now();
+
+        function animate(currentTime) {
+          const elapsed = currentTime - start;
+          element.style.opacity = elapsed / duration;
+
+          if (elapsed < duration) {
+            requestAnimationFrame(animate);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      document.querySelector('.event-modal__title').value = event.title;
+      document.querySelector('.event-modal__date').value = event.date;
+      document.querySelector('.event-modal__start').value = event.start;
+      document.querySelector('.event-modal__end').value = event.end;
+      document.querySelector('.event-modal__description').value =
+        event.description;
+      document.querySelector('.event-modal__color').classList.remove('active');
+      document
+        .querySelector(`.event-modal__color[data-color=${event.color}]`)
+        .classList.add('active');
+
+      if (this.mode === MODE.UPDATE) {
+        document.getElementById('submitButton').value = 'Update';
+        document.getElementById('deleteButton').style.display = 'block';
+        document
+          .getElementById('deleteButton')
+          .addEventListener('click', () => {
+            // todo
+            console.log('delete event', event);
+          });
+        document.getElementById('copyButton').addEventListener('click', () => {
+          // todo
+          console.log('copy event', event);
+        });
+      } else if (this.mode === MODE.CREATE) {
+        document.getElementById('submitButton').value = 'Create';
+        document.getElementById('deleteButton').style.display = 'none';
+        document.getElementById('copyButton').style.display = 'none';
+      }
+
+      fadeIn(eventModal, 200);
+      document.querySelector('.event-modal__title').focus();
+      document.querySelector('.calendar').classList.add('opaque');
+      document.querySelector('.event-modal').addEventListener('submit', e => {
+        e.preventDefault();
+        // todo
+        console.log('submit event', event);
+      });
     }
 
     hoverOver(hour) {
