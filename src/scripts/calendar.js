@@ -116,39 +116,46 @@ const calendar = () => {
     }
 
     openModal(event) {
-      const eventModalHeader = document.querySelector('.event-modal__header');
       const eventModal = document.querySelector('.event-modal');
+      const eventModalHeader = document.querySelector('.event-modal__header');
+      const titleInput = document.querySelector('.event-modal__title');
+      const dateInput = document.querySelector('.event-modal__date');
+      const startInput = document.querySelector('.event-modal__start');
+      const endInput = document.querySelector('.event-modal__end');
+      const descriptionInput = document.querySelector(
+        '.event-modal__description',
+      );
+
+      const colors = document.querySelector('.event-modal__colors');
+
+      console.log(colors);
+
+      const colorSelector = document.querySelector(
+        `.event-modal__color[data-color="${event.color}"]`,
+      );
+
+      console.log(colorSelector);
+
+      titleInput.value = event.title;
+      dateInput.value = event.date;
+      startInput.value = event.start;
+      endInput.value = event.end;
+      descriptionInput.value = event.description;
+      // colorSelector.classList.add('active');
+
+      // if (colorSelector) {
+      //   colorSelector.addEventListener('focus', function () {
+      //     colorSelector.classList.add('active');
+      //   });
+
+      //   colorSelector.addEventListener('blur', function () {
+      //     colorSelector.classList.remove('active');
+      //   });
+      // }
 
       eventModalHeader.textContent =
         this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
       eventModal.style.display = 'block';
-
-      function fadeIn(element, duration) {
-        element.style.opacity = 0;
-        const start = performance.now();
-
-        function animate(currentTime) {
-          const elapsed = currentTime - start;
-          element.style.opacity = elapsed / duration;
-
-          if (elapsed < duration) {
-            requestAnimationFrame(animate);
-          }
-        }
-
-        requestAnimationFrame(animate);
-      }
-
-      document.querySelector('.event-modal__title').value = event.title;
-      document.querySelector('.event-modal__date').value = event.date;
-      document.querySelector('.event-modal__start').value = event.start;
-      document.querySelector('.event-modal__end').value = event.end;
-      document.querySelector('.event-modal__description').value =
-        event.description;
-      document.querySelector('.event-modal__color').classList.remove('active');
-      document
-        .querySelector(`.event-modal__color[data-color=${event.color}]`)
-        .classList.add('active');
 
       if (this.mode === MODE.UPDATE) {
         document.getElementById('submitButton').value = 'Update';
@@ -169,9 +176,25 @@ const calendar = () => {
         document.getElementById('copyButton').style.display = 'none';
       }
 
+      function fadeIn(element, duration) {
+        element.style.opacity = 0;
+        const start = performance.now();
+
+        function animate(currentTime) {
+          const elapsed = currentTime - start;
+          element.style.opacity = elapsed / duration;
+
+          if (elapsed < duration) {
+            requestAnimationFrame(animate);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
       fadeIn(eventModal, 200);
       document.querySelector('.event-modal__title').focus();
-      document.querySelector('.calendar').classList.add('opaque');
+      document.querySelector('.calendar__window').classList.add('opaque');
       document.querySelector('.event-modal').addEventListener('submit', e => {
         e.preventDefault();
         // todo
