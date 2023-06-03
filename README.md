@@ -4,7 +4,7 @@ App is under building.
 
 ---
 
-On start page, please click on logo image and enter data below:
+On a start page, please click in logo image and enter data below:
 
 LOGIN: **Arkadius**
 
