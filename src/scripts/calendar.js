@@ -116,6 +116,7 @@ const calendar = () => {
     }
 
     openModal(event) {
+      const calendarWindow = document.querySelector('.calendar__window');
       const eventModal = document.querySelector('.event-modal');
       const eventModalHeader = document.querySelector('.event-modal__header');
       const titleInput = document.querySelector('.event-modal__title');
@@ -125,77 +126,75 @@ const calendar = () => {
       const descriptionInput = document.querySelector(
         '.event-modal__description',
       );
-
-      const colors = document.querySelector('.event-modal__colors');
-
-      console.log(colors);
-
-      const colorSelector = document.querySelector(
-        `.event-modal__color[data-color="${event.color}"]`,
-      );
-
-      console.log(colorSelector);
+      const colors = document.querySelectorAll('.event-modal__color');
+      const submitButton = document.getElementById('submitButton');
+      const deleteButton = document.getElementById('deleteButton');
+      const copyButton = document.getElementById('copyButton');
 
       titleInput.value = event.title;
       dateInput.value = event.date;
       startInput.value = event.start;
       endInput.value = event.end;
       descriptionInput.value = event.description;
-      // colorSelector.classList.add('active');
+      colors.dataset = event.color;
 
-      // if (colorSelector) {
-      //   colorSelector.addEventListener('focus', function () {
-      //     colorSelector.classList.add('active');
-      //   });
-
-      //   colorSelector.addEventListener('blur', function () {
-      //     colorSelector.classList.remove('active');
-      //   });
-      // }
+      const defaultColor = colors[0];
+      colors.forEach(colorSelector => {
+        if (colorSelector) {
+          colorSelector.addEventListener('blur', () => {
+            colorSelector.classList.remove('active');
+          });
+          colorSelector.addEventListener('focus', () => {
+            colorSelector.classList.add('active');
+            defaultColor.classList.remove('active');
+          });
+        }
+      });
 
       eventModalHeader.textContent =
         this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
       eventModal.style.display = 'block';
 
       if (this.mode === MODE.UPDATE) {
-        document.getElementById('submitButton').value = 'Update';
-        document.getElementById('deleteButton').style.display = 'block';
+        submitButton.value = 'Update';
+        deleteButton.style.display = 'block';
         document
           .getElementById('deleteButton')
           .addEventListener('click', () => {
             // todo
             console.log('delete event', event);
           });
-        document.getElementById('copyButton').addEventListener('click', () => {
+        copyButton.addEventListener('click', () => {
           // todo
           console.log('copy event', event);
         });
       } else if (this.mode === MODE.CREATE) {
-        document.getElementById('submitButton').value = 'Create';
-        document.getElementById('deleteButton').style.display = 'none';
-        document.getElementById('copyButton').style.display = 'none';
+        submitButton.value = 'Create';
+        deleteButton.style.display = 'none';
+        copyButton.style.display = 'none';
       }
 
-      function fadeIn(element, duration) {
-        element.style.opacity = 0;
+      const fadeIn = (element, duration) => {
         const start = performance.now();
+        element.style.opacity = 0;
 
-        function animate(currentTime) {
+        const animate = currentTime => {
           const elapsed = currentTime - start;
           element.style.opacity = elapsed / duration;
 
           if (elapsed < duration) {
             requestAnimationFrame(animate);
           }
-        }
+        };
 
         requestAnimationFrame(animate);
-      }
+      };
 
       fadeIn(eventModal, 200);
-      document.querySelector('.event-modal__title').focus();
-      document.querySelector('.calendar__window').classList.add('opaque');
-      document.querySelector('.event-modal').addEventListener('submit', e => {
+      titleInput.focus();
+      calendarWindow.classList.add('opaque');
+      defaultColor.classList.add('active');
+      eventModal.addEventListener('submit', e => {
         e.preventDefault();
         // todo
         console.log('submit event', event);

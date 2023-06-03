@@ -3,36 +3,36 @@ const login = () => {
   const startLogin = document.querySelector('.start__login');
   const startBtn = document.querySelector('.start__btn');
   const user = document.getElementById('username');
-  const pass = document.getElementById('password');
+  const pass = document.getElementById('pin');
 
   const username = 'Arkadius';
-  const password = '12345';
+  const pin = '12345';
 
   const showLogin = () => {
     startLogin.classList.toggle('login-hidden');
   };
 
   const openHome = () => {
-    if (user.value === '' || password.value === '') {
+    if (user.value === '' || pin.value === '') {
       user.placeholder = 'Enter username';
       user.classList.add('error');
-      pass.placeholder = 'Enter password';
+      pass.placeholder = 'Enter pin';
       pass.classList.add('error');
       return;
     }
 
-    if (user.value === username && pass.value === password) {
+    if (user.value === username && pass.value === pin) {
       window.location.href = './home.html';
     } else if (user.value === username) {
       pass.value = '';
-      pass.placeholder = 'Invalid password';
+      pass.placeholder = 'Invalid pin';
       pass.classList.add('error');
     } else {
       user.value = '';
       pass.value = '';
       user.placeholder = 'Invalid username';
       user.classList.add('error');
-      pass.placeholder = 'Invalid password';
+      pass.placeholder = 'Invalid pin';
       pass.classList.add('error');
     }
   };
