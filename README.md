@@ -4,11 +4,11 @@ App is under building.
 
 ---
 
-On start page, please click on logo image and enter data below
+On start page, please click on logo image and enter data below:
 
-Login: **Arkadius**
+LOGIN: **Arkadius**
 
-Password: **12345**
+PIN: **12345**
 
 ---
 
