@@ -1,11 +1,9 @@
-import { doc } from 'prettier';
-
 const calendar = () => {
   // DATE FUNCTIONS
-  const dayInMillis = 1000 * 60 * 60 * 24;
+  const dayInMilis = 1000 * 60 * 60 * 24;
 
   const addDays = (date, number) => {
-    return new Date(date.getTime() + number * dayInMillis);
+    return new Date(date.getTime() + number * dayInMilis);
   };
 
   const getDayIndex = date => {
@@ -193,7 +191,6 @@ const calendar = () => {
       };
 
       fadeIn(eventModal, 200);
-
       titleInput.focus();
       calendarWindow.classList.add('opaque');
       defaultColor.classList.add('active');
