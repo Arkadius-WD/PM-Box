@@ -20,7 +20,6 @@
     height: 5rem;
     width: 100vw;
     background-color: $tenth;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
     transition: transform 0.5s;
 
     input {
@@ -63,7 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15rem;
+    margin-top: 25vh;
     cursor: pointer;
     transition: transform 0.3s;
 
@@ -75,12 +74,13 @@
       width: 12rem;
       height: 12rem;
       background-image: url('../img/base/1_WljD7gLyX2gr_60o501Z1A.png');
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
       background-size: 10.2rem;
       background-repeat: no-repeat;
       background-position: center;
       border: 0.5rem solid $first;
-      border-radius: 50%;
       box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      border-radius: 50%;
     }
 
     h1 {
