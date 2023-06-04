@@ -201,6 +201,24 @@ const calendar = () => {
       });
     }
 
+    closeModal() {
+      const calendarWindow = document.querySelector('.calendar__window');
+      const eventModal = document.querySelector('.event-modal');
+      const errors = document.querySelector('.event-modal__eroors');
+
+      const fadeOut = (element, duration) => {
+        element.style.opacity = '0';
+        setTimeout(() => {
+          element.style.display = 'none';
+        }, duration);
+      };
+
+      fadeOut(eventModal, 200);
+      errors.textContent = '';
+      calendarWindow.classList.remove('opaque');
+      this.mode = MODE.VIEW;
+    }
+
     hoverOver(hour) {
       const calendarTime = document.querySelector(
         `.calendar__time[data-hour="${hour}"]`,
