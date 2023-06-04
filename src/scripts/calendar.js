@@ -1,3 +1,5 @@
+import { doc } from 'prettier';
+
 const calendar = () => {
   // DATE FUNCTIONS
   const dayInMillis = 1000 * 60 * 60 * 24;
@@ -191,6 +193,7 @@ const calendar = () => {
       };
 
       fadeIn(eventModal, 200);
+
       titleInput.focus();
       calendarWindow.classList.add('opaque');
       defaultColor.classList.add('active');
@@ -204,7 +207,7 @@ const calendar = () => {
     closeModal() {
       const calendarWindow = document.querySelector('.calendar__window');
       const eventModal = document.querySelector('.event-modal');
-      const errors = document.querySelector('.event-modal__eroors');
+      const errors = document.querySelector('.event-modal__errors');
 
       const fadeOut = (element, duration) => {
         element.style.opacity = '0';
@@ -271,9 +274,11 @@ const calendar = () => {
     setupControls() {
       const nextButton = document.querySelector('.week-controls__btn-next');
       const prevButton = document.querySelector('.week-controls__btn-prev');
+      const cancelButton = document.getElementById('cancelButton');
 
       nextButton.addEventListener('click', () => this.changeWeek(1));
       prevButton.addEventListener('click', () => this.changeWeek(-1));
+      cancelButton.addEventListener('click', () => this.closeModal());
     }
 
     changeWeek(number) {
