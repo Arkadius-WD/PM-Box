@@ -1,3 +1,5 @@
+import Event from './Event';
+
 const calendar = () => {
   // DATE FUNCTIONS
   const dayInMilis = 1000 * 60 * 60 * 24;
@@ -103,14 +105,14 @@ const calendar = () => {
           ? `${(hour + 1).toString().padStart(2, '0')}:00`
           : `${hour.toString().padStart(2, '0')}:59`;
       const date = dateString(addDays(this.weekStart, dayIndex));
-      const event = {
+      const event = new Event({
         start,
         end,
         date,
         title: '',
         description: '',
         color: 'red',
-      };
+      });
 
       this.openModal(event);
     }
@@ -196,8 +198,11 @@ const calendar = () => {
       defaultColor.classList.add('active');
       eventModal.addEventListener('submit', e => {
         e.preventDefault();
-        // todo
-        console.log('submit event', event);
+        this.submitModal(event);
+      });
+      submitButton.addEventListener('click', e => {
+        e.preventDefault();
+        this.submitModal(event);
       });
     }
 
@@ -217,6 +222,13 @@ const calendar = () => {
       errors.textContent = '';
       calendarWindow.classList.remove('opaque');
       this.mode = MODE.VIEW;
+    }
+
+    submitModal(event) {
+      if (event.isValidIn(this)) {
+        event.updateIn(this);
+        this.closeModal();
+      }
     }
 
     hoverOver(hour) {
