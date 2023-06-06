@@ -21,11 +21,32 @@ class Event {
   };
 
   isValidIn(calendar) {
-    console.log('test isValidIn');
+    // todo
+    console.log('test isValidIn', this);
   }
 
   updateIn(calendar) {
+    const titleInput = document.querySelector('.event-modal__title');
+    const startInput = document.querySelector('.event-modal__start');
+    const endInput = document.querySelector('.event-modal__end');
+    const dateInput = document.querySelector('.event-modal__date');
+    const descriptionInput = document.querySelector(
+      '.event-modal__description',
+    );
+    const colors = document.querySelectorAll('.event-modal__color');
+
+    this.title = titleInput.value;
+    this.start = startInput.value;
+    this.end = endInput.value;
+    this.date = dateInput.value;
+    this.description = descriptionInput.value;
+    this.color = colors.value;
+    this.showIn(calendar);
+  }
+
+  showIn() {
     // todo
+    console.log('show event', this);
   }
 }
 
