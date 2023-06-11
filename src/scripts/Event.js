@@ -13,12 +13,13 @@ class Event {
 
   constructor(data) {
     this.id = data.id || this.generateId();
-    this.title = data.title;
-    this.start = data.start;
-    this.end = data.end;
-    this.date = data.date;
-    this.description = data.description;
-    this.color = data.color;
+    this.title = data.title || '';
+    this.start = data.start || '';
+    this.end = data.end || '';
+    this.date = data.date || '';
+    this.description = data.description || '';
+    this.color = data.color || '';
+    this.events = [];
   }
 
   generateId = (length = 20) => {
@@ -32,10 +33,39 @@ class Event {
     return id;
   };
 
-  isValidIn() {
-    this.start = this.startInput.value;
-    this.end = this.endInput.value;
-    this.date = this.dateInput.value;
+  isValidIn(calendar) {
+    const newStart = this.startInput.value;
+    const newEnd = this.endInput.value;
+    const newDate = this.dateInput.value;
+    const errors = document.querySelector('.event-modal__errors');
+
+    console.log(this.events);
+
+    // calendar.events.forEach(event => {
+    //   if (
+    //     event.id !== this.id &&
+    //     event.end > newStart &&
+    //     event.start < newEnd
+    //   ) {
+    //     errors.textContent = `This collides with the event ${event.title} (${event.start} - ${event.end}).`;
+    //     return false;
+    //   }
+    //   return true;
+    // });
+
+    const duration =
+      (new Date(`${newDate}T${newEnd}`).getTime() -
+        new Date(`${newDate}T${newStart}`).getTime()) /
+      (1000 * 60);
+    if (duration < 0) {
+      errors.textContent = `The start cannpt be after the end`;
+      return false;
+    }
+    if (duration < 30) {
+      errors.textContent = `Events coont be under 30 minutes`;
+      return false;
+    }
+    return true;
   }
 
   updateIn(calendar) {
@@ -46,11 +76,17 @@ class Event {
     this.description = this.descriptionInput.value;
     this.color = this.colors.value;
     this.showIn(calendar);
+    this.saveIn(calendar);
   }
 
   showIn() {
     // todo
     console.log('show event', this);
+  }
+
+  saveIn(calendar) {
+    // todo
+    // calendar.events.push(this);
   }
 }
 
