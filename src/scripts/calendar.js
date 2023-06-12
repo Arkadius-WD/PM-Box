@@ -1,9 +1,7 @@
 import CalendarTemplate from './CalendarTemplate';
 
 const calendar = () => {
-  document.addEventListener('DOMContentLoaded', () => {
-    new CalendarTemplate().setup();
-  });
+  new CalendarTemplate().setup();
 };
 
 export default calendar;

@@ -1,8 +1,6 @@
 import CalendarEvent from './CalendarEvent';
 import calendarHelper from './calendarHelper';
 
-// CREATING OF CALENDAR
-
 class CalendarTemplate {
   constructor() {
     this.weekStart = null;
