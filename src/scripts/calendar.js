@@ -19,13 +19,13 @@ const calendar = () => {
       .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
   };
 
+  // CREATING OF CALENDAR
   const MODE = {
     VIEW: 1,
     UPDATE: 2,
     CREATE: 3,
   };
 
-  // CREATING OF CALENDAR
   class Calendar {
     constructor() {
       this.weekStart = null;
@@ -225,6 +225,7 @@ const calendar = () => {
     }
 
     submitModal(event) {
+      console.log('test');
       if (event.isValidIn(this)) {
         event.updateIn(this);
         this.closeModal();

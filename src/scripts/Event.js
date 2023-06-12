@@ -39,9 +39,7 @@ class Event {
     const newDate = this.dateInput.value;
     const errors = document.querySelector('.event-modal__errors');
 
-    console.log(this.events);
-
-    // calendar.events.forEach(event => {
+    // calendar.forEach(event => {
     //   if (
     //     event.id !== this.id &&
     //     event.end > newStart &&
@@ -81,10 +79,10 @@ class Event {
 
   showIn() {
     // todo
-    console.log('show event', this);
+    // console.log('show event', this);
   }
 
-  saveIn(calendar) {
+  saveIn() {
     // todo
     // calendar.events.push(this);
   }
