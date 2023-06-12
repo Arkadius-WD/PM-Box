@@ -1,4 +1,4 @@
-class Event {
+class CalendarEvent {
   titleInput = document.querySelector('.event-modal__title');
 
   startInput = document.querySelector('.event-modal__start');
@@ -88,4 +88,4 @@ class Event {
   }
 }
 
-export default Event;
+export default CalendarEvent;
