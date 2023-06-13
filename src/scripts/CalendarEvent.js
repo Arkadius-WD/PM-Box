@@ -1,4 +1,12 @@
-class CalendarEvent {
+import { getDayIndex, generateId, dateString } from './calendarHelper';
+
+export const MODE = {
+  VIEW: 1,
+  UPDATE: 2,
+  CREATE: 3,
+};
+
+export class CalendarEvent {
   titleInput = document.querySelector('.event-modal__title');
 
   startInput = document.querySelector('.event-modal__start');
@@ -12,26 +20,42 @@ class CalendarEvent {
   colors = document.querySelectorAll('.event-modal__color');
 
   constructor(data) {
-    this.id = data.id || this.generateId();
-    this.title = data.title || '';
-    this.start = data.start || '';
-    this.end = data.end || '';
-    this.date = data.date || '';
-    this.description = data.description || '';
-    this.color = data.color || '';
-    this.events = [];
+    this.id = data.id || generateId();
+    this.title = data.title;
+    this.start = data.start;
+    this.end = data.end;
+    this.date = data.date;
+    this.description = data.description;
+    this.color = data.color;
   }
 
-  generateId = (length = 20) => {
-    const chars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let id = '';
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * chars.length);
-      id += chars.charAt(randomIndex);
-    }
-    return id;
-  };
+  get dayIndex() {
+    return getDayIndex(new Date(this.date));
+  }
+
+  get duration() {
+    return (
+      (new Date(`${this.date}T${this.end}`).getTime() -
+        new Date(`${this.date}T${this.start}`).getTime()) /
+      (1000 * 60)
+    );
+  }
+
+  get startHour() {
+    return parseInt(this.start.substring(0, 2), 10);
+  }
+
+  get startMinutes() {
+    return parseInt(this.start.substring(3, 5), 10);
+  }
+
+  get endHour() {
+    return parseInt(this.end.substring(0, 2), 10);
+  }
+
+  get endMinutes() {
+    return parseInt(this.end.substring(3, 5), 10);
+  }
 
   isValidIn(calendar) {
     const newStart = this.startInput.value;
@@ -39,17 +63,17 @@ class CalendarEvent {
     const newDate = this.dateInput.value;
     const errors = document.querySelector('.event-modal__errors');
 
-    // calendar.forEach(event => {
-    //   if (
-    //     event.id !== this.id &&
-    //     event.end > newStart &&
-    //     event.start < newEnd
-    //   ) {
-    //     errors.textContent = `This collides with the event ${event.title} (${event.start} - ${event.end}).`;
-    //     return false;
-    //   }
-    //   return true;
-    // });
+    calendar.forEach(event => {
+      if (
+        event.id !== this.id &&
+        event.end > newStart &&
+        event.start < newEnd
+      ) {
+        errors.textContent = `This collides with the event ${event.title} (${event.start} - ${event.end}).`;
+        return false;
+      }
+      return true;
+    });
 
     const duration =
       (new Date(`${newDate}T${newEnd}`).getTime() -
@@ -87,5 +111,3 @@ class CalendarEvent {
     // calendar.events.push(this);
   }
 }
-
-export default CalendarEvent;
