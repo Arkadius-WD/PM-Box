@@ -57,57 +57,120 @@ export class CalendarEvent {
     return parseInt(this.end.substring(3, 5), 10);
   }
 
-  isValidIn(calendar) {
-    const newStart = this.startInput.value;
-    const newEnd = this.endInput.value;
-    const newDate = this.dateInput.value;
-    const errors = document.querySelector('.event-modal__errors');
+  saveIn() {
+    // todo
+    // calendar.events.push(this);
+  }
 
-    calendar.forEach(event => {
-      if (
-        event.id !== this.id &&
-        event.end > newStart &&
-        event.start < newEnd
-      ) {
-        errors.textContent = `This collides with the event ${event.title} (${event.start} - ${event.end}).`;
-        return false;
+  showIn(calendar) {
+    if (
+      this.date < dateString(calendar.weekStart) ||
+      this.date > dateString(calendar.weekEnd)
+    ) {
+      const elementToRemove = document.getElementById(this.id);
+      if (elementToRemove) {
+        elementToRemove.remove();
       }
-      return true;
-    });
+      return;
+    }
 
-    const duration =
-      (new Date(`${newDate}T${newEnd}`).getTime() -
-        new Date(`${newDate}T${newStart}`).getTime()) /
-      (1000 * 60);
-    if (duration < 0) {
-      errors.textContent = `The start cannpt be after the end`;
-      return false;
+    let eventSlot;
+    if (document.getElementById(this.id)) {
+      eventSlot = document.getElementById(this.id);
+    } else {
+      eventSlot = document.createElement('div');
+      eventSlot.classList.add('event');
+      eventSlot.setAttribute('id', this.id);
+      eventSlot.addEventListener('click', () => this.clickIn(calendar));
     }
-    if (duration < 30) {
-      errors.textContent = `Events coont be under 30 minutes`;
-      return false;
+
+    const h = calendar.slotHeight;
+    eventSlot.textContent = this.title;
+    eventSlot.style.top = `${
+      (this.startHour + this.startMinutes / 60) * h + 2
+    }px`;
+    eventSlot.style.bottom = `${
+      24 * h - (this.endHour + this.endMinutes / 60) * h + 1
+    }px`;
+    eventSlot.style.backgroundColor = `var(--color-${this.color})`;
+
+    const dayIndexSelector = `.day[data-dayIndex="${this.dayIndex}"] .slots`;
+    const dayElement = document.querySelector(dayIndexSelector);
+    if (dayElement) {
+      dayElement.appendChild(eventSlot);
     }
-    return true;
+
+    const { duration } = this;
+    if (duration < 45) {
+      eventSlot.classList.remove('shortEvent');
+      eventSlot.classList.add('veryShortEvent');
+    } else if (duration < 59) {
+      eventSlot.classList.remove('veryShortEvent');
+      eventSlot.classList.add('shortEvent');
+    } else {
+      eventSlot.classList.remove('shortEvent');
+      eventSlot.classList.remove('veryShortEvent');
+    }
+  }
+
+  clickIn(calendar) {
+    if (calendar.mode !== MODE.VIEW) return;
+    calendar.mode = MODE.UPDATE;
+    calendar.openModal(this);
   }
 
   updateIn(calendar) {
+    this.prevDate = this.date;
     this.title = this.titleInput.value;
     this.start = this.startInput.value;
     this.end = this.endInput.value;
     this.date = this.dateInput.value;
     this.description = this.descriptionInput.value;
     this.color = this.colors.value;
-    this.showIn(calendar);
     this.saveIn(calendar);
+    this.showIn(calendar);
   }
 
-  showIn() {
+  copyIn() {
     // todo
-    // console.log('show event', this);
   }
 
-  saveIn() {
+  deleteIn() {
     // todo
-    // calendar.events.push(this);
+  }
+
+  isValidIn(calendar) {
+    const newStart = this.startInput.value;
+    const newEnd = this.endInput.value;
+    const newDate = this.dateInput.value;
+    const errors = document.querySelector('.event-modal__errors');
+
+    if (calendar.events[newDate]) {
+      const events = Object.values(calendar.events[newDate]);
+      const conflictingEvent = events.find(
+        event =>
+          event.id !== this.id && event.end > newStart && event.start < newEnd,
+      );
+      if (conflictingEvent) {
+        document.getElementById(
+          'errors',
+        ).textContent = `This collides with the event '${conflictingEvent.title}' (${conflictingEvent.start} - ${conflictingEvent.end}).`;
+        return false;
+      }
+    }
+
+    const duration =
+      (new Date(`${newDate}T${newEnd}`).getTime() -
+        new Date(`${newDate}T${newStart}`).getTime()) /
+      (1000 * 60);
+    if (duration < 0) {
+      errors.textContent = `The start cannot be after the end`;
+      return false;
+    }
+    if (duration < 30) {
+      errors.textContent = `Events cannot be under 30 minutes`;
+      return false;
+    }
+    return true;
   }
 }

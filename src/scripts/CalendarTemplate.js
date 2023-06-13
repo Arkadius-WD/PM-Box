@@ -1,8 +1,10 @@
-import CalendarEvent from './CalendarEvent';
-import calendarHelper from './calendarHelper';
+import { CalendarEvent, MODE } from './CalendarEvent';
+import { dateString, getDayIndex, addDays } from './calendarHelper';
 
 class CalendarTemplate {
   constructor() {
+    this.mode = MODE.VIEW;
+    this.events = {};
     this.weekStart = null;
     this.weekEnd = null;
     this.weekOffSet = 0;
@@ -15,6 +17,16 @@ class CalendarTemplate {
     this.calculateCurrentWeek();
     this.showWeek();
     this.setupControls();
+  }
+
+  setupControls() {
+    const nextButton = document.querySelector('.week-controls__btn-next');
+    const prevButton = document.querySelector('.week-controls__btn-prev');
+    const cancelButton = document.getElementById('cancelButton');
+
+    nextButton.addEventListener('click', () => this.changeWeek(1));
+    prevButton.addEventListener('click', () => this.changeWeek(-1));
+    cancelButton.addEventListener('click', () => this.closeModal());
   }
 
   setupTimes() {
@@ -69,6 +81,74 @@ class CalendarTemplate {
     });
   }
 
+  calculateCurrentWeek() {
+    const now = new Date();
+    this.weekStart = addDays(now, -getDayIndex(now));
+    this.weekEnd = addDays(this.weekStart, 6);
+  }
+
+  changeWeek(number) {
+    this.weekOffSet += number;
+    this.weekStart = addDays(this.weekStart, 7 * number);
+    this.weekEnd = addDays(this.weekEnd, 7 * number);
+    this.showWeek();
+  }
+
+  showWeek() {
+    const options = {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+    };
+    document.querySelector('.week__start-display').textContent =
+      this.weekStart.toLocaleDateString(undefined, options);
+    document.querySelector('.week__end-display').textContent =
+      this.weekEnd.toLocaleDateString(undefined, options);
+    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+      const date = addDays(this.weekStart, dayIndex);
+      const display = date.toLocaleDateString(undefined, {
+        month: '2-digit',
+        day: '2-digit',
+      });
+      const dayElement = document.querySelector(
+        `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
+      );
+      dayElement.textContent = display;
+    }
+
+    if (this.weekOffSet === 0) {
+      this.setCurrentDay(true); // Pokazuje aktualny dzień
+    } else {
+      this.setCurrentDay(false); // Ukrywa aktualny dzień
+    }
+  }
+
+  setCurrentDay(isVisible) {
+    const now = new Date();
+    const dayIndex = getDayIndex(now);
+    const dayElement = document.querySelector(
+      `.calendar__day[data-dayIndex="${dayIndex}"]`,
+    );
+
+    if (isVisible) {
+      dayElement.classList.add('currentDay');
+    } else {
+      dayElement.classList.remove('currentDay');
+    }
+  }
+
+  hoverOver(hour) {
+    const calendarTime = document.querySelector(
+      `.calendar__time[data-hour="${hour}"]`,
+    );
+    calendarTime.classList.add('currentTime');
+  }
+
+  hoverOut() {
+    const calendarTime = document.querySelector(`.calendar__time.currentTime`);
+    calendarTime.classList.remove('currentTime');
+  }
+
   clickSlot(hour, dayIndex) {
     if (this.mode !== MODE.VIEW) {
       return;
@@ -80,7 +160,7 @@ class CalendarTemplate {
         ? `${(hour + 1).toString().padStart(2, '0')}:00`
         : `${hour.toString().padStart(2, '0')}:59`;
     const date = dateString(addDays(this.weekStart, dayIndex));
-    const event = new Event({
+    const event = new CalendarEvent({
       start,
       end,
       date,
@@ -198,88 +278,9 @@ class CalendarTemplate {
   }
 
   submitModal(event) {
-    console.log('submitModal');
     if (event.isValidIn(this)) {
       event.updateIn(this);
       this.closeModal();
-    }
-  }
-
-  hoverOver(hour) {
-    const calendarTime = document.querySelector(
-      `.calendar__time[data-hour="${hour}"]`,
-    );
-    calendarTime.classList.add('currentTime');
-  }
-
-  hoverOut() {
-    const calendarTime = document.querySelector(`.calendar__time.currentTime`);
-    calendarTime.classList.remove('currentTime');
-  }
-
-  calculateCurrentWeek() {
-    const now = new Date();
-    this.weekStart = addDays(now, -getDayIndex(now));
-    this.weekEnd = addDays(this.weekStart, 6);
-  }
-
-  showWeek() {
-    const options = {
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric',
-    };
-    document.querySelector('.week__start-display').textContent =
-      this.weekStart.toLocaleDateString(undefined, options);
-    document.querySelector('.week__end-display').textContent =
-      this.weekEnd.toLocaleDateString(undefined, options);
-    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-      const date = addDays(this.weekStart, dayIndex);
-      const display = date.toLocaleDateString(undefined, {
-        month: '2-digit',
-        day: '2-digit',
-      });
-      const dayElement = document.querySelector(
-        `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
-      );
-      dayElement.textContent = display;
-    }
-
-    if (this.weekOffSet === 0) {
-      this.setCurrentDay(true); // Pokazuje aktualny dzień
-    } else {
-      this.setCurrentDay(false); // Ukrywa aktualny dzień
-    }
-  }
-
-  setupControls() {
-    const nextButton = document.querySelector('.week-controls__btn-next');
-    const prevButton = document.querySelector('.week-controls__btn-prev');
-    const cancelButton = document.getElementById('cancelButton');
-
-    nextButton.addEventListener('click', () => this.changeWeek(1));
-    prevButton.addEventListener('click', () => this.changeWeek(-1));
-    cancelButton.addEventListener('click', () => this.closeModal());
-  }
-
-  changeWeek(number) {
-    this.weekOffSet += number;
-    this.weekStart = addDays(this.weekStart, 7 * number);
-    this.weekEnd = addDays(this.weekEnd, 7 * number);
-    this.showWeek();
-  }
-
-  setCurrentDay(isVisible) {
-    const now = new Date();
-    const dayIndex = getDayIndex(now);
-    const dayElement = document.querySelector(
-      `.calendar__day[data-dayIndex="${dayIndex}"]`,
-    );
-
-    if (isVisible) {
-      dayElement.classList.add('currentDay');
-    } else {
-      dayElement.classList.remove('currentDay');
     }
   }
 }
