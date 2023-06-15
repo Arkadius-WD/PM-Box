@@ -1,14 +1,13 @@
 import { CalendarEvent, MODE } from './CalendarEvent';
 import { dateString, getDayIndex, addDays } from './calendarHelper';
 
-class CalendarTemplate {
+export default class CalendarTemplate {
   constructor() {
-    this.mode = MODE.VIEW;
-    this.events = {};
     this.weekStart = null;
     this.weekEnd = null;
     this.weekOffSet = 0;
     this.mode = MODE.VIEW;
+    this.events = [];
   }
 
   setup() {
@@ -284,5 +283,3 @@ class CalendarTemplate {
     }
   }
 }
-
-export default CalendarTemplate;

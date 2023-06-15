@@ -117,6 +117,7 @@
   }
 
   .currentDay {
+    background-color: rgba($color: $fourth, $alpha: 0.05);
     .calendar__column-header {
       background-color: $fourth;
       color: $third;
@@ -149,7 +150,10 @@
   z-index: 1;
 
   &__errors {
+    padding-top: 1rem;
     color: $fourth;
+    font-size: 1.2rem;
+    text-align: center;
   }
 
   &__header {
@@ -204,6 +208,7 @@
   }
 
   &__controls {
+    padding-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -263,6 +268,10 @@
 
     &--orange {
       background-color: $eighth;
+    }
+
+    &--purple {
+      background-color: $sixth;
     }
 
     &:focus,

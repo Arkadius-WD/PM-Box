@@ -57,9 +57,9 @@ export class CalendarEvent {
     return parseInt(this.end.substring(3, 5), 10);
   }
 
-  saveIn() {
+  saveIn(calendar) {
     // todo
-    // calendar.events.push(this);
+    calendar.events.push(this);
   }
 
   showIn(calendar) {
@@ -145,19 +145,17 @@ export class CalendarEvent {
     const newDate = this.dateInput.value;
     const errors = document.querySelector('.event-modal__errors');
 
-    if (calendar.events[newDate]) {
-      const events = Object.values(calendar.events[newDate]);
-      const conflictingEvent = events.find(
-        event =>
-          event.id !== this.id && event.end > newStart && event.start < newEnd,
-      );
-      if (conflictingEvent) {
-        document.getElementById(
-          'errors',
-        ).textContent = `This collides with the event '${conflictingEvent.title}' (${conflictingEvent.start} - ${conflictingEvent.end}).`;
+    calendar.events.forEach(event => {
+      if (
+        event.id !== this.id &&
+        event.end > newStart &&
+        event.start < newEnd
+      ) {
+        errors.textContent = `This collides with the event ${event.title} (${event.start} - ${event.end}).`;
         return false;
       }
-    }
+      return true;
+    });
 
     const duration =
       (new Date(`${newDate}T${newEnd}`).getTime() -
