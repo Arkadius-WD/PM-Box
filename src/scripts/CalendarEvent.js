@@ -58,8 +58,7 @@ export class CalendarEvent {
   }
 
   saveIn(calendar) {
-    // todo
-    calendar.events.push(this);
+    // calendar.events.push(calendar);
   }
 
   showIn(calendar) {
@@ -129,6 +128,8 @@ export class CalendarEvent {
     this.color = this.colors.value;
     this.saveIn(calendar);
     this.showIn(calendar);
+
+    console.log(this.title);
   }
 
   copyIn() {
@@ -172,5 +173,3 @@ export class CalendarEvent {
     return true;
   }
 }
-
-// nowa gałąź

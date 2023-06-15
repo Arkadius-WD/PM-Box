@@ -116,9 +116,9 @@ export default class CalendarTemplate {
     }
 
     if (this.weekOffSet === 0) {
-      this.setCurrentDay(true); // Pokazuje aktualny dzień
+      this.setCurrentDay(true);
     } else {
-      this.setCurrentDay(false); // Ukrywa aktualny dzień
+      this.setCurrentDay(false);
     }
   }
 
@@ -248,13 +248,15 @@ export default class CalendarTemplate {
     titleInput.focus();
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
-    eventModal.addEventListener('submit', e => {
-      e.preventDefault();
-      this.submitModal(event);
-    });
+    // eventModal.addEventListener('submit', e => {
+    //   e.preventDefault();
+    //   this.submitModal(event);
+    //   console.log(titleInput.value);
+    // });
     submitButton.addEventListener('click', e => {
       e.preventDefault();
-      this.submitModal(event);
+      console.log(titleInput.value);
+      // this.submitModal(event);
     });
   }
 
@@ -277,9 +279,12 @@ export default class CalendarTemplate {
   }
 
   submitModal(event) {
-    if (event.isValidIn(this)) {
-      event.updateIn(this);
-      this.closeModal();
-    }
+    // if (event.isValidIn(this)) {
+    //   event.updateIn(this);
+    //   this.closeModal();
+    // }
+    // console.log(event);
+    // event.updateIn(this);
+    this.closeModal();
   }
 }
