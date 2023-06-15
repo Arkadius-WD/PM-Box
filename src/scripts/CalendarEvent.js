@@ -173,4 +173,4 @@ export class CalendarEvent {
   }
 }
 
-// próby na Git
+// nowa gałąź
