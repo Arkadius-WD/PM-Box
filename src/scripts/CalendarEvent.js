@@ -58,7 +58,7 @@ export class CalendarEvent {
   }
 
   saveIn(calendar) {
-    // calendar.events.push(calendar);
+    calendar.events.push(this);
   }
 
   showIn(calendar) {
@@ -128,8 +128,6 @@ export class CalendarEvent {
     this.color = this.colors.value;
     this.saveIn(calendar);
     this.showIn(calendar);
-
-    console.log(this.title);
   }
 
   copyIn() {

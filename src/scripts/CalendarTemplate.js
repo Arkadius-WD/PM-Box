@@ -248,15 +248,13 @@ export default class CalendarTemplate {
     titleInput.focus();
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
-    // eventModal.addEventListener('submit', e => {
-    //   e.preventDefault();
-    //   this.submitModal(event);
-    //   console.log(titleInput.value);
-    // });
+    eventModal.addEventListener('submit', e => {
+      e.preventDefault();
+      this.submitModal(event);
+    });
     submitButton.addEventListener('click', e => {
       e.preventDefault();
-      console.log(titleInput.value);
-      // this.submitModal(event);
+      this.submitModal(event);
     });
   }
 
@@ -266,6 +264,7 @@ export default class CalendarTemplate {
     const errors = document.querySelector('.event-modal__errors');
 
     const fadeOut = (element, duration) => {
+      this.mode = MODE.VIEW;
       element.style.opacity = '0';
       setTimeout(() => {
         element.style.display = 'none';
@@ -275,16 +274,12 @@ export default class CalendarTemplate {
     fadeOut(eventModal, 200);
     errors.textContent = '';
     calendarWindow.classList.remove('opaque');
-    this.mode = MODE.VIEW;
   }
 
   submitModal(event) {
-    // if (event.isValidIn(this)) {
-    //   event.updateIn(this);
-    //   this.closeModal();
-    // }
-    // console.log(event);
-    // event.updateIn(this);
-    this.closeModal();
+    if (event.isValidIn(this)) {
+      this.closeModal();
+      event.updateIn(this);
+    }
   }
 }
