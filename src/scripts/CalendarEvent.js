@@ -128,6 +128,7 @@ export class CalendarEvent {
     this.color = this.colors.value;
     this.saveIn(calendar);
     this.showIn(calendar);
+    console.log(this.titleInput.value);
   }
 
   copyIn() {
