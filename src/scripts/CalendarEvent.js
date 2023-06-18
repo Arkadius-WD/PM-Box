@@ -24,6 +24,7 @@ export class CalendarEvent {
     this.title = data.title;
     this.start = data.start;
     this.end = data.end;
+    this.prevDate = data.date;
     this.date = data.date;
     this.description = data.description;
     this.color = data.color;
@@ -58,7 +59,18 @@ export class CalendarEvent {
   }
 
   saveIn(calendar) {
-    calendar.events.push(this);
+    if (this.prevDate && this.date !== this.prevDate) {
+      delete calendar.events[this.prevDate][this.id];
+      if (Object.values(calendar.events[this.prevDate]).length === 0) {
+        delete calendar.events[this.prevDate];
+      }
+    }
+    if (!calendar.events[this.date]) {
+      calendar.events[this.date] = {};
+    }
+    calendar.events[this.date][this.id] = this;
+
+    console.log(calendar.events);
   }
 
   showIn(calendar) {
@@ -119,16 +131,15 @@ export class CalendarEvent {
   }
 
   updateIn(calendar) {
-    this.prevDate = this.date;
     this.title = this.titleInput.value;
     this.start = this.startInput.value;
     this.end = this.endInput.value;
+    this.prevDate = this.date;
     this.date = this.dateInput.value;
     this.description = this.descriptionInput.value;
     this.color = this.colors.value;
     this.saveIn(calendar);
     this.showIn(calendar);
-    console.log(this.titleInput.value);
   }
 
   copyIn() {
@@ -145,17 +156,17 @@ export class CalendarEvent {
     const newDate = this.dateInput.value;
     const errors = document.querySelector('.event-modal__errors');
 
-    calendar.events.forEach(event => {
-      if (
-        event.id !== this.id &&
-        event.end > newStart &&
-        event.start < newEnd
-      ) {
-        errors.textContent = `This collides with the event ${event.title} (${event.start} - ${event.end}).`;
+    if (calendar.events[newDate]) {
+      const event = Object.values(calendar.events[newDate]).find(
+        event =>
+          event.id !== this.id && event.end > newStart && event.start < newEnd,
+      );
+      if (event) {
+        errors.textContent = `This collides with the event '${event.title}'
+          (${event.start} - ${event.end}).`;
         return false;
       }
-      return true;
-    });
+    }
 
     const duration =
       (new Date(`${newDate}T${newEnd}`).getTime() -

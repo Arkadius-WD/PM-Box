@@ -7,7 +7,7 @@ export default class CalendarTemplate {
     this.weekEnd = null;
     this.weekOffSet = 0;
     this.mode = MODE.VIEW;
-    this.events = [];
+    this.events = {};
   }
 
   setup() {
