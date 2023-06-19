@@ -137,7 +137,7 @@ export class CalendarEvent {
     this.prevDate = this.date;
     this.date = this.dateInput.value;
     this.description = this.descriptionInput.value;
-    this.color = this.colors.value;
+    this.color = $('.color.active').attr('data-color')
     this.saveIn(calendar);
     this.showIn(calendar);
   }
