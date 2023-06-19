@@ -214,11 +214,11 @@ export default class CalendarTemplate {
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
       deleteButton.style.display = 'block';
-      document.getElementById('deleteButton').addEventListener('click', () => {
+      deleteButton.addEventListener.show().off('click)('click', () => {
         // todo
         console.log('delete event', event);
       });
-      copyButton.addEventListener('click', () => {
+      copyButton.addEventListener.show().off('click)('click', () => {
         // todo
         console.log('copy event', event);
       });
@@ -248,7 +248,7 @@ export default class CalendarTemplate {
     titleInput.focus();
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
-    eventModal.addEventListener('submit', e => {
+    eventModal.addEventListener.off('submit).('submit', e => {
       e.preventDefault();
       this.submitModal(event);
     });
