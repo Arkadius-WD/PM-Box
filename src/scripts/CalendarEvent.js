@@ -131,13 +131,17 @@ export class CalendarEvent {
   }
 
   updateIn(calendar) {
+    const activeColorElement = document.querySelector(
+      '.event-modal__color.active',
+    );
+    const color = activeColorElement.getAttribute('data-color');
     this.title = this.titleInput.value;
     this.start = this.startInput.value;
     this.end = this.endInput.value;
     this.prevDate = this.date;
     this.date = this.dateInput.value;
     this.description = this.descriptionInput.value;
-    this.color = $('.color.active').attr('data-color')
+    this.color = color;
     this.saveIn(calendar);
     this.showIn(calendar);
   }
@@ -157,13 +161,12 @@ export class CalendarEvent {
     const errors = document.querySelector('.event-modal__errors');
 
     if (calendar.events[newDate]) {
-      const event = Object.values(calendar.events[newDate]).find(
+      const conflictingEvent = Object.values(calendar.events[newDate]).find(
         event =>
           event.id !== this.id && event.end > newStart && event.start < newEnd,
       );
-      if (event) {
-        errors.textContent = `This collides with the event '${event.title}'
-          (${event.start} - ${event.end}).`;
+      if (conflictingEvent) {
+        errors.textContent = `This collides with the event '${conflictingEvent.title}' (${conflictingEvent.start} - ${conflictingEvent.end}).`;
         return false;
       }
     }
