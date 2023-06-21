@@ -22,10 +22,14 @@ export default class CalendarTemplate {
     const nextButton = document.querySelector('.week-controls__btn-next');
     const prevButton = document.querySelector('.week-controls__btn-prev');
     const cancelButton = document.getElementById('cancelButton');
+    const colors = document.querySelectorAll('.event-modal__color');
 
     nextButton.addEventListener('click', () => this.changeWeek(1));
     prevButton.addEventListener('click', () => this.changeWeek(-1));
     cancelButton.addEventListener('click', () => this.closeModal());
+    colors.forEach(color => {
+      color.addEventListener('click', event => this.changeColor(event));
+    });
   }
 
   setupTimes() {
@@ -91,6 +95,16 @@ export default class CalendarTemplate {
     this.weekStart = addDays(this.weekStart, 7 * number);
     this.weekEnd = addDays(this.weekEnd, 7 * number);
     this.showWeek();
+  }
+
+  changeColor(event) {
+    const colors = document.querySelectorAll('.event-modal__color');
+
+    colors.forEach(color => {
+      color.classList.remove('active');
+    });
+
+    event.target.classList.add('active');
   }
 
   showWeek() {
@@ -195,17 +209,18 @@ export default class CalendarTemplate {
     colors.dataset = event.color;
 
     const defaultColor = colors[0];
-    colors.forEach(colorSelector => {
-      if (colorSelector) {
-        colorSelector.addEventListener('blur', () => {
-          colorSelector.classList.remove('active');
-        });
-        colorSelector.addEventListener('focus', () => {
-          colorSelector.classList.add('active');
-          defaultColor.classList.remove('active');
-        });
-      }
-    });
+
+    // colors.forEach(colorSelector => {
+    //   if (colorSelector) {
+    //     colorSelector.addEventListener('blur', () => {
+    //       colorSelector.classList.remove('active');
+    //     });
+    //     colorSelector.addEventListener('focus', () => {
+    //       defaultColor.classList.remove('active');
+    //       colorSelector.classList.add('active');
+    //     });
+    //   }
+    // });
 
     eventModalHeader.textContent =
       this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
@@ -266,6 +281,7 @@ export default class CalendarTemplate {
     const calendarWindow = document.querySelector('.calendar__window');
     const eventModal = document.querySelector('.event-modal');
     const errors = document.querySelector('.event-modal__errors');
+    const colors = document.querySelectorAll('.event-modal__color');
 
     const fadeOut = (element, duration) => {
       this.mode = MODE.VIEW;
@@ -278,6 +294,10 @@ export default class CalendarTemplate {
     fadeOut(eventModal, 200);
     errors.textContent = '';
     calendarWindow.classList.remove('opaque');
+
+    colors.forEach(color => {
+      color.classList.remove('active');
+    });
   }
 
   submitModal(event) {
@@ -285,5 +305,9 @@ export default class CalendarTemplate {
       event.updateIn(this);
       this.closeModal();
     }
+  }
+
+  saveEvents() {
+    localStorage.setItem('events', JSON.stringify(this.events));
   }
 }

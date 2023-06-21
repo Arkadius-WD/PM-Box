@@ -7,18 +7,6 @@ export const MODE = {
 };
 
 export class CalendarEvent {
-  titleInput = document.querySelector('.event-modal__title');
-
-  startInput = document.querySelector('.event-modal__start');
-
-  endInput = document.querySelector('.event-modal__end');
-
-  dateInput = document.querySelector('.event-modal__date');
-
-  descriptionInput = document.querySelector('.event-modal__description');
-
-  colors = document.querySelectorAll('.event-modal__color');
-
   constructor(data) {
     this.id = data.id || generateId();
     this.title = data.title;
@@ -69,7 +57,7 @@ export class CalendarEvent {
       calendar.events[this.date] = {};
     }
     calendar.events[this.date][this.id] = this;
-
+    calendar.saveEvents();
     console.log(calendar.events);
   }
 
@@ -131,16 +119,23 @@ export class CalendarEvent {
   }
 
   updateIn(calendar) {
+    const titleInput = document.querySelector('.event-modal__title');
+    const startInput = document.querySelector('.event-modal__start');
+    const endInput = document.querySelector('.event-modal__end');
+    const dateInput = document.querySelector('.event-modal__date');
+    const descriptionInput = document.querySelector(
+      '.event-modal__description',
+    );
     const activeColorElement = document.querySelector(
       '.event-modal__color.active',
     );
     const color = activeColorElement.getAttribute('data-color');
-    this.title = this.titleInput.value;
-    this.start = this.startInput.value;
-    this.end = this.endInput.value;
+    this.title = titleInput.value;
+    this.start = startInput.value;
+    this.end = endInput.value;
+    this.date = dateInput.value;
+    this.description = descriptionInput.value;
     this.prevDate = this.date;
-    this.date = this.dateInput.value;
-    this.description = this.descriptionInput.value;
     this.color = color;
     this.saveIn(calendar);
     this.showIn(calendar);
@@ -155,9 +150,12 @@ export class CalendarEvent {
   }
 
   isValidIn(calendar) {
-    const newStart = this.startInput.value;
-    const newEnd = this.endInput.value;
-    const newDate = this.dateInput.value;
+    const startInput = document.querySelector('.event-modal__start');
+    const endInput = document.querySelector('.event-modal__end');
+    const dateInput = document.querySelector('.event-modal__date');
+    const newStart = startInput.value;
+    const newEnd = endInput.value;
+    const newDate = dateInput.value;
     const errors = document.querySelector('.event-modal__errors');
 
     if (calendar.events[newDate]) {
