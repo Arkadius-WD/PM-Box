@@ -3,11 +3,14 @@ import { dateString, getDayIndex, addDays } from './calendarHelper';
 
 export default class CalendarTemplate {
   constructor() {
-    this.weekStart = null;
-    this.weekEnd = null;
-    this.weekOffSet = 0;
     this.mode = MODE.VIEW;
     this.events = {};
+    this.weekOffset = 0;
+    this.readyToTrash = false;
+    this.slotHeight = 30;
+    this.weekStart = null;
+    this.weekEnd = null;
+    this.eventsLoaded = false;
   }
 
   setup() {
@@ -15,18 +18,28 @@ export default class CalendarTemplate {
     this.setupDays();
     this.calculateCurrentWeek();
     this.showWeek();
+    // this.loadEvents();
     this.setupControls();
   }
 
   setupControls() {
-    const nextButton = document.querySelector('.week-controls__btn-next');
-    const prevButton = document.querySelector('.week-controls__btn-prev');
-    const cancelButton = document.getElementById('cancelButton');
-    const colors = document.querySelectorAll('.event-modal__color');
+    document
+      .querySelector('.week-controls__btn-next')
+      .addEventListener('click', () => this.changeWeek(1));
+    document
+      .querySelector('.week-controls__btn-prev')
+      .addEventListener('click', () => this.changeWeek(-1));
+    document
+      .querySelector('.general-controls__btn-add')
+      .addEventListener('click', () => this.addNewEvent());
+    document
+      .querySelector('.general-controls__btn-trash')
+      .addEventListener('click', () => this.trash());
+    document
+      .getElementById('cancelButton')
+      .addEventListener('click', () => this.closeModal());
 
-    nextButton.addEventListener('click', () => this.changeWeek(1));
-    prevButton.addEventListener('click', () => this.changeWeek(-1));
-    cancelButton.addEventListener('click', () => this.closeModal());
+    const colors = document.querySelectorAll('.event-modal__color');
     colors.forEach(color => {
       color.addEventListener('click', event => this.changeColor(event));
     });
@@ -35,7 +48,6 @@ export default class CalendarTemplate {
   setupTimes() {
     const header = document.createElement('div');
     const slots = document.createElement('div');
-
     header.classList.add('calendar__column-header');
     slots.classList.add('calendar__slots');
 
@@ -47,12 +59,12 @@ export default class CalendarTemplate {
       slots.appendChild(timeSlot);
     }
 
-    const dayTime = document.querySelector('.calendar__days-time');
-    dayTime.appendChild(header);
-    dayTime.appendChild(slots);
+    document.querySelector('.calendar__days-time').appendChild(header);
+    document.querySelector('.calendar__days-time').appendChild(slots);
   }
 
   setupDays() {
+    const cal = this;
     const calendarDays = document.querySelectorAll('.calendar__day');
 
     calendarDays.forEach(day => {
@@ -66,21 +78,19 @@ export default class CalendarTemplate {
       header.textContent = name;
       slots.classList.add('calendar__slots');
       dayDisplay.classList.add('dayDisplay');
+      header.appendChild(dayDisplay);
 
       for (let hour = 0; hour < 24; hour++) {
-        const self = this;
         const slot = document.createElement('div');
         slot.setAttribute('data-hour', hour);
         slot.classList.add('calendar__slot');
-        slot.addEventListener('click', () => self.clickSlot(hour, dayIndex));
-        slot.addEventListener('mouseover', () => self.hoverOver(hour));
-        slot.addEventListener('mouseout', () => self.hoverOut());
+        slot.addEventListener('click', () => cal.clickSlot(hour, dayIndex));
+        slot.addEventListener('mouseover', () => cal.hoverOver(hour));
+        slot.addEventListener('mouseout', () => cal.hoverOut());
         slots.appendChild(slot);
       }
-
       day.appendChild(header);
       day.appendChild(slots);
-      header.appendChild(dayDisplay);
     });
   }
 
@@ -91,20 +101,11 @@ export default class CalendarTemplate {
   }
 
   changeWeek(number) {
-    this.weekOffSet += number;
+    this.weekOffset += number;
     this.weekStart = addDays(this.weekStart, 7 * number);
     this.weekEnd = addDays(this.weekEnd, 7 * number);
     this.showWeek();
-  }
-
-  changeColor(event) {
-    const colors = document.querySelectorAll('.event-modal__color');
-
-    colors.forEach(color => {
-      color.classList.remove('active');
-    });
-
-    event.target.classList.add('active');
+    this.loadEvents();
   }
 
   showWeek() {
@@ -113,20 +114,22 @@ export default class CalendarTemplate {
       day: '2-digit',
       year: 'numeric',
     };
+
     document.querySelector('.week__start-display').textContent =
       this.weekStart.toLocaleDateString(undefined, options);
     document.querySelector('.week__end-display').textContent =
       this.weekEnd.toLocaleDateString(undefined, options);
+
     for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
       const date = addDays(this.weekStart, dayIndex);
       const display = date.toLocaleDateString(undefined, {
         month: '2-digit',
         day: '2-digit',
       });
-      const dayElement = document.querySelector(
+
+      document.querySelector(
         `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
-      );
-      dayElement.textContent = display;
+      ).innerText = display;
     }
 
     if (this.weekOffSet === 0) {
@@ -163,16 +166,16 @@ export default class CalendarTemplate {
   }
 
   clickSlot(hour, dayIndex) {
-    if (this.mode !== MODE.VIEW) {
-      return;
-    }
+    if (this.mode !== MODE.VIEW) return;
     this.mode = MODE.CREATE;
     const start = `${hour.toString().padStart(2, '0')}:00`;
     const end =
       hour < 23
         ? `${(hour + 1).toString().padStart(2, '0')}:00`
         : `${hour.toString().padStart(2, '0')}:59`;
+
     const date = dateString(addDays(this.weekStart, dayIndex));
+
     const event = new CalendarEvent({
       start,
       end,
@@ -184,6 +187,16 @@ export default class CalendarTemplate {
 
     this.openModal(event);
   }
+
+  changeColor(event) {
+    const colors = document.querySelectorAll('.event-modal__color');
+    colors.forEach(color => {
+      color.classList.remove('active');
+    });
+    event.target.classList.add('active');
+  }
+
+  /// //// Tutaj się zatrzymałem ///////////////////
 
   openModal(event) {
     const calendarWindow = document.querySelector('.calendar__window');

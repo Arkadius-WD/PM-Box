@@ -24,31 +24,35 @@ class Calendar {
 
   setupControls() {
     document
-      .getElementById('nextWeekBtn')
+      .querySelector('.week-controls__btn-next')
       .addEventListener('click', () => this.changeWeek(1));
     document
-      .getElementById('prevWeekBtn')
+      .querySelector('.week-controls__btn-prev')
       .addEventListener('click', () => this.changeWeek(-1));
     document
-      .getElementById('addButton')
+      .querySelector('.general-controls__btn-add')
       .addEventListener('click', () => this.addNewEvent());
     document
-      .getElementById('trashButton')
+      .querySelector('.general-controls__btn-trash')
       .addEventListener('click', () => this.trash());
     document
       .getElementById('cancelButton')
       .addEventListener('click', () => this.closeModal());
-    const colors = document.getElementsByClassName('color');
-    for (let i = 0; i < colors.length; i++) {
-      colors[i].addEventListener('click', this.changeColor);
-    }
+
+    const colors = document.querySelectorAll('.event-modal__color');
+    colors.forEach(color => {
+      color.addEventListener('click', event => this.changeColor(event));
+    });
   }
 
   setupTimes() {
     const header = document.createElement('div');
-    header.classList.add('columnHeader');
     const slots = document.createElement('div');
+
+    header.classList.add('columnHeader');
     slots.classList.add('slots');
+
+
     for (let hour = 0; hour < 24; hour++) {
       const div = document.createElement('div');
       div.setAttribute('data-hour', hour);
@@ -56,24 +60,27 @@ class Calendar {
       div.innerText = `${hour}:00 - ${hour + 1}:00`;
       slots.appendChild(div);
     }
-    document.querySelector('.dayTime').appendChild(header);
-    document.querySelector('.dayTime').appendChild(slots);
+    document.querySelector('.calendar__days-time').appendChild(header);
+    document.querySelector('.calendar__days-time').appendChild(slots);
   }
 
   setupDays() {
     const cal = this;
     const days = document.querySelectorAll('.day');
+
     days.forEach(function (day) {
       const dayIndex = parseInt(day.getAttribute('data-dayIndex'), 10);
       const name = day.getAttribute('data-name');
       const header = document.createElement('div');
+      const slots = document.createElement('div');
+      const dayDisplay = document.createElement('div');
+
       header.classList.add('columnHeader');
       header.innerText = name;
-      const slots = document.createElement('div');
       slots.classList.add('slots');
-      const dayDisplay = document.createElement('div');
       dayDisplay.classList.add('dayDisplay');
       header.appendChild(dayDisplay);
+
       for (let hour = 0; hour < 24; hour++) {
         const div = document.createElement('div');
         div.setAttribute('data-hour', hour);
@@ -83,6 +90,7 @@ class Calendar {
         div.addEventListener('mouseout', () => cal.hoverOut());
         slots.appendChild(div);
       }
+
       day.appendChild(header);
       day.appendChild(slots);
     });
@@ -119,8 +127,9 @@ class Calendar {
         month: '2-digit',
         day: '2-digit',
       });
+
       document.querySelector(
-        `.day[data-dayIndex="${dayIndex}"] .dayDisplay`,
+        `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
       ).innerText = display;
     }
     if (this.weekOffset === 0) {
@@ -167,6 +176,7 @@ class Calendar {
         : `${hour.toString().padStart(2, '0')}:59`;
 
     const date = dateString(addDays(this.weekStart, dayIndex));
+    
     const event = new Event({
       start,
       end,
