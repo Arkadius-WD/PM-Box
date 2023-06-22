@@ -52,7 +52,6 @@ class Calendar {
     header.classList.add('columnHeader');
     slots.classList.add('slots');
 
-
     for (let hour = 0; hour < 24; hour++) {
       const div = document.createElement('div');
       div.setAttribute('data-hour', hour);
@@ -143,13 +142,13 @@ class Calendar {
     const now = new Date();
     const dayIndex = getDayIndex(now);
     document
-      .querySelector(`.day[data-dayIndex="${dayIndex}"]`)
+      .querySelector(`.calendar__day[data-dayIndex="${dayIndex}"]`)
       .classList.add('currentDay');
   }
 
   hideCurrentDay() {
-    const days = document.querySelectorAll('.day');
-    days.forEach(function (day) {
+    const days = document.querySelectorAll('.calendar__day');
+    days.forEach(day => {
       day.classList.remove('currentDay');
     });
   }
@@ -176,7 +175,7 @@ class Calendar {
         : `${hour.toString().padStart(2, '0')}:59`;
 
     const date = dateString(addDays(this.weekStart, dayIndex));
-    
+
     const event = new Event({
       start,
       end,

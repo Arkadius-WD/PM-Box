@@ -12,8 +12,8 @@ export class CalendarEvent {
     this.title = data.title;
     this.start = data.start;
     this.end = data.end;
-    this.prevDate = data.date;
     this.date = data.date;
+    this.prevDate = this.date;
     this.description = data.description;
     this.color = data.color;
   }
@@ -47,6 +47,7 @@ export class CalendarEvent {
   }
 
   saveIn(calendar) {
+    console.log(this);
     if (this.prevDate && this.date !== this.prevDate) {
       delete calendar.events[this.prevDate][this.id];
       if (Object.values(calendar.events[this.prevDate]).length === 0) {
@@ -58,7 +59,6 @@ export class CalendarEvent {
     }
     calendar.events[this.date][this.id] = this;
     calendar.saveEvents();
-    console.log(calendar.events);
   }
 
   showIn(calendar) {

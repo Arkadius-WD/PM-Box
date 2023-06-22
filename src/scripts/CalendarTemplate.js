@@ -105,7 +105,7 @@ export default class CalendarTemplate {
     this.weekStart = addDays(this.weekStart, 7 * number);
     this.weekEnd = addDays(this.weekEnd, 7 * number);
     this.showWeek();
-    this.loadEvents();
+    // this.loadEvents();
   }
 
   showWeek() {
@@ -127,30 +127,32 @@ export default class CalendarTemplate {
         day: '2-digit',
       });
 
-      document.querySelector(
+      const dayElement = document.querySelector(
         `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
-      ).innerText = display;
+      );
+      dayElement.textContent = display;
     }
 
-    if (this.weekOffSet === 0) {
-      this.setCurrentDay(true);
+    if (this.weekOffset === 0) {
+      this.showCurrentDay();
     } else {
-      this.setCurrentDay(false);
+      this.hideCurrentDay();
     }
   }
 
-  setCurrentDay(isVisible) {
+  showCurrentDay() {
     const now = new Date();
     const dayIndex = getDayIndex(now);
-    const dayElement = document.querySelector(
-      `.calendar__day[data-dayIndex="${dayIndex}"]`,
-    );
+    document
+      .querySelector(`.calendar__day[data-dayIndex="${dayIndex}"]`)
+      .classList.add('currentDay');
+  }
 
-    if (isVisible) {
-      dayElement.classList.add('currentDay');
-    } else {
-      dayElement.classList.remove('currentDay');
-    }
+  hideCurrentDay() {
+    const days = document.querySelectorAll('.calendar__day');
+    days.forEach(day => {
+      day.classList.remove('currentDay');
+    });
   }
 
   hoverOver(hour) {
