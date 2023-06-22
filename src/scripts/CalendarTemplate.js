@@ -201,26 +201,14 @@ export default class CalendarTemplate {
     const deleteButton = document.getElementById('deleteButton');
     const copyButton = document.getElementById('copyButton');
 
+    const defaultColor = colors[0];
+
     titleInput.value = event.title;
     dateInput.value = event.date;
     startInput.value = event.start;
     endInput.value = event.end;
     descriptionInput.value = event.description;
     colors.dataset = event.color;
-
-    const defaultColor = colors[0];
-
-    // colors.forEach(colorSelector => {
-    //   if (colorSelector) {
-    //     colorSelector.addEventListener('blur', () => {
-    //       colorSelector.classList.remove('active');
-    //     });
-    //     colorSelector.addEventListener('focus', () => {
-    //       defaultColor.classList.remove('active');
-    //       colorSelector.classList.add('active');
-    //     });
-    //   }
-    // });
 
     eventModalHeader.textContent =
       this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
