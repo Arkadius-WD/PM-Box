@@ -1,5 +1,5 @@
-import { CalendarEvent, MODE } from './CalendarEvent';
-import { dateString, getDayIndex, addDays } from './calendarHelper';
+import { dateString, getDayIndex, addDays, generateId } from './calendarHelper';
+import { Event, MODE } from './CalendarEvent';
 
 export default class CalendarTemplate {
   constructor() {
@@ -64,9 +64,9 @@ export default class CalendarTemplate {
   }
 
   setupDays() {
-    const cal = this;
     const calendarDays = document.querySelectorAll('.calendar__day');
 
+    const cal = this;
     calendarDays.forEach(day => {
       const dayIndex = parseInt(day.getAttribute('data-dayIndex'), 10);
       const name = day.getAttribute('data-name');
@@ -178,7 +178,7 @@ export default class CalendarTemplate {
 
     const date = dateString(addDays(this.weekStart, dayIndex));
 
-    const event = new CalendarEvent({
+    const event = new Event({
       start,
       end,
       date,
@@ -186,7 +186,6 @@ export default class CalendarTemplate {
       description: '',
       color: 'red',
     });
-
     this.openModal(event);
   }
 
@@ -198,10 +197,9 @@ export default class CalendarTemplate {
     event.target.classList.add('active');
   }
 
-  /// //// Tutaj się zatrzymałem ///////////////////
-
   openModal(event) {
-    const calendarWindow = document.querySelector('.calendar__window');
+    console.log(event.id); /// /////////////////
+    console.log(event.start); /// /////////////////
     const eventModal = document.querySelector('.event-modal');
     const eventModalHeader = document.querySelector('.event-modal__header');
     const titleInput = document.querySelector('.event-modal__title');
@@ -212,12 +210,13 @@ export default class CalendarTemplate {
       '.event-modal__description',
     );
     const colors = document.querySelectorAll('.event-modal__color');
+    const calendarWindow = document.querySelector('.calendar__window');
     const submitButton = document.getElementById('submitButton');
     const deleteButton = document.getElementById('deleteButton');
     const copyButton = document.getElementById('copyButton');
 
     const defaultColor = colors[0];
-
+    this.id = event.id; /// /////////////////////
     titleInput.value = event.title;
     dateInput.value = event.date;
     startInput.value = event.start;
@@ -227,42 +226,25 @@ export default class CalendarTemplate {
 
     eventModalHeader.textContent =
       this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
-    eventModal.style.display = 'block';
 
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
       deleteButton.style.display = 'block';
-      deleteButton.removeEventListener('click');
-      deleteButton.addEventListener('click', () => {
-        // todo
-        console.log('delete event', event);
-      });
+      deleteButton.removeEventListener('click', event.deleteIn);
+      deleteButton.addEventListener('click', () => event.deleteIn(this));
       copyButton.style.display = 'block';
-      copyButton.removeEventListener('click');
-      copyButton.addEventListener('click', () => {
-        // todo
-        console.log('copy event', event);
-      });
+      copyButton.removeEventListener('click', event.copyIn);
+      copyButton.addEventListener('click', () => event.copyIn(this));
     } else if (this.mode === MODE.CREATE) {
       submitButton.value = 'Create';
       deleteButton.style.display = 'none';
       copyButton.style.display = 'none';
     }
+    eventModal.style.display = 'block';
 
     const fadeIn = (element, duration) => {
-      const start = performance.now();
-      element.style.opacity = 0;
-
-      const animate = currentTime => {
-        const elapsed = currentTime - start;
-        element.style.opacity = elapsed / duration;
-
-        if (elapsed < duration) {
-          requestAnimationFrame(animate);
-        }
-      };
-
-      requestAnimationFrame(animate);
+      element.style.transition = `opacity ${duration}ms`;
+      element.style.opacity = 1;
     };
 
     fadeIn(eventModal, 200);
@@ -279,6 +261,8 @@ export default class CalendarTemplate {
       this.submitModal(event);
     });
   }
+
+  /// ///////////////////////////////////////////////////////////
 
   closeModal() {
     const calendarWindow = document.querySelector('.calendar__window');

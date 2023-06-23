@@ -6,14 +6,14 @@ export const MODE = {
   CREATE: 3,
 };
 
-export class CalendarEvent {
+export class Event {
   constructor(data) {
     this.id = data.id || generateId();
     this.title = data.title;
     this.start = data.start;
     this.end = data.end;
     this.date = data.date;
-    this.prevDate = this.date;
+    this.prevDate = data.date;
     this.description = data.description;
     this.color = data.color;
   }

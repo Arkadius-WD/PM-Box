@@ -202,28 +202,34 @@ class Calendar {
     const eventStart = document.getElementById('eventStart');
     const eventEnd = document.getElementById('eventEnd');
     const eventDescription = document.getElementById('eventDescription');
-    const colorDivs = document.getElementsByClassName('color');
+    const colors = document.getElementsByClassName('color');
+    const deleteButton = document.getElementById('deleteButton');
+    const copyButton = document.getElementById('copyButton');
 
     modalTitle.innerText =
       this.mode === MODE.UPDATE ? 'Update your event' : 'Create a new event';
+
     eventTitle.value = event.title;
     eventDate.value = event.date;
     eventStart.value = event.start;
     eventEnd.value = event.end;
     eventDescription.value = event.description;
-    for (let i = 0; i < colorDivs.length; i++) {
-      colorDivs[i].classList.remove('active');
+
+    for (let i = 0; i < colors.length; i++) {
+      colors[i].classList.remove('active');
     }
+
     document
       .querySelector(`.color[data-color="${event.color}"]`)
       .classList.add('active');
+
     if (this.mode === MODE.UPDATE) {
       document.getElementById('submitButton').value = 'Update';
-      const deleteButton = document.getElementById('deleteButton');
+
       deleteButton.style.display = 'block';
       deleteButton.removeEventListener('click', event.deleteIn);
       deleteButton.addEventListener('click', () => event.deleteIn(this));
-      const copyButton = document.getElementById('copyButton');
+
       copyButton.style.display = 'block';
       copyButton.removeEventListener('click', event.copyIn);
       copyButton.addEventListener('click', () => event.copyIn(this));
