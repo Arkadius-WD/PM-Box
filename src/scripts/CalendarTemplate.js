@@ -263,6 +263,14 @@ export default class CalendarTemplate {
   }
 
   /// ///////////////////////////////////////////////////////////
+  submitModal(event) {
+    const errors = document.getElementById('errors');
+    errors.innerText = '';
+    if (event.isValidIn(this)) {
+      event.updateIn(this);
+      this.closeModal();
+    }
+  }
 
   closeModal() {
     const calendarWindow = document.querySelector('.calendar__window');
@@ -285,13 +293,6 @@ export default class CalendarTemplate {
     colors.forEach(color => {
       color.classList.remove('active');
     });
-  }
-
-  submitModal(event) {
-    if (event.isValidIn(this)) {
-      event.updateIn(this);
-      this.closeModal();
-    }
   }
 
   saveEvents() {
