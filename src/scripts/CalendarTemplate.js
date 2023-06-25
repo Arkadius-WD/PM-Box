@@ -262,13 +262,19 @@ export default class CalendarTemplate {
     });
   }
 
-  /// ///////////////////////////////////////////////////////////
   submitModal(event) {
     const errors = document.getElementById('errors');
     errors.innerText = '';
     if (event.isValidIn(this)) {
       event.updateIn(this);
       this.closeModal();
+    } else {
+      const errorMessages = event.getValidationErrors(this);
+      errorMessages.forEach(message => {
+        const error = document.createElement('div');
+        error.innerText = message;
+        errors.appendChild(error);
+      });
     }
   }
 
@@ -295,7 +301,74 @@ export default class CalendarTemplate {
     });
   }
 
+  /// ////////////////////////////////////
+
+  addNewEvent() {
+    if (this.mode !== MODE.VIEW) return;
+    this.mode = MODE.CREATE;
+    const event = new Event({
+      start: '12:00',
+      end: '13:00',
+      date: dateString(this.weekStart),
+      title: '',
+      description: '',
+      color: 'red',
+    });
+    this.openModal(event);
+  }
+
   saveEvents() {
     localStorage.setItem('events', JSON.stringify(this.events));
+  }
+
+  loadEvents() {
+    const events = localStorage.getItem('events');
+    if (events) {
+      this.events = JSON.parse(events);
+      Object.keys(this.events).forEach(date => {
+        Object.keys(this.events[date]).forEach(id => {
+          const event = new Event(this.events[date][id]);
+          this.events[date][id] = event;
+        });
+      });
+    } else {
+      this.events = {};
+    }
+    const eventElements = document.getElementsByClassName('event');
+    while (eventElements.length > 0) {
+      eventElements[0].remove();
+    }
+    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+      const date = dateString(addDays(this.weekStart, dayIndex));
+      if (this.events[date]) {
+        const eventsList = Object.values(this.events[date]);
+        eventsList.forEach(function (event) {
+          event.showIn(this);
+        }, this);
+      }
+    }
+  }
+
+  trash() {
+    if (this.mode !== MODE.VIEW) return;
+    if (this.readyToTrash) {
+      this.readyToTrash = false;
+      this.events = {};
+      this.saveEvents();
+      const eventElements = document.getElementsByClassName('event');
+      while (eventElements.length > 0) {
+        eventElements[0].remove();
+      }
+    } else {
+      this.readyToTrash = true;
+      window.alert(
+        'This will delete all the events in your calendar. ' +
+          'This cannot be undone. If you are sure, click ' +
+          'the trash can again in the next minute.',
+      );
+      setTimeout(() => {
+        this.readyToTrash = false;
+      }, 60 * 1000);
+    }
   }
 }

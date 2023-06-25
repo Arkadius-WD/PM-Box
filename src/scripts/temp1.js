@@ -267,13 +267,14 @@ class Calendar {
   }
 
   closeModal() {
-    const eventModal = document.getElementById('eventModal');
-    eventModal.style.display = 'none';
-    const errors = document.getElementById('errors');
-    errors.innerText = '';
     const calendar = document.getElementById('calendar');
-    calendar.classList.remove('opaque');
+    const eventModal = document.getElementById('eventModal');
+    const errors = document.getElementById('errors');
+
     this.mode = MODE.VIEW;
+    eventModal.style.display = 'none';
+    errors.innerText = '';
+    calendar.classList.remove('opaque');
   }
 
   addNewEvent() {
