@@ -1,4 +1,4 @@
-import CalendarTemplate from './CalendarTemplate';
+import CalendarTemplate from './calendarTemplate';
 
 const calendar = () => {
   new CalendarTemplate().setup();

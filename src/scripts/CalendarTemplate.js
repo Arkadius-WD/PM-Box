@@ -1,5 +1,5 @@
-import { dateString, getDayIndex, addDays, generateId } from './calendarHelper';
-import { Event, MODE } from './CalendarEvent';
+import { dateString, getDayIndex, addDays } from './calendarHelper';
+import { Event, MODE } from './calendarEvent';
 
 export default class CalendarTemplate {
   constructor() {
@@ -18,7 +18,7 @@ export default class CalendarTemplate {
     this.setupDays();
     this.calculateCurrentWeek();
     this.showWeek();
-    // this.loadEvents();
+    this.loadEvents();
     this.setupControls();
   }
 
@@ -105,7 +105,7 @@ export default class CalendarTemplate {
     this.weekStart = addDays(this.weekStart, 7 * number);
     this.weekEnd = addDays(this.weekEnd, 7 * number);
     this.showWeek();
-    // this.loadEvents();
+    this.loadEvents();
   }
 
   showWeek() {
@@ -198,8 +198,6 @@ export default class CalendarTemplate {
   }
 
   openModal(event) {
-    console.log(event.id); /// /////////////////
-    console.log(event.start); /// /////////////////
     const eventModal = document.querySelector('.event-modal');
     const eventModalHeader = document.querySelector('.event-modal__header');
     const titleInput = document.querySelector('.event-modal__title');
@@ -216,16 +214,16 @@ export default class CalendarTemplate {
     const copyButton = document.getElementById('copyButton');
 
     const defaultColor = colors[0];
-    this.id = event.id; /// /////////////////////
+
+    eventModalHeader.textContent =
+      this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
+
     titleInput.value = event.title;
     dateInput.value = event.date;
     startInput.value = event.start;
     endInput.value = event.end;
     descriptionInput.value = event.description;
     colors.dataset = event.color;
-
-    eventModalHeader.textContent =
-      this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
 
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
@@ -250,16 +248,12 @@ export default class CalendarTemplate {
 
     eventModal.addEventListener('submit', e => {
       e.preventDefault();
-      setTimeout(() => {
-        this.submitModal(event);
-      });
+      this.submitModal(event);
     });
 
     submitButton.addEventListener('click', e => {
       e.preventDefault();
-      setTimeout(() => {
-        this.submitModal(event);
-      });
+      this.submitModal(event);
     });
   }
 
@@ -271,25 +265,25 @@ export default class CalendarTemplate {
   }
 
   closeModal() {
+    const calendar = document.querySelector('.calendar__window');
     const eventModal = document.querySelector('.event-modal');
     const errors = document.querySelector('.event-modal__errors');
     const colors = document.querySelectorAll('.event-modal__color');
 
+    this.mode = MODE.VIEW;
     eventModal.style.opacity = '0';
+    eventModal.style.transition = 'opacity 200ms';
+    errors.textContent = '';
+    calendar.classList.remove('opaque');
+
     setTimeout(() => {
       eventModal.style.display = 'none';
     }, 200);
-
-    this.mode = MODE.VIEW;
-    errors.textContent = '';
-    document.querySelector('.calendar__window').classList.remove('opaque');
 
     colors.forEach(color => {
       color.classList.remove('active');
     });
   }
-
-  /// ////////////////////////////////////
 
   addNewEvent() {
     if (this.mode !== MODE.VIEW) return;
@@ -322,6 +316,7 @@ export default class CalendarTemplate {
     } else {
       this.events = {};
     }
+
     const eventElements = document.getElementsByClassName('event');
     while (eventElements.length > 0) {
       eventElements[0].remove();
@@ -330,7 +325,7 @@ export default class CalendarTemplate {
       const date = dateString(addDays(this.weekStart, dayIndex));
       if (this.events[date]) {
         const eventsList = Object.values(this.events[date]);
-        eventsList.forEach(function (event) {
+        eventsList.forEach(event => {
           event.showIn(this);
         }, this);
       }
@@ -339,8 +334,14 @@ export default class CalendarTemplate {
 
   trash() {
     if (this.mode !== MODE.VIEW) return;
-    if (this.readyToTrash) {
-      this.readyToTrash = false;
+
+    if (
+      // eslint-disable-next-line no-alert
+      window.confirm(
+        `This will delete all the events in your calendar. This cannot be undone. If you are sure, click "OK" or "Cancel" if you resign.`,
+      )
+    ) {
+      this.readyToTrash = true;
       this.events = {};
       this.saveEvents();
       const eventElements = document.getElementsByClassName('event');
@@ -349,11 +350,6 @@ export default class CalendarTemplate {
       }
     } else {
       this.readyToTrash = true;
-      window.alert(
-        'This will delete all the events in your calendar. ' +
-          'This cannot be undone. If you are sure, click ' +
-          'the trash can again in the next minute.',
-      );
       setTimeout(() => {
         this.readyToTrash = false;
       }, 60 * 1000);
