@@ -240,61 +240,49 @@ export default class CalendarTemplate {
       deleteButton.style.display = 'none';
       copyButton.style.display = 'none';
     }
+
     eventModal.style.display = 'block';
-
-    const fadeIn = (element, duration) => {
-      element.style.transition = `opacity ${duration}ms`;
-      element.style.opacity = 1;
-    };
-
-    fadeIn(eventModal, 200);
+    eventModal.style.transition = 'opacity 200ms';
+    eventModal.style.opacity = 1;
     titleInput.focus();
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
-    eventModal.removeEventListener('submit', fadeIn);
+
     eventModal.addEventListener('submit', e => {
       e.preventDefault();
-      this.submitModal(event);
+      setTimeout(() => {
+        this.submitModal(event);
+      });
     });
+
     submitButton.addEventListener('click', e => {
       e.preventDefault();
-      this.submitModal(event);
+      setTimeout(() => {
+        this.submitModal(event);
+      });
     });
   }
 
   submitModal(event) {
-    const errors = document.getElementById('errors');
-    errors.innerText = '';
     if (event.isValidIn(this)) {
       event.updateIn(this);
       this.closeModal();
-    } else {
-      const errorMessages = event.getValidationErrors(this);
-      errorMessages.forEach(message => {
-        const error = document.createElement('div');
-        error.innerText = message;
-        errors.appendChild(error);
-      });
     }
   }
 
   closeModal() {
-    const calendarWindow = document.querySelector('.calendar__window');
     const eventModal = document.querySelector('.event-modal');
     const errors = document.querySelector('.event-modal__errors');
     const colors = document.querySelectorAll('.event-modal__color');
 
-    const fadeOut = (element, duration) => {
-      this.mode = MODE.VIEW;
-      element.style.opacity = '0';
-      setTimeout(() => {
-        element.style.display = 'none';
-      }, duration);
-    };
+    eventModal.style.opacity = '0';
+    setTimeout(() => {
+      eventModal.style.display = 'none';
+    }, 200);
 
-    fadeOut(eventModal, 200);
+    this.mode = MODE.VIEW;
     errors.textContent = '';
-    calendarWindow.classList.remove('opaque');
+    document.querySelector('.calendar__window').classList.remove('opaque');
 
     colors.forEach(color => {
       color.classList.remove('active');
