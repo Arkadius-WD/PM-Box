@@ -188,7 +188,8 @@ export default class CalendarTemplate {
     });
     this.openModal(event);
 
-    console.log('click slot');
+    console.log(event);
+    /// //// w tym miejscu event jest ok wiec problem musi być dalej !!!!!!!!!1
   }
 
   changeColor(event) {
