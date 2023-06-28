@@ -1,4 +1,4 @@
-import { dateString, getDayIndex, addDays } from './calendarHelper';
+import { dateString, getDayIndex, addDays, generateId } from './calendarHelper';
 import { Event, MODE } from './calendarEvent';
 
 export default class CalendarTemplate {
@@ -187,6 +187,8 @@ export default class CalendarTemplate {
       color: 'red',
     });
     this.openModal(event);
+
+    console.log('click slot');
   }
 
   changeColor(event) {
@@ -317,7 +319,7 @@ export default class CalendarTemplate {
       this.events = {};
     }
 
-    const eventElements = document.getElementsByClassName('event');
+    const eventElements = document.querySelectorAll('calendar__event');
     while (eventElements.length > 0) {
       eventElements[0].remove();
     }
@@ -344,7 +346,7 @@ export default class CalendarTemplate {
       this.readyToTrash = true;
       this.events = {};
       this.saveEvents();
-      const eventElements = document.getElementsByClassName('event');
+      const eventElements = document.querySelectorAll('calendar__event');
       while (eventElements.length > 0) {
         eventElements[0].remove();
       }

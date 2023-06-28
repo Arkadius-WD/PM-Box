@@ -76,7 +76,7 @@ export class Event {
     if (!eventSlot) {
       eventSlot = document.createElement('div');
       eventSlot.setAttribute('id', this.id);
-      eventSlot.classList.add('event');
+      eventSlot.classList.add('calendar__event');
       eventSlot.addEventListener('click', () => this.clickIn(calendar));
     }
 
@@ -89,7 +89,6 @@ export class Event {
       24 * height - (this.endHour + this.endMinutes / 60) * height + 1
     }px`;
     eventSlot.style.backgroundColor = `var(--color-${this.color})`;
-    /// /do poprawy kolory /////////////////////////
 
     const slotsContainer = document.querySelector(
       `.calendar__day[data-dayIndex="${this.dayIndex}"] .calendar__slots`,
