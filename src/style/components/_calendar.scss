@@ -131,6 +131,28 @@
   .opaque {
     opacity: 0.4;
   }
+
+  &__event {
+    position: absolute;
+    left: 1px;
+    width: calc(100% - 2px);
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: white;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &__shortEvent {
+    padding: 0px 5px;
+    font-size: 12px;
+  }
+
+  &__veryShortEvent {
+    margin-top: -1px;
+    padding: 0px 5px;
+    font-size: 10px;
+  }
 }
 
 .event-modal {

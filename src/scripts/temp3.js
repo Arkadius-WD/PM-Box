@@ -156,9 +156,9 @@ export class Event {
   }
 
   isValidIn(calendar) {
-    const newStart = document.getElementById('eventStart').value;
-    const newEnd = document.getElementById('eventEnd').value;
-    const newDate = document.getElementById('eventDate').value;
+    const newStart = document.querySelector('.event-modal__start').value;
+    const newEnd = document.querySelector('.event-modal__end').value;
+    const newDate = document.querySelector('.event-modal__date').value;
     if (calendar.events[newDate]) {
       const conflictingEvent = Object.values(calendar.events[newDate]).find(
         event =>
@@ -177,12 +177,12 @@ export class Event {
         new Date(`${newDate}T${newStart}`).getTime()) /
       (1000 * 60);
     if (duration < 0) {
-      document.getElementById('errors').textContent =
+      document.querySelector('.event-modal__errors').textContent =
         'The start cannot be after the end.';
       return false;
     }
     if (duration < 30) {
-      document.getElementById('errors').textContent =
+      document.querySelector('.event-modal__errors').textContent =
         'Events should be at least 30 minutes.';
       return false;
     }
