@@ -97,6 +97,7 @@
   }
 
   &__slot {
+    position: relative;
     cursor: pointer;
     &:hover {
       background-color: rgba($color: $first, $alpha: 0.2);
@@ -136,6 +137,7 @@
     position: absolute;
     left: 1px;
     width: calc(100% - 2px);
+    height: 2.6vh;
     border-radius: 4px;
     padding: 2px 5px;
     color: white;

@@ -1,4 +1,4 @@
-import { dateString, getDayIndex, addDays, generateId } from './calendarHelper';
+import { dateString, getDayIndex, addDays } from './calendarHelper';
 import { Event, MODE } from './calendarEvent';
 
 export default class CalendarTemplate {
