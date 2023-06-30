@@ -228,6 +228,13 @@ export default class CalendarTemplate {
     descriptionInput.value = event.description;
     colors.dataset = event.color;
 
+    eventModal.style.display = 'block';
+    eventModal.style.transition = 'opacity 200ms';
+    eventModal.style.opacity = 1;
+    titleInput.focus();
+    calendarWindow.classList.add('opaque');
+    defaultColor.classList.add('active');
+
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
       deleteButton.style.display = 'block';
@@ -236,18 +243,15 @@ export default class CalendarTemplate {
       copyButton.style.display = 'block';
       copyButton.removeEventListener('click', event.copyIn);
       copyButton.addEventListener('click', () => event.copyIn(this));
+      colors[0].classList.remove('active');
+      document
+        .querySelector(`.event-modal__color[data-color="${event.color}"]`)
+        .classList.add('active');
     } else if (this.mode === MODE.CREATE) {
       submitButton.value = 'Create';
       deleteButton.style.display = 'none';
       copyButton.style.display = 'none';
     }
-
-    eventModal.style.display = 'block';
-    eventModal.style.transition = 'opacity 200ms';
-    eventModal.style.opacity = 1;
-    titleInput.focus();
-    calendarWindow.classList.add('opaque');
-    defaultColor.classList.add('active');
 
     eventModal.addEventListener('submit', e => {
       e.preventDefault();

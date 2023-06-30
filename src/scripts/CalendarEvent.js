@@ -108,8 +108,6 @@ export class Event {
         'calendar__veryShortEvent',
       );
     }
-
-    console.log(height);
   }
 
   clickIn(calendar) {
@@ -130,8 +128,8 @@ export class Event {
     this.color = document
       .querySelector('.event-modal__color.active')
       .getAttribute('data-color');
-    this.saveIn(calendar);
     this.showIn(calendar);
+    this.saveIn(calendar);
   }
 
   copyIn(calendar) {
