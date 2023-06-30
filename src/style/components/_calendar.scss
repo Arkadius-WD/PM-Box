@@ -135,9 +135,10 @@
 
   &__event {
     position: absolute;
+    top: 0;
+    bottom: 100px;
     left: 1px;
     width: calc(100% - 2px);
-    height: 2.6vh;
     border-radius: 4px;
     padding: 2px 5px;
     color: white;
@@ -151,7 +152,7 @@
   }
 
   &__veryShortEvent {
-    margin-top: -1px;
+    margin: -1px;
     padding: 0px 5px;
     font-size: 10px;
   }

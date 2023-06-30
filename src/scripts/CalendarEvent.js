@@ -83,11 +83,11 @@ export class Event {
     const height = calendar.slotHeight;
     eventSlot.textContent = this.title;
     eventSlot.style.top = `${
-      (this.startHour + this.startMinutes / 60) * height + 2
-    }px`;
+      (this.startHour + this.startMinutes / 60) * height
+    }vh`;
     eventSlot.style.bottom = `${
-      24 * height - (this.endHour + this.endMinutes / 60) * height + 1
-    }px`;
+      24 * height - (this.endHour + this.endMinutes / 60) * height
+    }vh`;
     eventSlot.style.backgroundColor = `var(--color-${this.color})`;
 
     const slotsContainer = document.querySelector(
@@ -108,6 +108,8 @@ export class Event {
         'calendar__veryShortEvent',
       );
     }
+
+    console.log(height);
   }
 
   clickIn(calendar) {

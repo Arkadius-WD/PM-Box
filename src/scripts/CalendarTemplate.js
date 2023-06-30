@@ -7,7 +7,7 @@ export default class CalendarTemplate {
     this.events = {};
     this.weekOffset = 0;
     this.readyToTrash = false;
-    this.slotHeight = 30;
+    this.slotHeight = 2.6;
     this.weekStart = null;
     this.weekEnd = null;
     this.eventsLoaded = false;
