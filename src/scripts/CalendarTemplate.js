@@ -18,8 +18,8 @@ export default class CalendarTemplate {
     this.setupDays();
     this.calculateCurrentWeek();
     this.showWeek();
-    this.loadEvents();
     this.setupControls();
+    this.loadEvents();
   }
 
   setupControls() {
@@ -187,9 +187,6 @@ export default class CalendarTemplate {
       color: 'red',
     });
     this.openModal(event);
-
-    console.log(event);
-    /// //// w tym miejscu event jest ok wiec problem musi być dalej !!!!!!!!!1
   }
 
   changeColor(event) {
@@ -237,12 +234,10 @@ export default class CalendarTemplate {
 
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
-      deleteButton.style.display = 'block';
-      deleteButton.removeEventListener('click', event.deleteIn);
       deleteButton.addEventListener('click', () => event.deleteIn(this));
-      copyButton.style.display = 'block';
-      copyButton.removeEventListener('click', event.copyIn);
+      deleteButton.style.display = 'block';
       copyButton.addEventListener('click', () => event.copyIn(this));
+      copyButton.style.display = 'block';
       colors[0].classList.remove('active');
       document
         .querySelector(`.event-modal__color[data-color="${event.color}"]`)

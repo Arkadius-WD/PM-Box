@@ -47,16 +47,12 @@ export class Event {
   }
 
   saveIn(calendar) {
-    if (this.prevDate && this.date !== this.prevDate) {
-      delete calendar.events[this.prevDate][this.id];
-      if (Object.values(calendar.events[this.prevDate]).length === 0) {
-        delete calendar.events[this.prevDate];
-      }
-    }
+    console.log(this);
     if (!calendar.events[this.date]) {
       calendar.events[this.date] = {};
     }
     calendar.events[this.date][this.id] = this;
+
     calendar.saveEvents();
   }
 
