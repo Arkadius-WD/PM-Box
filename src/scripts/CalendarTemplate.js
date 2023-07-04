@@ -10,7 +10,7 @@ export default class CalendarTemplate {
     this.slotHeight = 2.6;
     this.weekStart = null;
     this.weekEnd = null;
-    this.eventsLoaded = false;
+    this.eventsLoaded = false; /// /????
   }
 
   setup() {
@@ -187,6 +187,10 @@ export default class CalendarTemplate {
       color: 'red',
     });
     this.openModal(event);
+
+    console.log('calendarTemplate - clickSlot');
+    console.log(event);
+    console.log('-----------------------');
   }
 
   changeColor(event) {
@@ -260,9 +264,16 @@ export default class CalendarTemplate {
   }
 
   submitModal(event) {
+    console.log('calendarTemplate - submitModal Before');
+    console.log(event);
+    console.log('-----------------------');
+
     if (event.isValidIn(this)) {
       event.updateIn(this);
       this.closeModal();
+      console.log('calendarTemplate - submitModal After');
+      console.log(event);
+      console.log('-----------------------');
     }
   }
 

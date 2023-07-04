@@ -47,12 +47,13 @@ export class Event {
   }
 
   saveIn(calendar) {
-    console.log(this);
     if (!calendar.events[this.date]) {
       calendar.events[this.date] = {};
     }
     calendar.events[this.date][this.id] = this;
-
+    console.log('calendarEvent - saveIn');
+    console.log(this);
+    console.log('-----------------------');
     calendar.saveEvents();
   }
 
@@ -124,8 +125,8 @@ export class Event {
     this.color = document
       .querySelector('.event-modal__color.active')
       .getAttribute('data-color');
-    this.showIn(calendar);
     this.saveIn(calendar);
+    this.showIn(calendar);
   }
 
   copyIn(calendar) {
