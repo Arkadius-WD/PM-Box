@@ -51,9 +51,6 @@ export class Event {
       calendar.events[this.date] = {};
     }
     calendar.events[this.date][this.id] = this;
-    console.log('calendarEvent - saveIn');
-    console.log(this);
-    console.log('-----------------------');
     calendar.saveEvents();
   }
 

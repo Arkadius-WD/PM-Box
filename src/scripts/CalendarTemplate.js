@@ -10,7 +10,7 @@ export default class CalendarTemplate {
     this.slotHeight = 2.6;
     this.weekStart = null;
     this.weekEnd = null;
-    this.eventsLoaded = false; /// /????
+    this.eventsLoaded = false;
   }
 
   setup() {
@@ -187,10 +187,6 @@ export default class CalendarTemplate {
       color: 'red',
     });
     this.openModal(event);
-
-    console.log('calendarTemplate - clickSlot');
-    console.log(event);
-    console.log('-----------------------');
   }
 
   changeColor(event) {
@@ -264,16 +260,9 @@ export default class CalendarTemplate {
   }
 
   submitModal(event) {
-    console.log('calendarTemplate - submitModal Before');
-    console.log(event);
-    console.log('-----------------------');
-
     if (event.isValidIn(this)) {
       event.updateIn(this);
       this.closeModal();
-      console.log('calendarTemplate - submitModal After');
-      console.log(event);
-      console.log('-----------------------');
     }
   }
 
@@ -317,31 +306,35 @@ export default class CalendarTemplate {
   }
 
   loadEvents() {
-    const events = localStorage.getItem('events');
-    if (events) {
-      this.events = JSON.parse(events);
-      Object.keys(this.events).forEach(date => {
-        Object.keys(this.events[date]).forEach(id => {
-          const event = new Event(this.events[date][id]);
-          this.events[date][id] = event;
-        });
-      });
-    } else {
-      this.events = {};
+    const eventElements = document.querySelectorAll('calendar__event');
+    while (eventElements.firstChild) {
+      eventElements.removeChild(eventElements.firstChild);
     }
 
-    const eventElements = document.querySelectorAll('calendar__event');
-    while (eventElements.length > 0) {
-      eventElements[0].remove();
-    }
-    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-      const date = dateString(addDays(this.weekStart, dayIndex));
-      if (this.events[date]) {
-        const eventsList = Object.values(this.events[date]);
-        eventsList.forEach(event => {
-          event.showIn(this);
-        }, this);
+    if (!this.eventsLoaded) {
+      this.events = JSON.parse(localStorage.getItem('events'));
+      if (this.events) {
+        Object.keys(this.events).forEach(date => {
+          Object.keys(this.events[date]).forEach(id => {
+            const event = new Event(this.events[date][id]);
+            this.events[date][id] = event;
+          });
+        });
       }
+      this.eventsLoaded = true;
+    }
+
+    if (this.events) {
+      for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+        const date = dateString(addDays(this.weekStart, dayIndex));
+        if (this.events[date]) {
+          Object.values(this.events[date]).forEach(event => {
+            event.showIn(this);
+          });
+        }
+      }
+    } else {
+      this.events = {};
     }
   }
 
