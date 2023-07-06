@@ -52,6 +52,7 @@ export class Event {
     }
     calendar.events[this.date][this.id] = this;
     calendar.saveEvents();
+    calendar.loadEvents();
   }
 
   showIn(calendar) {

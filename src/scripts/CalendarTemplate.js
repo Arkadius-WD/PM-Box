@@ -18,8 +18,8 @@ export default class CalendarTemplate {
     this.setupDays();
     this.calculateCurrentWeek();
     this.showWeek();
-    this.setupControls();
     this.loadEvents();
+    this.setupControls();
   }
 
   setupControls() {
@@ -64,9 +64,9 @@ export default class CalendarTemplate {
   }
 
   setupDays() {
+    const cal = this;
     const calendarDays = document.querySelectorAll('.calendar__day');
 
-    const cal = this;
     calendarDays.forEach(day => {
       const dayIndex = parseInt(day.getAttribute('data-dayIndex'), 10);
       const name = day.getAttribute('data-name');
@@ -198,6 +198,7 @@ export default class CalendarTemplate {
   }
 
   openModal(event) {
+    console.log('openModal', event);
     const eventModal = document.querySelector('.event-modal');
     const eventModalHeader = document.querySelector('.event-modal__header');
     const titleInput = document.querySelector('.event-modal__title');
@@ -238,7 +239,7 @@ export default class CalendarTemplate {
       deleteButton.style.display = 'block';
       copyButton.addEventListener('click', () => event.copyIn(this));
       copyButton.style.display = 'block';
-      colors[0].classList.remove('active');
+      defaultColor.classList.remove('active');
       document
         .querySelector(`.event-modal__color[data-color="${event.color}"]`)
         .classList.add('active');
@@ -306,7 +307,7 @@ export default class CalendarTemplate {
   }
 
   loadEvents() {
-    const eventElements = document.querySelectorAll('calendar__event');
+    const eventElements = document.querySelectorAll('calendar__slots');
     while (eventElements.firstChild) {
       eventElements.removeChild(eventElements.firstChild);
     }
