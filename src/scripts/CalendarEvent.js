@@ -50,9 +50,10 @@ export class Event {
     if (!calendar.events[this.date]) {
       calendar.events[this.date] = {};
     }
-    calendar.events[this.date][this.id] = this;
+    if (!calendar.events[this.date][this.id]) {
+      calendar.events[this.date][this.id] = this;
+    }
     calendar.saveEvents();
-    calendar.loadEvents();
   }
 
   showIn(calendar) {

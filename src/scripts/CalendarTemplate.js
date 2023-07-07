@@ -18,8 +18,8 @@ export default class CalendarTemplate {
     this.setupDays();
     this.calculateCurrentWeek();
     this.showWeek();
-    this.loadEvents();
     this.setupControls();
+    this.loadEvents();
   }
 
   setupControls() {
@@ -178,14 +178,16 @@ export default class CalendarTemplate {
 
     const date = dateString(addDays(this.weekStart, dayIndex));
 
-    const event = new Event({
+    const data = {
       start,
       end,
       date,
       title: '',
       description: '',
       color: 'red',
-    });
+    };
+
+    const event = new Event(data);
     this.openModal(event);
   }
 
@@ -198,7 +200,6 @@ export default class CalendarTemplate {
   }
 
   openModal(event) {
-    console.log('openModal', event);
     const eventModal = document.querySelector('.event-modal');
     const eventModalHeader = document.querySelector('.event-modal__header');
     const titleInput = document.querySelector('.event-modal__title');
@@ -233,6 +234,19 @@ export default class CalendarTemplate {
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
 
+    console.log(event);
+
+    eventModal.addEventListener('submit', e => {
+      e.preventDefault();
+      this.submitModal(event);
+    });
+
+    submitButton.addEventListener('click', e => {
+      e.preventDefault();
+      console.log(event);
+      this.submitModal(event);
+    });
+
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
       deleteButton.addEventListener('click', () => event.deleteIn(this));
@@ -248,21 +262,12 @@ export default class CalendarTemplate {
       deleteButton.style.display = 'none';
       copyButton.style.display = 'none';
     }
-
-    eventModal.addEventListener('submit', e => {
-      e.preventDefault();
-      this.submitModal(event);
-    });
-
-    submitButton.addEventListener('click', e => {
-      e.preventDefault();
-      this.submitModal(event);
-    });
   }
 
   submitModal(event) {
     if (event.isValidIn(this)) {
       event.updateIn(this);
+      this.loadEvents();
       this.closeModal();
     }
   }
@@ -307,17 +312,16 @@ export default class CalendarTemplate {
   }
 
   loadEvents() {
-    const eventElements = document.querySelectorAll('calendar__slots');
-    while (eventElements.firstChild) {
-      eventElements.removeChild(eventElements.firstChild);
-    }
+    document
+      .querySelectorAll('.calendar__event')
+      .forEach(element => element.remove());
 
     if (!this.eventsLoaded) {
       this.events = JSON.parse(localStorage.getItem('events'));
       if (this.events) {
-        Object.keys(this.events).forEach(date => {
-          Object.keys(this.events[date]).forEach(id => {
-            const event = new Event(this.events[date][id]);
+        Object.entries(this.events).forEach(([date, eventIds]) => {
+          Object.entries(eventIds).forEach(([id, eventData]) => {
+            const event = new Event(eventData);
             this.events[date][id] = event;
           });
         });
@@ -326,14 +330,16 @@ export default class CalendarTemplate {
     }
 
     if (this.events) {
-      for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-        const date = dateString(addDays(this.weekStart, dayIndex));
+      const weekDays = Array.from({ length: 7 }, (_, dayIndex) =>
+        dateString(addDays(this.weekStart, dayIndex)),
+      );
+      weekDays.forEach(date => {
         if (this.events[date]) {
           Object.values(this.events[date]).forEach(event => {
             event.showIn(this);
           });
         }
-      }
+      });
     } else {
       this.events = {};
     }
