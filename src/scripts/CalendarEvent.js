@@ -8,7 +8,7 @@ export const MODE = {
 
 export class Event {
   constructor(data) {
-    this.id = data.id || generateId();
+    this.id = generateId();
     this.title = data.title;
     this.start = data.start;
     this.end = data.end;
@@ -46,6 +46,23 @@ export class Event {
     return parseInt(this.end.substring(3, 5), 10);
   }
 
+  updateIn(calendar) {
+    this.prevDate = this.date;
+    this.title = document.querySelector('.event-modal__title').value;
+    this.start = document.querySelector('.event-modal__start').value;
+    this.end = document.querySelector('.event-modal__end').value;
+    this.date = document.querySelector('.event-modal__date').value;
+    this.description = document.querySelector(
+      '.event-modal__description',
+    ).value;
+    this.color = document
+      .querySelector('.event-modal__color.active')
+      .getAttribute('data-color');
+
+    this.saveIn(calendar);
+    this.showIn(calendar);
+  }
+
   saveIn(calendar) {
     if (!calendar.events[this.date]) {
       calendar.events[this.date] = {};
@@ -53,7 +70,8 @@ export class Event {
     if (!calendar.events[this.date][this.id]) {
       calendar.events[this.date][this.id] = this;
     }
-    calendar.saveEvents();
+
+    // calendar.saveEvents();
   }
 
   showIn(calendar) {
@@ -110,22 +128,6 @@ export class Event {
     if (calendar.mode !== MODE.VIEW) return;
     calendar.mode = MODE.UPDATE;
     calendar.openModal(this);
-  }
-
-  updateIn(calendar) {
-    this.prevDate = this.date;
-    this.title = document.querySelector('.event-modal__title').value;
-    this.start = document.querySelector('.event-modal__start').value;
-    this.end = document.querySelector('.event-modal__end').value;
-    this.date = document.querySelector('.event-modal__date').value;
-    this.description = document.querySelector(
-      '.event-modal__description',
-    ).value;
-    this.color = document
-      .querySelector('.event-modal__color.active')
-      .getAttribute('data-color');
-    this.saveIn(calendar);
-    this.showIn(calendar);
   }
 
   copyIn(calendar) {

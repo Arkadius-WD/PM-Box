@@ -234,8 +234,6 @@ export default class CalendarTemplate {
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
 
-    console.log(event);
-
     eventModal.addEventListener('submit', e => {
       e.preventDefault();
       this.submitModal(event);
@@ -243,7 +241,6 @@ export default class CalendarTemplate {
 
     submitButton.addEventListener('click', e => {
       e.preventDefault();
-      console.log(event);
       this.submitModal(event);
     });
 
@@ -267,8 +264,8 @@ export default class CalendarTemplate {
   submitModal(event) {
     if (event.isValidIn(this)) {
       event.updateIn(this);
-      this.loadEvents();
       this.closeModal();
+      console.log('SUBMIT MODAL -----------', event);
     }
   }
 
@@ -322,7 +319,9 @@ export default class CalendarTemplate {
         Object.entries(this.events).forEach(([date, eventIds]) => {
           Object.entries(eventIds).forEach(([id, eventData]) => {
             const event = new Event(eventData);
-            this.events[date][id] = event;
+            if (!this.events[date][id]) {
+              this.events[date][id] = event;
+            }
           });
         });
       }
