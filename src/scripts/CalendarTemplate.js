@@ -262,6 +262,7 @@ export default class CalendarTemplate {
   }
 
   submitModal(event) {
+    console.log(event);
     if (event.isValidIn(this)) {
       event.updateIn(this);
       this.closeModal();
