@@ -199,7 +199,7 @@ export default class CalendarTemplate {
     event.target.classList.add('active');
   }
 
-  openModal(event, eventId) {
+  openModal(event) {
     const eventModal = document.querySelector('.event-modal');
     const eventModalHeader = document.querySelector('.event-modal__header');
     const titleInput = document.querySelector('.event-modal__title');
@@ -240,9 +240,9 @@ export default class CalendarTemplate {
     };
 
     eventModal.removeEventListener('submit', submitModalHandler);
-    eventModal.addEventListener('submit', submitModalHandler);
-
     submitButton.removeEventListener('click', submitModalHandler);
+
+    eventModal.addEventListener('submit', submitModalHandler);
     submitButton.addEventListener('click', submitModalHandler);
 
     if (this.mode === MODE.UPDATE) {
@@ -260,16 +260,11 @@ export default class CalendarTemplate {
       deleteButton.style.display = 'none';
       copyButton.style.display = 'none';
     }
-
-    event.id = eventId;
-    console.log(event.id);
   }
 
-  /// ///////////////////////////////////////
   submitModal(event) {
     if (event.isValidIn(this)) {
       event.updateIn(this);
-      console.log(event);
       this.closeModal();
     }
   }

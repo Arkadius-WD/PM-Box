@@ -8,7 +8,7 @@ export const MODE = {
 
 export class Event {
   constructor(data) {
-    this.id = generateId();
+    this.id = data.id;
     this.title = data.title;
     this.start = data.start;
     this.end = data.end;
@@ -47,6 +47,7 @@ export class Event {
   }
 
   updateIn(calendar) {
+    this.id = generateId();
     this.prevDate = this.date;
     this.title = document.querySelector('.event-modal__title').value;
     this.start = document.querySelector('.event-modal__start').value;
