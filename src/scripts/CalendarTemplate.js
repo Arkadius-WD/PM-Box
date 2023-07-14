@@ -18,8 +18,8 @@ export default class CalendarTemplate {
     this.setupDays();
     this.calculateCurrentWeek();
     this.showWeek();
-    this.setupControls();
     this.loadEvents();
+    this.setupControls();
   }
 
   setupControls() {
