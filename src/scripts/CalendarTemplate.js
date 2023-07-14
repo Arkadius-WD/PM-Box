@@ -234,16 +234,10 @@ export default class CalendarTemplate {
     calendarWindow.classList.add('opaque');
     defaultColor.classList.add('active');
 
-    const submitModalHandler = e => {
-      e.preventDefault();
+    eventModal.removeEventListener('submit', this.submitModal);
+    eventModal.addEventListener('submit', () => {
       this.submitModal(event);
-    };
-
-    eventModal.removeEventListener('submit', submitModalHandler);
-    submitButton.removeEventListener('click', submitModalHandler);
-
-    eventModal.addEventListener('submit', submitModalHandler);
-    submitButton.addEventListener('click', submitModalHandler);
+    });
 
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
