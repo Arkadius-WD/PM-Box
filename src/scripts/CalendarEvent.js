@@ -46,31 +46,17 @@ export class Event {
     return parseInt(this.end.substring(3, 5), 10);
   }
 
-  updateIn(calendar) {
-    this.prevDate = this.date;
-    this.title = document.querySelector('.event-modal__title').value;
-    this.start = document.querySelector('.event-modal__start').value;
-    this.end = document.querySelector('.event-modal__end').value;
-    this.date = document.querySelector('.event-modal__date').value;
-    this.description = document.querySelector(
-      '.event-modal__description',
-    ).value;
-    this.color = document
-      .querySelector('.event-modal__color.active')
-      .getAttribute('data-color');
-
-    this.saveIn(calendar);
-    this.showIn(calendar);
-  }
-
   saveIn(calendar) {
+    if (this.prevDate && this.date !== this.prevDate) {
+      delete calendar.events[this.prevDate][this.id];
+      if (Object.values(calendar.events[this.prevDate]).length === 0) {
+        delete calendar.events[this.prevDate];
+      }
+    }
     if (!calendar.events[this.date]) {
       calendar.events[this.date] = {};
     }
-    if (!calendar.events[this.date][this.id]) {
-      calendar.events[this.date][this.id] = this;
-    }
-
+    calendar.events[this.date][this.id] = this;
     calendar.saveEvents();
   }
 
@@ -86,11 +72,15 @@ export class Event {
       return;
     }
 
-    let eventSlot = document.getElementById(this.id);
-    if (!eventSlot) {
+    let eventSlot;
+    const existingElement = document.getElementById(this.id);
+
+    if (existingElement) {
+      eventSlot = existingElement;
+    } else {
       eventSlot = document.createElement('div');
+      eventSlot.setAttribute('class', 'calendar__event');
       eventSlot.setAttribute('id', this.id);
-      eventSlot.classList.add('calendar__event');
       eventSlot.addEventListener('click', () => this.clickIn(calendar));
     }
 
@@ -128,6 +118,22 @@ export class Event {
     if (calendar.mode !== MODE.VIEW) return;
     calendar.mode = MODE.UPDATE;
     calendar.openModal(this);
+  }
+
+  updateIn(calendar) {
+    this.prevDate = this.date;
+    this.title = document.querySelector('.event-modal__title').value;
+    this.start = document.querySelector('.event-modal__start').value;
+    this.end = document.querySelector('.event-modal__end').value;
+    this.date = document.querySelector('.event-modal__date').value;
+    this.description = document.querySelector(
+      '.event-modal__description',
+    ).value;
+    this.color = document
+      .querySelector('.event-modal__color.active')
+      .getAttribute('data-color');
+    this.saveIn(calendar);
+    this.showIn(calendar);
   }
 
   copyIn(calendar) {
