@@ -79,7 +79,7 @@ export class Event {
       eventSlot = existingElement;
     } else {
       eventSlot = document.createElement('div');
-      eventSlot.setAttribute('class', 'calendar__event');
+      eventSlot.classList.add('calendar__event');
       eventSlot.setAttribute('id', this.id);
       eventSlot.addEventListener('click', () => this.clickIn(calendar));
     }

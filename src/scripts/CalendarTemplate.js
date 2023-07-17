@@ -120,18 +120,16 @@ export default class CalendarTemplate {
     document.querySelector('.week__end-display').textContent =
       this.weekEnd.toLocaleDateString(undefined, options);
 
-    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-      const date = addDays(this.weekStart, dayIndex);
-      const display = date.toLocaleDateString(undefined, {
-        month: '2-digit',
-        day: '2-digit',
+    document
+      .querySelectorAll('.calendar__day')
+      .forEach((dayElement, dayIndex) => {
+        const date = addDays(this.weekStart, dayIndex);
+        const display = date.toLocaleDateString(undefined, {
+          month: '2-digit',
+          day: '2-digit',
+        });
+        dayElement.querySelector('.dayDisplay').textContent = display;
       });
-
-      const dayElement = document.querySelector(
-        `.calendar__day[data-dayIndex="${dayIndex}"] .dayDisplay`,
-      );
-      dayElement.textContent = display;
-    }
 
     if (this.weekOffset === 0) {
       this.showCurrentDay();
@@ -177,17 +175,14 @@ export default class CalendarTemplate {
         : `${hour.toString().padStart(2, '0')}:59`;
 
     const date = dateString(addDays(this.weekStart, dayIndex));
-
-    const data = {
+    const event = new Event({
       start,
       end,
       date,
       title: '',
       description: '',
       color: 'red',
-    };
-
-    const event = new Event(data);
+    });
     this.openModal(event);
   }
 
@@ -214,7 +209,6 @@ export default class CalendarTemplate {
     const submitButton = document.getElementById('submitButton');
     const deleteButton = document.getElementById('deleteButton');
     const copyButton = document.getElementById('copyButton');
-
     const defaultColor = colors[0];
 
     eventModalHeader.textContent =
@@ -227,33 +221,39 @@ export default class CalendarTemplate {
     descriptionInput.value = event.description;
     colors.dataset = event.color;
 
-    eventModal.style.display = 'block';
-    eventModal.style.transition = 'opacity 200ms';
-    eventModal.style.opacity = 1;
-    titleInput.focus();
-    calendarWindow.classList.add('opaque');
-    defaultColor.classList.add('active');
-
-    eventModal.removeEventListener('submit', this.submitModal);
-    eventModal.addEventListener('submit', () => {
-      this.submitModal(event);
-    });
-
     if (this.mode === MODE.UPDATE) {
       submitButton.value = 'Update';
-      deleteButton.addEventListener('click', () => event.deleteIn(this));
       deleteButton.style.display = 'block';
-      copyButton.addEventListener('click', () => event.copyIn(this));
+      deleteButton.removeEventListener('click', event.deleteIn);
+      deleteButton.addEventListener('click', () => event.deleteIn(this));
       copyButton.style.display = 'block';
+      copyButton.removeEventListener('click', event.copyIn);
+      copyButton.addEventListener('click', () => event.copyIn(this));
       defaultColor.classList.remove('active');
       document
         .querySelector(`.event-modal__color[data-color="${event.color}"]`)
         .classList.add('active');
     } else if (this.mode === MODE.CREATE) {
       submitButton.value = 'Create';
+      submitButton.removeEventListener('click', this.submitModal);
+      submitButton.addEventListener('click', () => {
+        this.submitModal(event);
+      });
       deleteButton.style.display = 'none';
       copyButton.style.display = 'none';
+      defaultColor.classList.add('active');
     }
+
+    eventModal.style.display = 'block';
+    eventModal.style.transition = 'opacity 200ms';
+    eventModal.style.opacity = 1;
+    titleInput.focus();
+    calendarWindow.classList.add('opaque');
+
+    eventModal.removeEventListener('submit', this.submitModal);
+    eventModal.addEventListener('submit', () => {
+      this.submitModal(event);
+    });
   }
 
   submitModal(event) {
@@ -303,19 +303,17 @@ export default class CalendarTemplate {
   }
 
   loadEvents() {
-    document
-      .querySelectorAll('.calendar__event')
-      .forEach(element => element.remove());
+    document.querySelectorAll('.calendar__event').forEach(eventElement => {
+      eventElement.remove();
+    });
 
     if (!this.eventsLoaded) {
       this.events = JSON.parse(localStorage.getItem('events'));
       if (this.events) {
-        Object.entries(this.events).forEach(([date, eventIds]) => {
-          Object.entries(eventIds).forEach(([id, eventData]) => {
-            const event = new Event(eventData);
-            if (!this.events[date][id]) {
-              this.events[date][id] = event;
-            }
+        Object.keys(this.events).forEach(date => {
+          Object.keys(this.events[date]).forEach(id => {
+            const event = new Event(this.events[date][id]);
+            this.events[date][id] = event;
           });
         });
       }
@@ -323,15 +321,10 @@ export default class CalendarTemplate {
     }
 
     if (this.events) {
-      const weekDays = Array.from({ length: 7 }, (_, dayIndex) =>
-        dateString(addDays(this.weekStart, dayIndex)),
-      );
-      weekDays.forEach(date => {
-        if (this.events[date]) {
-          Object.values(this.events[date]).forEach(event => {
-            event.showIn(this);
-          });
-        }
+      Object.keys(this.events).forEach(date => {
+        Object.values(this.events[date]).forEach(event => {
+          event.showIn(this);
+        });
       });
     } else {
       this.events = {};
@@ -340,22 +333,21 @@ export default class CalendarTemplate {
 
   trash() {
     if (this.mode !== MODE.VIEW) return;
-
-    if (
-      // eslint-disable-next-line no-alert
-      window.confirm(
-        `This will delete all the events in your calendar. This cannot be undone. If you are sure, click "OK" or "Cancel" if you resign.`,
-      )
-    ) {
-      this.readyToTrash = true;
+    if (this.readyToTrash) {
+      this.readyToTrash = false;
       this.events = {};
       this.saveEvents();
-      const eventElements = document.querySelectorAll('calendar__event');
-      while (eventElements.length > 0) {
-        eventElements[0].remove();
-      }
+      document.querySelectorAll('.calendar__event').forEach(eventElement => {
+        eventElement.remove();
+      });
     } else {
       this.readyToTrash = true;
+      // eslint-disable-next-line no-alert
+      window.alert(
+        'This will delete all the events in your calendar. ' +
+          'This cannot be undone. If you are sure, click ' +
+          'the trash can again in the next minute.',
+      );
       setTimeout(() => {
         this.readyToTrash = false;
       }, 60 * 1000);
