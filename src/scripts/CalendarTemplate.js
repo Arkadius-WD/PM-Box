@@ -39,9 +39,9 @@ export default class CalendarTemplate {
       .getElementById('cancelButton')
       .addEventListener('click', () => this.closeModal());
 
-    const colors = document.querySelectorAll('.event-modal__color');
-    colors.forEach(color => {
-      color.addEventListener('click', event => this.changeColor(event));
+    const colorElements = document.querySelectorAll('.event-modal__color');
+    colorElements.forEach(element => {
+      element.addEventListener('click', this.changeColor);
     });
   }
 
@@ -65,18 +65,19 @@ export default class CalendarTemplate {
 
   setupDays() {
     const cal = this;
-    const calendarDays = document.querySelectorAll('.calendar__day');
 
-    calendarDays.forEach(day => {
-      const dayIndex = parseInt(day.getAttribute('data-dayIndex'), 10);
-      const name = day.getAttribute('data-name');
+    document.querySelectorAll('.calendar__day').forEach(function (dayElement) {
+      const dayIndex = parseInt(dayElement.getAttribute('data-dayIndex'), 10);
+      const name = dayElement.getAttribute('data-name');
+
       const header = document.createElement('div');
-      const slots = document.createElement('div');
-      const dayDisplay = document.createElement('div');
-
       header.classList.add('calendar__column-header');
       header.textContent = name;
+
+      const slots = document.createElement('div');
       slots.classList.add('calendar__slots');
+
+      const dayDisplay = document.createElement('div');
       dayDisplay.classList.add('dayDisplay');
       header.appendChild(dayDisplay);
 
@@ -89,8 +90,9 @@ export default class CalendarTemplate {
         slot.addEventListener('mouseout', () => cal.hoverOut());
         slots.appendChild(slot);
       }
-      day.appendChild(header);
-      day.appendChild(slots);
+
+      dayElement.appendChild(header);
+      dayElement.appendChild(slots);
     });
   }
 
@@ -147,22 +149,21 @@ export default class CalendarTemplate {
   }
 
   hideCurrentDay() {
-    const days = document.querySelectorAll('.calendar__day');
-    days.forEach(day => {
-      day.classList.remove('currentDay');
+    document.querySelectorAll('.calendar__day').forEach(dayElement => {
+      dayElement.classList.remove('currentDay');
     });
   }
 
   hoverOver(hour) {
-    const calendarTime = document.querySelector(
-      `.calendar__time[data-hour="${hour}"]`,
-    );
-    calendarTime.classList.add('currentTime');
+    document
+      .querySelector(`.calendar__time[data-hour="${hour}"]`)
+      .classList.add('currentTime');
   }
 
   hoverOut() {
-    const calendarTime = document.querySelector(`.calendar__time.currentTime`);
-    calendarTime.classList.remove('currentTime');
+    document.querySelectorAll('.calendar__time').forEach(timeElement => {
+      timeElement.classList.remove('currentTime');
+    });
   }
 
   clickSlot(hour, dayIndex) {
