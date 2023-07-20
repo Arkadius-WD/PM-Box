@@ -54,17 +54,19 @@
         <a href="./index.html"><i class="fa-solid fa-power-off"></i></a>
       </div>
       <div class="lower-beam">
-        <div class="calendar__header">
-          <div class="week-controls">
-            <i class="week-controls__btn-prev fas fa-angle-double-left"></i>
-            <span class="week__start-display"></span>
-            -
-            <span class="week__end-display"></span>
-            <i class="week-controls__btn-next fas fa-angle-double-right"></i>
-            <div class="general-controls">
-              <i class="general-controls__btn-add fas fa-plus"></i>
-              <i class="general-controls__btn-trash fas fa-trash-alt"></i>
-            </div>
+        <div class="lower-beam__controls">
+          <div class="weekControls">
+                <i id="prevWeekBtn" class="fas fa-angle-double-left"></i>
+                <span id="weekDisplay">
+                    <span id="weekStartDisplay"></span>
+                    ‒ 
+                     <span id="weekEndDisplay"></span>
+                </span>            
+                <i id="nextWeekBtn" class="fas fa-angle-double-right"></i>
+          </div>
+          <div class="generalControls">
+            <i id="addButton" class="fas fa-plus"></i>
+            <i id="trashButton" class="fas fa-trash-alt"></i>
           </div>
         </div>
       </div>
@@ -157,160 +159,68 @@
             <h2>calendar</h2>
           </div>
         </header>
-        <section class="calendar">
-          <div class="calendar__window">
-            <div class="calendar__days-time"></div>
-            <div class="calendar__days-container">
-              <div
-                data-name="Monday"
-                data-dayIndex="0"
-                class="calendar__day"
-              ></div>
-              <div
-                data-name="Tuesday"
-                data-dayIndex="1"
-                class="calendar__day"
-              ></div>
-              <div
-                data-name="Wednesday"
-                data-dayIndex="2"
-                class="calendar__day"
-              ></div>
-              <div
-                data-name="Thursday"
-                data-dayIndex="3"
-                class="calendar__day"
-              ></div>
-              <div
-                data-name="Friday"
-                data-dayIndex="4"
-                class="calendar__day"
-              ></div>
-              <div
-                data-name="Saturday"
-                data-dayIndex="5"
-                class="calendar__day"
-              ></div>
-              <div
-                data-name="Sunday"
-                data-dayIndex="6"
-                class="calendar__day"
-              ></div>
+
+        <section id="calendar">
+            <div class="dayTime">            
             </div>
-          </div>
+            <div data-name="Monday" data-dayIndex = "0" class="day">           
+            </div>
+            <div data-name="Tuesday" data-dayIndex = "1" class="day">           
+            </div>
+            <div data-name="Wednesday" data-dayIndex = "2" class="day">           
+            </div>
+            <div data-name="Thursday" data-dayIndex = "3" class="day">            
+            </div>
+            <div data-name="Friday" data-dayIndex = "4" class="day">           
+            </div>
+            <div data-name="Saturday" data-dayIndex = "5" class="day">            
+            </div>
+            <div data-name="Sunday" data-dayIndex = "6" class="day">           
+            </div>
         </section>
-        <form class="event-modal">
-          <h2 class="event-modal__header"></h2>
-          <label for="title" class="event-modal__descriptor">Title</label>
-          <div>
-            <input
-              type="text"
-              required
-              id="event-modal__title"
-              name="title"
-              class="event-modal__title event-modal__shortInput"
-            />
-          </div>
-          <label for="date" class="event-modal__descriptor">Date</label>
-          <div>
-            <input
-              type="date"
-              required
-              id="event-modal__date"
-              name="date"
-              class="event-modal__date event-modal__shortInput"
-            />
-          </div>
-          <label for="time" class="event-modal__descriptor">Time</label>
-          <div>
-            <input
-              type="time"
-              required
-              id="event-modal__start"
-              name="time"
-              class="event-modal__start event-modal__shortInput"
-            />
-            -
-            <input
-              type="time"
-              required
-              id="event-modal__end"
-              name="time"
-              class="event-modal__end event-modal__shortInput"
-            />
-          </div>
-          <label for="event-modal__description" class="event-modal__descriptor"
-            >Description</label
-          >
-          <div>
-            <textarea
-              name="description"
-              id="event-modal__description"
-              class="event-modal__description"
-            ></textarea>
-          </div>
-          <label for="event-modal__colors" class="event-modal__descriptor"
-            >Color</label
-          >
-          <div class="event-modal__colors">
-            <input
-              type="button"
-              name="color"
-              class="event-modal__color event-modal__color--red"
-              data-color="red"
-            />
-            <input
-              type="button"
-              name="color"
-              class="event-modal__color event-modal__color--orange"
-              data-color="orange"
-            />
-            <input
-              type="button"
-              name="color"
-              class="event-modal__color event-modal__color--blue"
-              data-color="blue"
-            />
-            <input
-              type="button"
-              name="color"
-              class="event-modal__color event-modal__color--green"
-              data-color="green"
-            />
-            <input
-              type="button"
-              name="color"
-              class="event-modal__color event-modal__color--purple"
-              data-color="purple"
-            />
-          </div>
-          <div class="event-modal__controls">
-            <input
-              type="button"
-              id="submitButton"
-              value="Submit"
-              class="event-modal__button"
-            />
-            <input
-              type="button"
-              id="cancelButton"
-              value="Cancel"
-              class="event-modal__button"
-            />
-            <input
-              type="button"
-              id="copyButton"
-              value="Copy"
-              class="event-modal__button event-modal__button--copy"
-            />
-            <input
-              type="button"
-              id="deleteButton"
-              value="Delete"
-              class="event-modal__button event-modal__button--delete"
-            />
-          </div>
-          <div class="event-modal__errors"></div>
+
+        <form id="eventModal">
+            <h2 id="modalTitle">
+            </h2>
+            <label class="descriptor" for="title">Title</label>
+            <div>
+                <input required type="text" id="eventTitle" name="title" class="shortInput"></input>
+            </div>
+            <label class="descriptor" for="date">Date</label>
+            <div>
+                <input required type="date" id="eventDate" name="date" class="shortInput"></input>
+            </div>
+            <label class="descriptor" for="time">Time</label>
+            <div>
+                <input required type="time" id="eventStart" name="time" class="shortInput"></input>
+                ‒<input required type="time" id="eventEnd" name="time" class="shortInput"></input>
+            </div>
+            
+            <label for="description">
+                Description
+            </label>
+            <div>
+                <textarea id="eventDescription" name="description">
+                </textarea>
+            </div>        
+            <label for="color">
+                Color
+            </label>
+            <div id="colors">
+                <input type="button" name="color" value="" class="color color-red" data-color = "red"></input>
+                <input type="button" name="color" value="" class="color color-blue" data-color = "blue"></input>
+                <input type="button" name="color" value="" class="color color-green" data-color = "green"></input>
+                <input type="button" name="color" value="" class="color color-orange" data-color = "orange"></input>
+            </div>      
+            <div id="eventControls">
+                <input type="submit" value="Submit" class="button" id="submitButton">
+                <input type="button" value="Cancel" class="button" id="cancelButton">
+                <input type="button" value="Copy" class="button" id="copyButton">
+                <input type="button" value="Delete" class="button" id="deleteButton">
+            </div>
+            
+            <div id="errors">    
+            </div>
         </form>
       </section>
       <section class="comunicator">

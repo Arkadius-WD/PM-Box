@@ -1,13 +1,13 @@
 import { dateString, getDayIndex, addDays } from './calendarHelper';
 import { Event, MODE } from './calendarEvent';
 
-export default class CalendarTemplate {
+export default class Calendar {
   constructor() {
     this.mode = MODE.VIEW;
     this.events = {};
     this.weekOffset = 0;
     this.readyToTrash = false;
-    this.slotHeight = 2.6;
+    this.slotHeight = 30;
     this.weekStart = null;
     this.weekEnd = null;
     this.eventsLoaded = false;
@@ -24,22 +24,22 @@ export default class CalendarTemplate {
 
   setupControls() {
     document
-      .querySelector('.week-controls__btn-next')
+      .querySelector('#nextWeekBtn')
       .addEventListener('click', () => this.changeWeek(1));
     document
-      .querySelector('.week-controls__btn-prev')
+      .querySelector('#prevWeekBtn')
       .addEventListener('click', () => this.changeWeek(-1));
     document
-      .querySelector('.general-controls__btn-add')
+      .querySelector('#addButton')
       .addEventListener('click', () => this.addNewEvent());
     document
-      .querySelector('.general-controls__btn-trash')
+      .querySelector('#trashButton')
       .addEventListener('click', () => this.trash());
     document
-      .getElementById('cancelButton')
+      .querySelector('#cancelButton')
       .addEventListener('click', () => this.closeModal());
 
-    const colorElements = document.querySelectorAll('.event-modal__color');
+    const colorElements = document.querySelectorAll('.color');
     colorElements.forEach(element => {
       element.addEventListener('click', this.changeColor);
     });
@@ -48,34 +48,34 @@ export default class CalendarTemplate {
   setupTimes() {
     const header = document.createElement('div');
     const slots = document.createElement('div');
-    header.classList.add('calendar__column-header');
-    slots.classList.add('calendar__slots');
+    header.classList.add('columnHeader');
+    slots.classList.add('slots');
 
     for (let hour = 0; hour < 24; hour++) {
       const timeSlot = document.createElement('div');
       timeSlot.setAttribute('data-hour', hour);
-      timeSlot.classList.add('calendar__time');
+      timeSlot.classList.add('time');
       timeSlot.textContent = `${hour}:00 - ${hour + 1}:00`;
       slots.appendChild(timeSlot);
     }
 
-    document.querySelector('.calendar__days-time').appendChild(header);
-    document.querySelector('.calendar__days-time').appendChild(slots);
+    document.querySelector('.dayTime').appendChild(header);
+    document.querySelector('.dayTime').appendChild(slots);
   }
 
   setupDays() {
     const cal = this;
 
-    document.querySelectorAll('.calendar__day').forEach(function (dayElement) {
+    document.querySelectorAll('.day').forEach(function (dayElement) {
       const dayIndex = parseInt(dayElement.getAttribute('data-dayIndex'), 10);
       const name = dayElement.getAttribute('data-name');
 
       const header = document.createElement('div');
-      header.classList.add('calendar__column-header');
+      header.classList.add('columnHeader');
       header.textContent = name;
 
       const slots = document.createElement('div');
-      slots.classList.add('calendar__slots');
+      slots.classList.add('slots');
 
       const dayDisplay = document.createElement('div');
       dayDisplay.classList.add('dayDisplay');
@@ -84,7 +84,7 @@ export default class CalendarTemplate {
       for (let hour = 0; hour < 24; hour++) {
         const slot = document.createElement('div');
         slot.setAttribute('data-hour', hour);
-        slot.classList.add('calendar__slot');
+        slot.classList.add('slot');
         slot.addEventListener('click', () => cal.clickSlot(hour, dayIndex));
         slot.addEventListener('mouseover', () => cal.hoverOver(hour));
         slot.addEventListener('mouseout', () => cal.hoverOut());
@@ -117,21 +117,19 @@ export default class CalendarTemplate {
       year: 'numeric',
     };
 
-    document.querySelector('.week__start-display').textContent =
+    document.querySelector('#weekStartDisplay').textContent =
       this.weekStart.toLocaleDateString(undefined, options);
-    document.querySelector('.week__end-display').textContent =
+    document.querySelector('#weekEndDisplay').textContent =
       this.weekEnd.toLocaleDateString(undefined, options);
 
-    document
-      .querySelectorAll('.calendar__day')
-      .forEach((dayElement, dayIndex) => {
-        const date = addDays(this.weekStart, dayIndex);
-        const display = date.toLocaleDateString(undefined, {
-          month: '2-digit',
-          day: '2-digit',
-        });
-        dayElement.querySelector('.dayDisplay').textContent = display;
+    document.querySelectorAll('.day').forEach((dayElement, dayIndex) => {
+      const date = addDays(this.weekStart, dayIndex);
+      const display = date.toLocaleDateString(undefined, {
+        month: '2-digit',
+        day: '2-digit',
       });
+      dayElement.querySelector('.dayDisplay').textContent = display;
+    });
 
     if (this.weekOffset === 0) {
       this.showCurrentDay();
@@ -144,24 +142,24 @@ export default class CalendarTemplate {
     const now = new Date();
     const dayIndex = getDayIndex(now);
     document
-      .querySelector(`.calendar__day[data-dayIndex="${dayIndex}"]`)
+      .querySelector(`.day[data-dayIndex="${dayIndex}"]`)
       .classList.add('currentDay');
   }
 
   hideCurrentDay() {
-    document.querySelectorAll('.calendar__day').forEach(dayElement => {
+    document.querySelectorAll('.day').forEach(dayElement => {
       dayElement.classList.remove('currentDay');
     });
   }
 
   hoverOver(hour) {
     document
-      .querySelector(`.calendar__time[data-hour="${hour}"]`)
+      .querySelector(`.time[data-hour="${hour}"]`)
       .classList.add('currentTime');
   }
 
   hoverOut() {
-    document.querySelectorAll('.calendar__time').forEach(timeElement => {
+    document.querySelectorAll('.time').forEach(timeElement => {
       timeElement.classList.remove('currentTime');
     });
   }
@@ -187,72 +185,63 @@ export default class CalendarTemplate {
     this.openModal(event);
   }
 
-  changeColor(event) {
-    const colors = document.querySelectorAll('.event-modal__color');
-    colors.forEach(color => {
-      color.classList.remove('active');
+  changeColor() {
+    document.querySelectorAll('.color').forEach(colorElement => {
+      colorElement.classList.remove('active');
     });
-    event.target.classList.add('active');
+    this.classList.add('active');
   }
 
   openModal(event) {
-    const eventModal = document.querySelector('.event-modal');
-    const eventModalHeader = document.querySelector('.event-modal__header');
-    const titleInput = document.querySelector('.event-modal__title');
-    const dateInput = document.querySelector('.event-modal__date');
-    const startInput = document.querySelector('.event-modal__start');
-    const endInput = document.querySelector('.event-modal__end');
-    const descriptionInput = document.querySelector(
-      '.event-modal__description',
-    );
-    const colors = document.querySelectorAll('.event-modal__color');
-    const calendarWindow = document.querySelector('.calendar__window');
-    const submitButton = document.getElementById('submitButton');
-    const deleteButton = document.getElementById('deleteButton');
-    const copyButton = document.getElementById('copyButton');
-    const defaultColor = colors[0];
+    document.getElementById('modalTitle').textContent =
+      this.mode === MODE.UPDATE ? 'Update your event' : 'Create a new event';
+    document.getElementById('eventTitle').value = event.title;
+    document.getElementById('eventDate').value = event.date;
+    document.getElementById('eventStart').value = event.start;
+    document.getElementById('eventEnd').value = event.end;
+    document.getElementById('eventDescription').value = event.description;
 
-    eventModalHeader.textContent =
-      this.mode === MODE.CREATE ? 'Create a new event' : 'Update your event';
+    const colorElements = document.getElementsByClassName('color');
 
-    titleInput.value = event.title;
-    dateInput.value = event.date;
-    startInput.value = event.start;
-    endInput.value = event.end;
-    descriptionInput.value = event.description;
-    colors.dataset = event.color;
-
-    if (this.mode === MODE.UPDATE) {
-      submitButton.value = 'Update';
-      deleteButton.style.display = 'block';
-      deleteButton.removeEventListener('click', event.deleteIn);
-      deleteButton.addEventListener('click', () => event.deleteIn(this));
-      copyButton.style.display = 'block';
-      copyButton.removeEventListener('click', event.copyIn);
-      copyButton.addEventListener('click', () => event.copyIn(this));
-      defaultColor.classList.remove('active');
-      document
-        .querySelector(`.event-modal__color[data-color="${event.color}"]`)
-        .classList.add('active');
-    } else if (this.mode === MODE.CREATE) {
-      submitButton.value = 'Create';
-      submitButton.removeEventListener('click', this.submitModal);
-      submitButton.addEventListener('click', () => {
-        this.submitModal(event);
-      });
-      deleteButton.style.display = 'none';
-      copyButton.style.display = 'none';
-      defaultColor.classList.add('active');
+    for (let i = 0; i < colorElements.length; i++) {
+      colorElements[i].classList.remove('active');
+      if (colorElements[i].getAttribute('data-color') === event.color) {
+        colorElements[i].classList.add('active');
+      }
     }
 
-    eventModal.style.display = 'block';
-    eventModal.style.transition = 'opacity 200ms';
-    eventModal.style.opacity = 1;
-    titleInput.focus();
-    calendarWindow.classList.add('opaque');
+    if (this.mode === MODE.UPDATE) {
+      document.getElementById('submitButton').value = 'Update';
+      document.getElementById('deleteButton').style.display = 'block';
+      document
+        .getElementById('deleteButton')
+        .removeEventListener('click', event.deleteIn);
+      document.getElementById('deleteButton').addEventListener('click', () => {
+        event.deleteIn(this);
+      });
+      document.getElementById('copyButton').style.display = 'block';
+      document
+        .getElementById('copyButton')
+        .removeEventListener('click', event.copyIn);
+      document.getElementById('copyButton').addEventListener('click', () => {
+        event.copyIn(this);
+      });
+    } else if (this.mode === MODE.CREATE) {
+      document.getElementById('submitButton').value = 'Create';
+      document.getElementById('deleteButton').style.display = 'none';
+      document.getElementById('copyButton').style.display = 'none';
+    }
 
-    eventModal.removeEventListener('submit', this.submitModal);
-    eventModal.addEventListener('submit', () => {
+    document.getElementById('eventModal').style.display = 'block';
+    document.getElementById('eventTitle').focus();
+    document.getElementById('calendar').classList.add('opaque');
+
+    /// /////////////////////////////
+
+    document
+      .querySelector('#eventModal')
+      .removeEventListener('submit', this.submitModal);
+    document.querySelector('#eventModal').addEventListener('submit', () => {
       this.submitModal(event);
     });
   }
@@ -265,24 +254,12 @@ export default class CalendarTemplate {
   }
 
   closeModal() {
-    const calendar = document.querySelector('.calendar__window');
-    const eventModal = document.querySelector('.event-modal');
-    const errors = document.querySelector('.event-modal__errors');
-    const colors = document.querySelectorAll('.event-modal__color');
-
-    this.mode = MODE.VIEW;
-    eventModal.style.opacity = '0';
-    eventModal.style.transition = 'opacity 200ms';
-    errors.textContent = '';
+    const eventModal = document.querySelector('#eventModal');
+    eventModal.style.display = 'none';
+    document.querySelector('#errors').textContent = '';
+    const calendar = document.querySelector('#calendar');
     calendar.classList.remove('opaque');
-
-    setTimeout(() => {
-      eventModal.style.display = 'none';
-    }, 200);
-
-    colors.forEach(color => {
-      color.classList.remove('active');
-    });
+    this.mode = MODE.VIEW;
   }
 
   addNewEvent() {
@@ -304,7 +281,7 @@ export default class CalendarTemplate {
   }
 
   loadEvents() {
-    document.querySelectorAll('.calendar__event').forEach(eventElement => {
+    document.querySelectorAll('.event').forEach(eventElement => {
       eventElement.remove();
     });
 
@@ -338,7 +315,7 @@ export default class CalendarTemplate {
       this.readyToTrash = false;
       this.events = {};
       this.saveEvents();
-      document.querySelectorAll('.calendar__event').forEach(eventElement => {
+      document.querySelectorAll('.event').forEach(eventElement => {
         eventElement.remove();
       });
     } else {

@@ -13,7 +13,7 @@ export class Event {
     this.start = data.start;
     this.end = data.end;
     this.date = data.date;
-    this.prevDate = data.date;
+    this.prevDate = this.date;
     this.description = data.description;
     this.color = data.color;
   }
@@ -71,46 +71,40 @@ export class Event {
       }
       return;
     }
-
     let eventSlot;
     const existingElement = document.getElementById(this.id);
-
     if (existingElement) {
       eventSlot = existingElement;
     } else {
       eventSlot = document.createElement('div');
-      eventSlot.classList.add('calendar__event');
+      eventSlot.setAttribute('class', 'event');
       eventSlot.setAttribute('id', this.id);
       eventSlot.addEventListener('click', () => this.clickIn(calendar));
     }
-
-    const height = calendar.slotHeight;
+    const h = calendar.slotHeight;
     eventSlot.textContent = this.title;
     eventSlot.style.top = `${
-      (this.startHour + this.startMinutes / 60) * height
-    }vh`;
+      (this.startHour + this.startMinutes / 60) * h + 2
+    }px`;
     eventSlot.style.bottom = `${
-      24 * height - (this.endHour + this.endMinutes / 60) * height
-    }vh`;
+      24 * h - (this.endHour + this.endMinutes / 60) * h + 1
+    }px`;
     eventSlot.style.backgroundColor = `var(--color-${this.color})`;
-
-    const slotsContainer = document.querySelector(
-      `.calendar__day[data-dayIndex="${this.dayIndex}"] .calendar__slots`,
+    const dayElement = document.querySelector(
+      `.day[data-dayIndex="${this.dayIndex}"] .slots`,
     );
-    slotsContainer.appendChild(eventSlot);
+    dayElement.appendChild(eventSlot);
 
     const { duration } = this;
     if (duration < 45) {
-      eventSlot.classList.remove('calendar__shortEvent');
-      eventSlot.classList.add('calendar__veryShortEvent');
+      eventSlot.classList.remove('shortEvent');
+      eventSlot.classList.add('veryShortEvent');
     } else if (duration < 59) {
-      eventSlot.classList.remove('calendar__veryShortEvent');
-      eventSlot.classList.add('calendar__shortEvent');
+      eventSlot.classList.remove('veryShortEvent');
+      eventSlot.classList.add('shortEvent');
     } else {
-      eventSlot.classList.remove(
-        'calendar__shortEvent',
-        'calendar__veryShortEvent',
-      );
+      eventSlot.classList.remove('shortEvent');
+      eventSlot.classList.remove('veryShortEvent');
     }
   }
 
@@ -122,15 +116,13 @@ export class Event {
 
   updateIn(calendar) {
     this.prevDate = this.date;
-    this.title = document.querySelector('.event-modal__title').value;
-    this.start = document.querySelector('.event-modal__start').value;
-    this.end = document.querySelector('.event-modal__end').value;
-    this.date = document.querySelector('.event-modal__date').value;
-    this.description = document.querySelector(
-      '.event-modal__description',
-    ).value;
+    this.title = document.getElementById('eventTitle').value;
+    this.start = document.getElementById('eventStart').value;
+    this.end = document.getElementById('eventEnd').value;
+    this.date = document.getElementById('eventDate').value;
+    this.description = document.getElementById('eventDescription').value;
     this.color = document
-      .querySelector('.event-modal__color.active')
+      .querySelector('.color.active')
       .getAttribute('data-color');
     this.saveIn(calendar);
     this.showIn(calendar);
@@ -165,31 +157,35 @@ export class Event {
   }
 
   isValidIn(calendar) {
-    const newStart = document.querySelector('.event-modal__start').value;
-    const newEnd = document.querySelector('.event-modal__end').value;
-    const newDate = document.querySelector('.event-modal__date').value;
-    const errors = document.querySelector('.event-modal__errors');
+    const newStart = document.getElementById('eventStart').value;
+    const newEnd = document.getElementById('eventEnd').value;
+    const newDate = document.getElementById('eventDate').value;
     if (calendar.events[newDate]) {
-      const conflictingEvent = Object.values(calendar.events[newDate]).find(
-        event =>
-          event.id !== this.id && event.end > newStart && event.start < newEnd,
+      const event = Object.values(calendar.events[newDate]).find(
+        eventItem =>
+          eventItem.id !== this.id &&
+          eventItem.end > newStart &&
+          eventItem.start < newEnd,
       );
-      if (conflictingEvent) {
-        errors.textContent = `This collides with the event '${conflictingEvent.title}' (${conflictingEvent.start} - ${conflictingEvent.end}).`;
+      if (event) {
+        const errorsElement = document.getElementById('errors');
+        errorsElement.textContent = `This collides with the event '${event.title}'
+              (${event.start} - ${event.end}).`;
         return false;
       }
     }
-
     const duration =
       (new Date(`${newDate}T${newEnd}`).getTime() -
         new Date(`${newDate}T${newStart}`).getTime()) /
       (1000 * 60);
     if (duration < 0) {
-      errors.textContent = 'The start cannot be after the end.';
+      const errorsElement = document.getElementById('errors');
+      errorsElement.textContent = 'The start cannot be after the end.';
       return false;
     }
     if (duration < 30) {
-      errors.textContent = 'Events should be at least 30 minutes.';
+      const errorsElement = document.getElementById('errors');
+      errorsElement.textContent = 'Events should be at least 30 minutes.';
       return false;
     }
     return true;

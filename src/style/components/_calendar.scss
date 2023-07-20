@@ -1,13 +1,11 @@
 @use '../variables/colors' as *;
 
-.calendar {
-  position: relative;
-  margin: 0 1rem;
-
-  &__header {
+.lower-beam {
+  &__controls {
     display: flex;
     justify-content: center;
     margin-left: 8rem;
+    margin-right: 1.5rem;
     width: 100%;
     font-size: 1.2rem;
 
@@ -20,29 +18,35 @@
         transform: scale(1.1);
       }
     }
+  }
 
-    .week-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-    .general-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 6rem;
-      padding: 0.2rem 1rem;
-      margin-left: 2rem;
-      i {
-        font-size: 1rem;
-        padding: 0.6rem;
-        border: 1px solid $third;
-        margin: 0 0.5rem;
-        border-radius: 50%;
-      }
+  .weekControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .generalControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    padding: 0.2rem 1rem;
+    margin-left: 2rem;
+    i {
+      font-size: 1rem;
+      padding: 0.6rem;
+      border: 1px solid $third;
+      margin: 0 0.5rem;
+      border-radius: 50%;
     }
   }
+}
+
+.calendar {
+  position: relative;
+  margin: 0 1rem;
 
   &__window {
     display: flex;
