@@ -81,19 +81,20 @@ export class Event {
       eventSlot.setAttribute('id', this.id);
       eventSlot.addEventListener('click', () => this.clickIn(calendar));
     }
-    const h = calendar.slotHeight;
+    const height = calendar.slotHeight;
     eventSlot.textContent = this.title;
     eventSlot.style.top = `${
-      (this.startHour + this.startMinutes / 60) * h + 2
-    }px`;
+      (this.startHour + this.startMinutes / 60) * height
+    }vh`;
     eventSlot.style.bottom = `${
-      24 * h - (this.endHour + this.endMinutes / 60) * h + 1
-    }px`;
+      24 * height - (this.endHour + this.endMinutes / 60) * height
+    }vh`;
     eventSlot.style.backgroundColor = `var(--color-${this.color})`;
-    const dayElement = document.querySelector(
+
+    const slotsContainer = document.querySelector(
       `.day[data-dayIndex="${this.dayIndex}"] .slots`,
     );
-    dayElement.appendChild(eventSlot);
+    slotsContainer.appendChild(eventSlot);
 
     const { duration } = this;
     if (duration < 45) {

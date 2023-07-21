@@ -8,12 +8,14 @@
       content="PM-Box is a desktop application for project management."
     />
     <title>PM-Box</title>
-    <script type="module" src="./scripts/index.js" defer></script>
+    
     <script
       src="https://kit.fontawesome.com/be47b86773.js"
       crossorigin="anonymous"
       defer
     ></script>
+    <script type="module" crossorigin src="./assets/main-87ede035.js"></script>
+    <link rel="stylesheet" href="./assets/index-859ef42d.css">
   </head>
 
   <body>
@@ -53,23 +55,7 @@
       <div class="upper-beam__logout">
         <a href="./index.html"><i class="fa-solid fa-power-off"></i></a>
       </div>
-      <div class="lower-beam">
-        <div class="lower-beam__controls">
-          <div class="lower-beam__weekControls">
-                <i id="prevWeekBtn" class="fas fa-angle-double-left"></i>
-                <span id="weekDisplay">
-                    <span id="weekStartDisplay"></span>
-                    ‒ 
-                     <span id="weekEndDisplay"></span>
-                </span>            
-                <i id="nextWeekBtn" class="fas fa-angle-double-right"></i>
-          </div>
-          <div class="lower-beam__generalControls">
-            <i id="addButton" class="fas fa-plus"></i>
-            <i id="trashButton" class="fas fa-trash-alt"></i>
-          </div>
-        </div>
-      </div>
+      <div class="lower-beam"></div>
       <nav class="nav">
         <div class="nav__menu-settings">
           <ul class="nav__menu-list">
@@ -89,7 +75,7 @@
           <div class="nav__home nav__icon">
             <a href="./home.html"><i class="fa-solid fa-house"></i></a>
           </div>
-          <div class="nav__calendar nav__icon active-nav-icon">
+          <div class="nav__calendar nav__icon">
             <a href="./calendar.html"
               ><i class="fa-regular fa-calendar-days"></i
             ></a>
@@ -119,7 +105,7 @@
               <i class="fa-regular fa-folder-open"></i>
             </a>
           </div>
-          <div class="nav__teams nav__icon">
+          <div class="nav__teams nav__icon active-nav-icon">
             <a href="./teams.html">
               <i class="fa-solid fa-people-group"></i>
             </a>
@@ -142,12 +128,12 @@
       <div class="logo">
         <img
           class="logo__circle"
-          src="./img/base/kolo-barw-kolorowe.png"
+          src="./assets/kolo-barw-kolorowe-1beced84.png"
           alt="circle of colors"
         />
         <img
           class="logo__box"
-          src="./img/base/1_WljD7gLyX2gr_60o501Z1A.png"
+          src="./assets/1_WljD7gLyX2gr_60o501Z1A-2d719e53.png"
           alt="box in circle"
         />
       </div>
@@ -156,77 +142,11 @@
       <section class="main-container">
         <header class="header">
           <div class="page-title">
-            <h2>calendar</h2>
+            <h2>Teams</h2>
           </div>
         </header>
-
-        <section id="calendar" class="calendar">
-            <div class="dayTime">            
-            </div>
-            <div class="days">
-              <div data-name="Monday" data-dayIndex = "0" class="day">           
-              </div>
-              <div data-name="Tuesday" data-dayIndex = "1" class="day">           
-              </div>
-              <div data-name="Wednesday" data-dayIndex = "2" class="day">           
-              </div>
-              <div data-name="Thursday" data-dayIndex = "3" class="day">            
-              </div>
-              <div data-name="Friday" data-dayIndex = "4" class="day">           
-              </div>
-              <div data-name="Saturday" data-dayIndex = "5" class="day">            
-              </div>
-              <div data-name="Sunday" data-dayIndex = "6" class="day">           
-              </div>
-            </div>
-        </section>
-
-        <form id="eventModal" class="eventModal">
-            <h2 id="modalTitle" class="modalTitle">
-            </h2>
-            <label class="descriptor" for="title">Title</label>
-            <div>
-                <input required type="text" id="eventTitle" name="title" class="shortInput eventTitle"></input>
-            </div>
-            <label class="descriptor" for="date">Date</label>
-            <div>
-                <input required type="date" id="eventDate" name="date" class="shortInput"></input>
-            </div>
-            <label class="descriptor" for="time">Time</label>
-            <div>
-                <input required type="time" id="eventStart" name="time" class="shortInput eventStart"></input>
-                ‒<input required type="time" id="eventEnd" name="time" class="shortInput eventEnd"></input>
-            </div>
-            
-            <label for="description">
-                Description
-            </label>
-            <div>
-                <textarea id="eventDescription" name="description" class="eventDescription">
-                </textarea>
-            </div>        
-            <label for="color">
-                Color
-            </label>
-            <div id="colors" class="colors">
-                <input type="button" name="color" value="" class="color color-red" data-color = "red"></input>
-                <input type="button" name="color" value="" class="color color-blue" data-color = "blue"></input>
-                <input type="button" name="color" value="" class="color color-green" data-color = "green"></input>
-                <input type="button" name="color" value="" class="color color-orange" data-color = "orange"></input>
-                <input type="button" name="color" value="" class="color color-purple" data-color = "purple"></input>
-            </div>      
-            <div id="eventControls" class="eventControls">
-                <input type="submit" value="Submit" class="button" id="submitButton">
-                <input type="button" value="Cancel" class="button" id="cancelButton">
-                <input type="button" value="Copy" class="button" id="copyButton">
-                <input type="button" value="Delete" class="button" id="deleteButton">
-            </div>
-            
-            <div id="errors" class="errors"> 
-            </div>
-        </form>
+        <div class="calendar-window window"></div>
       </section>
-
       <section class="comunicator">
         <div class="talks talks-hidden">
           <div class="talks__mail">

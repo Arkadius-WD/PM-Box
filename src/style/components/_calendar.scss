@@ -49,22 +49,26 @@
   width: 100%;
   border-bottom: 1px solid rgba($color: $first, $alpha: 0.2);
   transition: opacity 0.2s ease-in;
+
+  .opaque {
+    opacity: 0.4;
+  }
 }
 
-.opaque {
-  opacity: 0.4;
+.columnHeader {
+  height: 3rem;
+  padding: 0.5rem 0;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1rem;
+  overflow: hidden;
 }
-
-/* columns */
 
 .dayTime {
   width: 100%;
   min-width: 100px;
   max-width: 100px;
   text-align: center;
-  .columnHeader {
-    height: 3rem;
-  }
 }
 
 .days {
@@ -86,19 +90,18 @@
 }
 
 .currentDay {
-  background-color: $fourth;
+  background-color: rgba($color: $fourth, $alpha: 0.1);
   color: $third;
   .columnHeader {
-    background-color: yellow;
+    background-color: $fourth;
+    color: $third;
   }
 }
 
 .dayDisplay {
-  font-size: 15px;
-  color: tomato;
+  font-size: 1rem;
+  padding-top: 0.3rem;
 }
-
-/* slots */
 
 .slots {
   position: relative;
@@ -106,172 +109,208 @@
 
 .slot,
 .time {
-  border-top: 1px solid pink;
-  height: 2rem;
+  border-top: 1px solid rgba($color: $first, $alpha: 0.2);
+  height: 2.6vh;
 }
 
 .time {
-  font-size: 14px;
+  color: rgba($color: $first, $alpha: 0.6);
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  border-left: 1px solid rgba($color: $first, $alpha: 0.2);
+  border-right: 1px solid rgba($color: $first, $alpha: 0.2);
 }
 
-.slot:hover {
+.slot {
+  position: relative;
   cursor: pointer;
-  background-color: orange;
+  &:hover {
+    background-color: rgba($color: $first, $alpha: 0.2);
+  }
 }
 
-.time.currentTime {
-  background-color: orangered;
-  color: greenyellow;
+.currentTime {
+  background-color: rgba($color: $first, $alpha: 0.2);
 }
-
-/* events */
 
 .event {
+  margin-top: 2px;
+  margin-bottom: 1px;
   position: absolute;
+  top: 0;
+  bottom: 100px;
   left: 1px;
   width: calc(100% - 2px);
-  border-radius: 4px;
-  padding: 2px 5px;
+  padding: 1px 5px;
+  font-size: 1.2rem;
   color: white;
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
 }
 
 .shortEvent {
   padding: 0px 5px;
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 .veryShortEvent {
-  margin-top: -1px;
+  margin: -1px;
   padding: 0px 5px;
-  font-size: 10px;
+  font-size: 1rem;
 }
 
-/* event modal */
-
-#eventModal {
+.eventModal {
   display: none;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px red;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   position: absolute;
-  z-index: 10;
-  padding: 20px;
-  width: 450px;
-  min-width: 250px;
+  top: 33rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 45rem;
+  min-width: 27rem;
+  padding: 2rem;
+  margin-left: 2rem;
+  margin-top: 4rem;
+  background-color: $third;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 1.5rem;
+  z-index: 1;
 }
 
-#errors {
-  color: red;
+.errors {
+  padding-top: 1rem;
+  color: $fourth;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-#modalTitle {
-  margin-bottom: 20px;
+.modalTitle {
+  margin-bottom: 1rem;
 }
 
-#eventModal label {
-  font-weight: bold;
+.eventModal label {
   display: inline-block;
-  margin: 20px 10px 5px 0px;
+  margin: 2rem 1rem 0.5rem 0;
+  font-weight: bold;
 }
 
 .shortInput {
-  border-bottom: 1px solid blueviolet;
-  padding: 2px 1px;
+  padding: 0.2rem 0.1rem;
+  border-bottom: 1px solid rgba($color: $first, $alpha: 0.4);
+
+  &:focus {
+    color: $second;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $second;
+  }
 }
 
-.shortInput:focus {
-  border-bottom: 1px solid greenyellow;
+.eventTitle {
+  width: 95%;
 }
 
-#eventTitle {
-  width: 95% !important;
+.eventStart {
+  margin-right: 1rem;
 }
 
-#eventStart {
-  margin-right: 10px;
+.eventEnd {
+  margin-left: 1rem;
 }
 
-#eventEnd {
-  margin-left: 10px;
-}
-
-#eventDescription {
-  border: 1px solid blueviolet;
-  width: 95% !important;
-  height: 170px;
-  min-height: 40px;
+.eventDescription {
+  width: 95%;
+  min-height: 6rem;
+  max-height: 15rem;
   resize: vertical;
-  padding: 4px;
+  padding: 0.5rem;
+  border: 1px solid rgba($color: $first, $alpha: 0.4);
+
+  &:focus {
+    color: $second;
+    outline: none;
+    border: none;
+    border: 1px solid $second;
+  }
 }
 
-#eventDescription:focus {
-  border: 1px solid goldenrod;
-}
-
-#eventControls {
-  margin: 25px 0px 10px 0px;
+.eventControls {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .button {
-  padding: 10px 20px;
-  background-color: royalblue;
-  color: rgb(175, 114, 114);
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  background-color: $second;
+  color: $third;
+  border-radius: 2rem;
   cursor: pointer;
-  margin-right: 12px;
-  border-radius: 2px;
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+  #deleteButton {
+    background-color: $nineth;
+    color: $third;
+  }
 }
 
-#deleteButton {
-  background-color: var(--color-red);
-}
-
-.button:hover,
-.button:focus {
-  opacity: 0.8;
-}
-
-/* colors in event modal */
-
-#colors {
-  height: 30px;
+.colors {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 150px;
+  height: 3rem;
+  max-width: 15rem;
+  margin-bottom: 1rem;
 }
 
 .color {
-  width: 20px !important;
-  height: 20px !important;
-  border-radius: 50%;
-  border: 5px solid white;
   box-sizing: content-box;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid $third;
   cursor: pointer;
+  transition: border 0.3s;
+
+  &-red {
+    background-color: $nineth;
+  }
+
+  &-blue {
+    background-color: $fifth;
+  }
+
+  &-green {
+    background-color: $seventh;
+  }
+
+  &-orange {
+    background-color: $eighth;
+  }
+
+  &-purple {
+    background-color: $sixth;
+  }
+
+  &:focus,
+  &:hover {
+    border: 3px solid rgba($color: $first, $alpha: 0.6);
+  }
+}
+.active {
+  border: 2px solid rgba($color: $first, $alpha: 0.6);
 }
 
-.color.active,
-.color:focus,
-.color:hover {
-  border: 5px solid var(--grid-color);
-}
-
-.color-red {
-  background-color: red;
-}
-
-.color-blue {
-  background-color: blue;
-}
-
-.color-green {
-  background-color: green;
-}
-
-.color-orange {
-  background-color: orange;
+@media (max-width: 380px) {
+  #weekDisplay {
+    display: none;
+  }
 }
