@@ -55,7 +55,7 @@
       </div>
       <div class="lower-beam">
         <div class="lower-beam__controls">
-          <div class="weekControls">
+          <div class="lower-beam__weekControls">
                 <i id="prevWeekBtn" class="fas fa-angle-double-left"></i>
                 <span id="weekDisplay">
                     <span id="weekStartDisplay"></span>
@@ -64,7 +64,7 @@
                 </span>            
                 <i id="nextWeekBtn" class="fas fa-angle-double-right"></i>
           </div>
-          <div class="generalControls">
+          <div class="lower-beam__generalControls">
             <i id="addButton" class="fas fa-plus"></i>
             <i id="trashButton" class="fas fa-trash-alt"></i>
           </div>
@@ -160,22 +160,24 @@
           </div>
         </header>
 
-        <section id="calendar">
+        <section id="calendar" class="calendar">
             <div class="dayTime">            
             </div>
-            <div data-name="Monday" data-dayIndex = "0" class="day">           
-            </div>
-            <div data-name="Tuesday" data-dayIndex = "1" class="day">           
-            </div>
-            <div data-name="Wednesday" data-dayIndex = "2" class="day">           
-            </div>
-            <div data-name="Thursday" data-dayIndex = "3" class="day">            
-            </div>
-            <div data-name="Friday" data-dayIndex = "4" class="day">           
-            </div>
-            <div data-name="Saturday" data-dayIndex = "5" class="day">            
-            </div>
-            <div data-name="Sunday" data-dayIndex = "6" class="day">           
+            <div class="days">
+              <div data-name="Monday" data-dayIndex = "0" class="day">           
+              </div>
+              <div data-name="Tuesday" data-dayIndex = "1" class="day">           
+              </div>
+              <div data-name="Wednesday" data-dayIndex = "2" class="day">           
+              </div>
+              <div data-name="Thursday" data-dayIndex = "3" class="day">            
+              </div>
+              <div data-name="Friday" data-dayIndex = "4" class="day">           
+              </div>
+              <div data-name="Saturday" data-dayIndex = "5" class="day">            
+              </div>
+              <div data-name="Sunday" data-dayIndex = "6" class="day">           
+              </div>
             </div>
         </section>
 

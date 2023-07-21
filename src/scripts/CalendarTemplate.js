@@ -66,7 +66,7 @@ export default class Calendar {
   setupDays() {
     const cal = this;
 
-    document.querySelectorAll('.day').forEach(function (dayElement) {
+    document.querySelectorAll('.day').forEach(dayElement => {
       const dayIndex = parseInt(dayElement.getAttribute('data-dayIndex'), 10);
       const name = dayElement.getAttribute('data-name');
 
