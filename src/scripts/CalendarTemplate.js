@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { dateString, getDayIndex, addDays } from './calendarHelper';
 import { Event, MODE } from './calendarEvent';
 
@@ -236,14 +237,12 @@ export default class Calendar {
     document.getElementById('eventTitle').focus();
     document.getElementById('calendar').classList.add('opaque');
 
-    /// /////////////////////////////
-
-    document
-      .querySelector('#eventModal')
-      .removeEventListener('submit', this.submitModal);
-    document.querySelector('#eventModal').addEventListener('submit', () => {
-      this.submitModal(event);
-    });
+    $('#eventModal')
+      .off('submit')
+      .submit(e => {
+        e.preventDefault();
+        this.submitModal(event);
+      });
   }
 
   submitModal(event) {

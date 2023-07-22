@@ -53,87 +53,90 @@
   .opaque {
     opacity: 0.4;
   }
-}
 
-.columnHeader {
-  height: 3rem;
-  padding: 0.5rem 0;
-  text-align: center;
-  font-size: 1.4rem;
-  line-height: 1rem;
-  overflow: hidden;
-}
-
-.dayTime {
-  width: 100%;
-  min-width: 100px;
-  max-width: 100px;
-  text-align: center;
-}
-
-.days {
-  display: flex;
-  width: 100%;
-  overflow: auto;
-}
-
-.day {
-  width: 100%;
-  min-width: 10rem;
-  text-align: center;
-  border-right: 1px solid rgba($color: $first, $alpha: 0.2);
   .columnHeader {
-    color: $third;
-    background-color: $second;
+    height: 3rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1rem;
     overflow: hidden;
   }
-}
 
-.currentDay {
-  background-color: rgba($color: $fourth, $alpha: 0.1);
-  color: $third;
-  .columnHeader {
-    background-color: $fourth;
-    color: $third;
+  .dayTime {
+    width: 100%;
+    min-width: 100px;
+    max-width: 100px;
+    text-align: center;
   }
-}
 
-.dayDisplay {
-  font-size: 1rem;
-  padding-top: 0.3rem;
-}
+  .days {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+  }
 
-.slots {
-  position: relative;
-}
+  .day {
+    width: 100%;
+    min-width: 10rem;
+    text-align: center;
+    border-right: 1px solid rgba($color: $first, $alpha: 0.2);
+    .columnHeader {
+      color: $third;
+      background-color: $second;
+      overflow: hidden;
+    }
+  }
 
-.slot,
-.time {
-  border-top: 1px solid rgba($color: $first, $alpha: 0.2);
-  height: 2.6vh;
-}
+  .currentDay {
+    background-color: rgba($color: $fourth, $alpha: 0.1);
+    color: $third;
+    .columnHeader {
+      background-color: $fourth;
+      color: $third;
+    }
+  }
 
-.time {
-  color: rgba($color: $first, $alpha: 0.6);
-  padding: 0.2rem;
-  font-size: 1.2rem;
-  border-left: 1px solid rgba($color: $first, $alpha: 0.2);
-  border-right: 1px solid rgba($color: $first, $alpha: 0.2);
-}
+  .dayDisplay {
+    font-size: 1rem;
+    padding-top: 0.3rem;
+  }
 
-.slot {
-  position: relative;
-  cursor: pointer;
-  &:hover {
+  .slots {
+    position: relative;
+  }
+
+  .slot,
+  .time {
+    border-top: 1px solid rgba($color: $first, $alpha: 0.2);
+    height: 2.6vh;
+  }
+
+  .time {
+    color: rgba($color: $first, $alpha: 0.6);
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    border-left: 1px solid rgba($color: $first, $alpha: 0.2);
+    border-right: 1px solid rgba($color: $first, $alpha: 0.2);
+  }
+
+  .slot {
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba($color: $first, $alpha: 0.2);
+    }
+  }
+
+  .currentTime {
     background-color: rgba($color: $first, $alpha: 0.2);
   }
 }
 
-.currentTime {
-  background-color: rgba($color: $first, $alpha: 0.2);
-}
-
 .event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 2px;
   margin-bottom: 1px;
   position: absolute;
@@ -141,7 +144,6 @@
   bottom: 100px;
   left: 1px;
   width: calc(100% - 2px);
-  padding: 1px 5px;
   font-size: 1.2rem;
   color: white;
   border-radius: 4px;
@@ -175,138 +177,138 @@
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 1.5rem;
   z-index: 1;
-}
 
-.errors {
-  padding-top: 1rem;
-  color: $fourth;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.modalTitle {
-  margin-bottom: 1rem;
-}
-
-.eventModal label {
-  display: inline-block;
-  margin: 2rem 1rem 0.5rem 0;
-  font-weight: bold;
-}
-
-.shortInput {
-  padding: 0.2rem 0.1rem;
-  border-bottom: 1px solid rgba($color: $first, $alpha: 0.4);
-
-  &:focus {
-    color: $second;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid $second;
+  label {
+    display: inline-block;
+    margin: 2rem 1rem 0.5rem 0;
+    font-weight: bold;
   }
-}
 
-.eventTitle {
-  width: 95%;
-}
-
-.eventStart {
-  margin-right: 1rem;
-}
-
-.eventEnd {
-  margin-left: 1rem;
-}
-
-.eventDescription {
-  width: 95%;
-  min-height: 6rem;
-  max-height: 15rem;
-  resize: vertical;
-  padding: 0.5rem;
-  border: 1px solid rgba($color: $first, $alpha: 0.4);
-
-  &:focus {
-    color: $second;
-    outline: none;
-    border: none;
-    border: 1px solid $second;
+  .modalTitle {
+    margin-bottom: 1rem;
   }
-}
 
-.eventControls {
-  padding-top: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+  .shortInput {
+    padding: 0.2rem 0.1rem;
+    border-bottom: 1px solid rgba($color: $first, $alpha: 0.4);
 
-.button {
-  padding: 0.5rem 2rem;
-  font-size: 1.2rem;
-  background-color: $second;
-  color: $third;
-  border-radius: 2rem;
-  cursor: pointer;
-  transition: opacity 0.3s;
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
+    &:focus {
+      color: $second;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $second;
+    }
   }
-  #deleteButton {
-    background-color: $nineth;
+
+  .eventTitle {
+    width: 95%;
+  }
+
+  .eventStart {
+    margin-right: 1rem;
+  }
+
+  .eventEnd {
+    margin-left: 1rem;
+  }
+
+  .eventDescription {
+    width: 95%;
+    min-height: 6rem;
+    max-height: 15rem;
+    resize: vertical;
+    padding: 0.5rem;
+    border: 1px solid rgba($color: $first, $alpha: 0.4);
+
+    &:focus {
+      color: $second;
+      outline: none;
+      border: none;
+      border: 1px solid $second;
+    }
+  }
+
+  .eventControls {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .button {
+    padding: 0.5rem 2rem;
+    font-size: 1.2rem;
+    background-color: $second;
     color: $third;
-  }
-}
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
 
-.colors {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 3rem;
-  max-width: 15rem;
-  margin-bottom: 1rem;
-}
-
-.color {
-  box-sizing: content-box;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: 2px solid $third;
-  cursor: pointer;
-  transition: border 0.3s;
-
-  &-red {
-    background-color: $nineth;
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+    #deleteButton {
+      background-color: $nineth;
+      color: $third;
+    }
   }
 
-  &-blue {
-    background-color: $fifth;
+  .colors {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3rem;
+    max-width: 15rem;
+    margin-bottom: 1rem;
   }
 
-  &-green {
-    background-color: $seventh;
+  .color {
+    box-sizing: content-box;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid $third;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &-red {
+      background-color: $nineth;
+    }
+
+    &-blue {
+      background-color: $fifth;
+    }
+
+    &-green {
+      background-color: $seventh;
+    }
+
+    &-orange {
+      background-color: $eighth;
+    }
+
+    &-purple {
+      background-color: $sixth;
+    }
+
+    &:focus,
+    &:hover {
+      border: 3px solid rgba($color: $first, $alpha: 0.6);
+    }
   }
 
-  &-orange {
-    background-color: $eighth;
+  .errors {
+    padding-top: 1rem;
+    color: $fourth;
+    font-size: 1.2rem;
+    text-align: center;
   }
-
-  &-purple {
-    background-color: $sixth;
+  .active {
+    border: 2px solid rgba($color: $first, $alpha: 0.6);
   }
-
-  &:focus,
-  &:hover {
-    border: 3px solid rgba($color: $first, $alpha: 0.6);
-  }
-}
-.active {
-  border: 2px solid rgba($color: $first, $alpha: 0.6);
 }
 
 @media (max-width: 380px) {
