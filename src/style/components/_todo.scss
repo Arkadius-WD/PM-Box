@@ -1,2 +1,54 @@
 @use '../variables/colors' as *;
 @use '../variables/fonts' as *;
+
+.todo {
+  background-color: var(--light);
+  color: var(--dark);
+  font-family: $font;
+
+  input:not([type='radio']):not([type='checkbox']),
+  button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: initial;
+  }
+
+  section {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  h3 {
+    padding-top: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    color: var(--grey);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .create-todo {
+    input[type='text'] {
+      display: block;
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 1rem 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      background-color: $third;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .options {
+      display: flex;
+      gap: 2rem;
+    }
+  }
+}

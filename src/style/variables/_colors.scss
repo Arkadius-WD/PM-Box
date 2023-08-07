@@ -1,3 +1,5 @@
+// MAIN color-scheme
+
 $first: #333f50;
 $second: #515a65;
 $third: #ffffff;
@@ -10,9 +12,22 @@ $nineth: #ff3500;
 $tenth: #000000;
 
 :root {
+  // CAlENDAR color-scheme
   --color-red: #ff3500;
   --color-blue: #0094c8;
   --color-green: #00b331;
   --color-orange: #ffaa00;
   --color-purple: #8600ac;
+
+  // TODO color-scheme
+  --primary: #e43666;
+  --projects: #0094c8;
+  --personal: var(--primary);
+  --light: #eee;
+  --grey: #888;
+  --dark: #333f50;
+  --danger: #ff3500;
+  --shadow: 0 0.1rem 0.3rem rgba(51, 63, 80, 0.1);
+  --projects-glow: 0 0 0.4rem rgba(0, 148, 200, 0.75);
+  --personal-glow: 0 0 0.4rem rgb(228, 54, 102, 0.75);
 }
