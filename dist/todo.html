@@ -14,8 +14,8 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="./assets/main-37a26fab.js"></script>
-    <link rel="stylesheet" href="./assets/index-5a340b19.css">
+    <script type="module" crossorigin src="./assets/main-893240fe.js"></script>
+    <link rel="stylesheet" href="./assets/index-c24ce908.css">
   </head>
 
   <body>
@@ -145,7 +145,104 @@
             <h2>To-do</h2>
           </div>
         </header>
-        <div class="calendar-window window"></div>
+
+        <section class="todo">
+          <section class="create-todo">
+            <h3>CREATE A TODO</h3>
+
+            <form id="new-todo-form" class="new-todo-form">
+              <h4>What's on your todo list?</h4>
+              <div class="input-columns">
+                <input
+                  type="text"
+                  name="content"
+                  id="content"
+                  placeholder="Make a new task..."
+                />
+                <div class="input-category">
+                  <h4>Pick a category</h4>
+                  <div class="options">
+                    <label for="options">
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category1"
+                        value="projects"
+                      />
+                      <span class="bubble projects"></span>
+                      <div>Projects</div>
+                    </label>
+
+                    <label for="options">
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category2"
+                        value="personal"
+                      />
+                      <span class="bubble personal"></span>
+                      <div>Personal</div>
+                    </label>
+                  </div>
+                </div>
+                <input type="submit" value="Add todo" />
+              </div>
+            </form>
+          </section>
+
+          <section class="todo-list">
+            <h3>TODO LIST</h3>
+            <div class="list" id="todo-list">
+              <div class="todo-item">
+                <label>
+                  <input type="checkbox" />
+                  <span class="bubble projects"></span>
+                </label>
+
+                <div class="todo-content">
+                  <input type="text" value="Make a task 1" readonly />
+                </div>
+
+                <div class="actions">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </div>
+              </div>
+              <div class="todo-item">
+                <label>
+                  <input type="checkbox" />
+                  <span class="bubble projects"></span>
+                </label>
+
+                <div class="todo-content">
+                  <input type="text" value="Make a task 2" readonly />
+                </div>
+
+                <div class="actions">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </div>
+              </div>
+              <div class="todo-item">
+                <label>
+                  <input type="checkbox" />
+                  <span class="bubble personal"></span>
+                </label>
+
+                <div class="todo-content">
+                  <input type="text" value="Make a task 3" readonly />
+                </div>
+
+                <div class="actions">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ////////////////// -->
       </section>
       <section class="comunicator">
         <div class="talks talks-hidden">

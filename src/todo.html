@@ -150,37 +150,41 @@
 
             <form id="new-todo-form" class="new-todo-form">
               <h4>What's on your todo list?</h4>
-              <input
-                type="text"
-                name="content"
-                id="content"
-                placeholder="Make a new task..."
-              />
-              <h4>Pick a category</h4>
-              <div class="options">
-                <label for="options">
-                  <input
-                    type="radio"
-                    name="category"
-                    id="category1"
-                    value="projects"
-                  />
-                  <span class="bubble projects"></span>
-                  <div>Projects</div>
-                </label>
+              <div class="input-columns">
+                <input
+                  type="text"
+                  name="content"
+                  id="content"
+                  placeholder="Make a new task..."
+                />
+                <div class="input-category">
+                  <h4>Pick a category</h4>
+                  <div class="options">
+                    <label for="options">
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category1"
+                        value="projects"
+                      />
+                      <span class="bubble projects"></span>
+                      <div>Projects</div>
+                    </label>
 
-                <label for="options">
-                  <input
-                    type="radio"
-                    name="category"
-                    id="category2"
-                    value="personal"
-                  />
-                  <span class="bubble personal"></span>
-                  <div>Personal</div>
-                </label>
+                    <label for="options">
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category2"
+                        value="personal"
+                      />
+                      <span class="bubble personal"></span>
+                      <div>Personal</div>
+                    </label>
+                  </div>
+                </div>
+                <input type="submit" value="Add todo" />
               </div>
-              <input type="submit" value="Add todo" />
             </form>
           </section>
 

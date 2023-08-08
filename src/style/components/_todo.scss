@@ -2,7 +2,6 @@
 @use '../variables/fonts' as *;
 
 .todo {
-  background-color: var(--light);
   color: var(--dark);
   font-family: $font;
 
@@ -30,10 +29,11 @@
     color: var(--grey);
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
   }
 
   .create-todo {
+    background-color: var(--light);
+    border-radius: 0.5rem;
     input[type='text'] {
       display: block;
       width: 100%;
@@ -46,9 +46,26 @@
       box-shadow: var(--shadow);
     }
 
+    .input-columns {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     .options {
       display: flex;
-      gap: 2rem;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow);
+      }
     }
   }
 }
