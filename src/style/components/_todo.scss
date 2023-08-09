@@ -32,6 +32,7 @@
   }
 
   .create-todo {
+    min-width: 28rem;
     background-color: var(--light);
     border-radius: 0.5rem;
     input[type='text'] {
@@ -48,9 +49,14 @@
 
     .input-columns {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    }
+
+    .input-category {
+      h4 {
+        text-align: center;
+        margin-top: -0.3rem;
+        margin-bottom: 0.3rem;
+      }
     }
 
     .options {
@@ -66,6 +72,10 @@
         border-radius: 0.5rem;
         box-shadow: var(--shadow);
       }
+    }
+
+    #content {
+      min-width: 25rem;
     }
   }
 }
