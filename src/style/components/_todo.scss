@@ -78,6 +78,11 @@
       }
     }
 
+    input[type='radio'],
+    input[type='checkbox'] {
+      display: none;
+    }
+
     #content {
       min-width: 25rem;
     }
