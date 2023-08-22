@@ -239,7 +239,7 @@ export default class Calendar {
 
     $('#eventModal')
       .off('submit')
-      .submit(e => {
+      .on('submit', e => {
         e.preventDefault();
         this.submitModal(event);
       });
