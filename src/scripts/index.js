@@ -3,7 +3,7 @@ import login from './login';
 import mainNav from './mainNav';
 import weather from './weather';
 import calendar from './calendar';
-import todo from './todo';
+import todoModule from './todo';
 
 document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     weather();
   } else if (path.endsWith('calendar.html')) {
     calendar();
-  } else if (path.endsWith('todomodule.html')) {
-    todo();
+  } else if (path.endsWith('todo.html')) {
+    todoModule();
   }
 });
