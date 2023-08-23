@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     weather();
   } else if (path.endsWith('calendar.html')) {
     calendar();
-  } else if (path.endsWith('todo.html')) {
+  } else if (path.endsWith('todomodule.html')) {
     todo();
   }
 });
