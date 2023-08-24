@@ -10,9 +10,9 @@ const todoModule = () => {
       todoItem.classList.add('todo-item');
 
       const label = document.createElement('label');
-      const checkbox = document.createElement('input'); // Zmiana nazwy zmiennej na 'checkbox'
+      const checkbox = document.createElement('input');
       const span = document.createElement('span');
-      const contentDiv = document.createElement('div'); // Zmiana nazwy zmiennej na 'contentDiv'
+      const contentDiv = document.createElement('div');
       const actions = document.createElement('div');
       const edit = document.createElement('button');
       const deleteButton = document.createElement('button');
@@ -25,7 +25,7 @@ const todoModule = () => {
       } else {
         span.classList.add('business');
       }
-      contentDiv.classList.add('todo-content'); // Zmiana nazwy zmiennej na 'contentDiv'
+      contentDiv.classList.add('todo-content');
       actions.classList.add('actions');
       edit.classList.add('edit');
       deleteButton.classList.add('delete');
@@ -34,12 +34,12 @@ const todoModule = () => {
       edit.textContent = 'Edit';
       deleteButton.textContent = 'Delete';
 
-      label.appendChild(checkbox); // Zmiana zmiennej 'input' na 'checkbox'
+      label.appendChild(checkbox);
       label.appendChild(span);
       actions.appendChild(edit);
       actions.appendChild(deleteButton);
       todoItem.appendChild(label);
-      todoItem.appendChild(contentDiv); // Zmiana zmiennej 'content' na 'contentDiv'
+      todoItem.appendChild(contentDiv);
       todoItem.appendChild(actions);
 
       todoList.appendChild(todoItem);
@@ -49,7 +49,6 @@ const todoModule = () => {
       }
 
       checkbox.addEventListener('change', e => {
-        // Zmiana zmiennej 'input' na 'checkbox'
         todo.done = e.target.checked;
         localStorage.setItem('todos', JSON.stringify(todos));
 
@@ -99,7 +98,7 @@ const todoModule = () => {
 
       localStorage.setItem('todos', JSON.stringify(todos));
 
-      // Reset the form
+      // Reset form
       e.target.reset();
 
       displayTodos();
