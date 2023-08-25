@@ -14,8 +14,8 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="./assets/main-42ad253b.js"></script>
-    <link rel="stylesheet" href="./assets/index-e37f0d3b.css">
+    <script type="module" crossorigin src="./assets/main-f59c08f8.js"></script>
+    <link rel="stylesheet" href="./assets/index-af7d8397.css">
   </head>
 
   <body>
@@ -148,12 +148,11 @@
 
         <section class="todo">
           <section class="create-todo">
-            <h3>CREATE A TODO</h3>
             <form id="new-todo-form">
               <h4>What's on your todo?</h4>
               <input
                 type="text"
-                placeholder="e.g. Get some milk"
+                placeholder="add task..."
                 name="content"
                 id="content"
               />
@@ -166,9 +165,10 @@
                     name="category"
                     id="category1"
                     value="business"
+                    checked
                   />
                   <span class="bubble business"></span>
-                  <div>Business</div>
+                  <div>Projects</div>
                 </label>
                 <label>
                   <input
@@ -178,18 +178,16 @@
                     value="personal"
                   />
                   <span class="bubble personal"></span>
-                  <div>Personal</div>
+                  <div>Private</div>
                 </label>
               </div>
 
               <input type="submit" value="Add todo" />
             </form>
           </section>
-          <!-- End of New Todo -->
 
-          <!-- Todo List -->
           <section class="todo-list">
-            <h3>TODO LIST</h3>
+            <h3>TO-DO LIST</h3>
             <div class="list" id="todo-list"></div>
           </section>
         </section>
