@@ -23,3 +23,53 @@
     align-items: center;
   }
 }
+
+@media (min-width: 576px) {
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .todo {
+    .create-todo {
+      .options,
+      input[type='text'] {
+        margin-bottom: 0;
+      }
+
+      input[type='text'] {
+        height: 5.3rem;
+        margin-top: 1.5rem;
+      }
+      .options {
+        label {
+          padding: 0.8rem;
+          div {
+            margin-top: 0.5rem;
+          }
+        }
+      }
+
+      .ask-title {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+      }
+    }
+    input[type='submit'] {
+      display: inline-block;
+      max-width: 10rem;
+      height: 5.3rem;
+      margin-left: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    #content {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .todo-list {
+      max-height: calc(100vh - 42rem);
+    }
+  }
+}

@@ -147,40 +147,44 @@
         <section class="todo">
           <section class="create-todo">
             <form id="new-todo-form">
-              <h4>What's on your todo?</h4>
-              <input
-                type="text"
-                placeholder="add task..."
-                name="content"
-                id="content"
-              />
+              <h4 class="ask-title">What's on your todo?</h4>
+              <div class="input-container">
+                <input
+                  type="text"
+                  placeholder="add task..."
+                  name="content"
+                  id="content"
+                />
 
-              <h4>Pick a category</h4>
-              <div class="options">
-                <label>
-                  <input
-                    type="radio"
-                    name="category"
-                    id="category1"
-                    value="business"
-                    checked
-                  />
-                  <span class="bubble business"></span>
-                  <div>Projects</div>
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="category"
-                    id="category2"
-                    value="personal"
-                  />
-                  <span class="bubble personal"></span>
-                  <div>Private</div>
-                </label>
+                <div class="options-container">
+                  <h4>Pick a category</h4>
+                  <div class="options">
+                    <label>
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category1"
+                        value="business"
+                        checked
+                      />
+                      <span class="bubble business"></span>
+                      <div>Projects</div>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category2"
+                        value="personal"
+                      />
+                      <span class="bubble personal"></span>
+                      <div>Private</div>
+                    </label>
+                  </div>
+                </div>
+
+                <input type="submit" value="Add todo" />
               </div>
-
-              <input type="submit" value="Add todo" />
             </form>
           </section>
 
