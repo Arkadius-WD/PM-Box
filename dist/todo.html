@@ -8,12 +8,14 @@
       content="PM-Box is a desktop application for project management."
     />
     <title>PM-Box</title>
-    <script type="module" src="./scripts/index.js" defer></script>
+    
     <script
       src="https://kit.fontawesome.com/be47b86773.js"
       crossorigin="anonymous"
       defer
     ></script>
+    <script type="module" crossorigin src="./assets/main-9ed34a80.js"></script>
+    <link rel="stylesheet" href="./assets/index-10aac365.css">
   </head>
 
   <body>
@@ -78,12 +80,12 @@
               ><i class="fa-regular fa-calendar-days"></i
             ></a>
           </div>
-          <div class="nav__todo nav__icon">
+          <div class="nav__todo nav__icon active-nav-icon">
             <a href="./todo.html">
               <i class="fa-solid fa-list-check"></i>
             </a>
           </div>
-          <div class="nav__portfolio nav__icon active-nav-icon">
+          <div class="nav__portfolio nav__icon">
             <a href="./portfolio.html">
               <i class="fa-brands fa-r-project"></i>
             </a>
@@ -126,12 +128,12 @@
       <div class="logo">
         <img
           class="logo__circle"
-          src="./img/base/kolo-barw-kolorowe.png"
+          src="./assets/kolo-barw-kolorowe-1beced84.png"
           alt="circle of colors"
         />
         <img
           class="logo__box"
-          src="./img/base/1_WljD7gLyX2gr_60o501Z1A.png"
+          src="./assets/1_WljD7gLyX2gr_60o501Z1A-2d719e53.png"
           alt="box in circle"
         />
       </div>
@@ -140,54 +142,61 @@
       <section class="main-container">
         <header class="header">
           <div class="page-title">
-            <h2>Portfolio</h2>
+            <h2>To-do</h2>
           </div>
         </header>
 
-        <div class="portfolio-window window">
-          <div class="card">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                  <circle cx="70" cy="70" r="70"></circle>
-                  <circle cx="70" cy="70" r="70"></circle>
-                </svg>
-                <div class="number">
-                  <h2>90<span>%</span></h2>
+        <section class="todo">
+          <section class="create-todo">
+            <form id="new-todo-form">
+              <h4 class="ask-title">What's on your todo?</h4>
+              <div class="input-container">
+                <input
+                  type="text"
+                  placeholder="add task..."
+                  name="content"
+                  id="content"
+                />
+
+                <div class="options-container">
+                  <h4>Pick a category</h4>
+                  <div class="options">
+                    <label>
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category1"
+                        value="business"
+                        checked
+                      />
+                      <span class="bubble business"></span>
+                      <div>Projects</div>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="category"
+                        id="category2"
+                        value="personal"
+                      />
+                      <span class="bubble personal"></span>
+                      <div>Private</div>
+                    </label>
+                  </div>
                 </div>
+
+                <input type="submit" value="Add todo" />
               </div>
-              <h2 class="text">Project: <span>#00015</span></h2>
-            </div>
-          </div>
-          <div class="card">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                  <circle cx="70" cy="70" r="70"></circle>
-                  <circle cx="70" cy="70" r="70"></circle>
-                </svg>
-                <div class="number">
-                  <h2>60<span>%</span></h2>
-                </div>
-              </div>
-              <h2 class="text">Project: <span>#00013</span></h2>
-            </div>
-          </div>
-          <div class="card">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                  <circle cx="70" cy="70" r="70"></circle>
-                  <circle cx="70" cy="70" r="70"></circle>
-                </svg>
-                <div class="number">
-                  <h2>25<span>%</span></h2>
-                </div>
-              </div>
-              <h2 class="text">Project: <span>#00011</span></h2>
-            </div>
-          </div>
-        </div>
+            </form>
+          </section>
+
+          <section class="todo-list">
+            <h3>TO-DO LIST</h3>
+            <div class="list" id="todo-list"></div>
+          </section>
+        </section>
+
+        <!-- ////////////////// -->
       </section>
       <section class="comunicator">
         <div class="talks talks-hidden">
