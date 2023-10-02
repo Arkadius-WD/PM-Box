@@ -1,5 +1,17 @@
 @use '../variables/colors' as *;
 
+.portfolio-window {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 60vh;
+  max-height: 70vh;
+  overflow-y: scroll;
+  z-index: -5;
+}
+
 svg {
   position: relative;
   width: 15rem;
@@ -14,5 +26,32 @@ svg {
     stroke-width: 10;
     stroke-linecap: round;
     transform: translate(0.5rem, 0.5rem);
+
+    &:nth-child(2) {
+      stroke-dasharray: 220;
+      stroke-dashoffset: 220;
+    }
+  }
+}
+
+.card:nth-child(1) {
+  svg {
+    circle:nth-child(2) {
+      stroke: #00ff43;
+    }
+  }
+}
+.card:nth-child(2) {
+  svg {
+    circle:nth-child(2) {
+      stroke: #00a1ff;
+    }
+  }
+}
+.card:nth-child(3) {
+  svg {
+    circle:nth-child(2) {
+      stroke: #ff04f3;
+    }
   }
 }
