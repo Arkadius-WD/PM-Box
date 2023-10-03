@@ -36,10 +36,17 @@
   }
 
   .create-todo {
-    background-color: rgba($color: $second, $alpha: 0.2);
     padding-top: 1rem;
     padding-bottom: 1.5rem;
     border-radius: 1rem;
+    background: linear-gradient(135deg, $second 0%, $third 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    text-align: center;
+
+    h4 {
+      color: $first;
+    }
   }
 
   .create-todo input[type='text'] {
@@ -161,6 +168,7 @@
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
+
     margin-bottom: 1rem;
   }
 
