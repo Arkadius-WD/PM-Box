@@ -9,7 +9,7 @@
     height: 2.5rem;
     margin-right: 2rem;
     padding-right: 2rem;
-    border-right: 1px solid #fff;
+    border-right: 1px solid $third;
   }
 }
 
@@ -21,6 +21,7 @@
   flex-wrap: wrap;
   min-height: 60vh;
   max-height: 70vh;
+  padding-top: 1.5rem;
   gap: 2rem;
   overflow-y: scroll;
   z-index: 0;
@@ -84,6 +85,13 @@ svg {
     width: 90%;
     margin-top: -1rem;
     padding-bottom: 2rem;
+
+    i {
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
   }
   .text {
     position: relative;
@@ -147,8 +155,16 @@ svg {
 .card:nth-child(3) {
   svg {
     circle:nth-child(2) {
-      stroke-dashoffset: calc(440 - (440 * 25) / 100);
+      stroke-dashoffset: calc(440 - (440 * 50) / 100);
       stroke: #ff04f3;
+    }
+  }
+}
+.card:nth-child(4) {
+  svg {
+    circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440 * 25) / 100);
+      stroke: #ffe600;
     }
   }
 }
