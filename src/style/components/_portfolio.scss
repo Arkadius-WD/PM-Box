@@ -55,7 +55,7 @@ svg {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25rem;
+  width: 28rem;
   height: 30rem;
   background: linear-gradient(135deg, $second 0%, $third 100%);
   border-radius: 1.5rem;
@@ -143,12 +143,54 @@ svg {
       stroke: #00ff43;
     }
   }
+
+  .nav__approvals {
+    position: relative;
+    z-index: 0;
+    &::before {
+      content: '1';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 1.7rem;
+      height: 1.7rem;
+      top: -0.5rem;
+      right: -0.8rem;
+      color: $third;
+      font-size: 0.8rem;
+      background-color: $fourth;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  }
 }
 .card:nth-child(2) {
   svg {
     circle:nth-child(2) {
       stroke-dashoffset: calc(440 - (440 * 60) / 100);
       stroke: #00a1ff;
+    }
+  }
+
+  .nav__todo {
+    position: relative;
+    z-index: 0;
+    &::before {
+      content: '2';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 1.7rem;
+      height: 1.7rem;
+      top: -0.5rem;
+      right: -0.8rem;
+      color: $third;
+      font-size: 0.8rem;
+      background-color: $fourth;
+      border-radius: 50%;
+      z-index: -1;
     }
   }
 }
@@ -165,6 +207,27 @@ svg {
     circle:nth-child(2) {
       stroke-dashoffset: calc(440 - (440 * 25) / 100);
       stroke: #ffe600;
+    }
+  }
+
+  .nav__messages {
+    position: relative;
+    z-index: 0;
+    &::before {
+      content: '1';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 1.7rem;
+      height: 1.7rem;
+      top: -0.5rem;
+      right: -0.8rem;
+      color: $third;
+      font-size: 0.8rem;
+      background-color: $fourth;
+      border-radius: 50%;
+      z-index: -1;
     }
   }
 }
