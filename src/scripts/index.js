@@ -4,6 +4,8 @@ import mainNav from './mainNav';
 import weather from './weather';
 import calendar from './calendar';
 import todoModule from './todo';
+import budget from './budget';
+import portfolio from './portfolio';
 
 document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
@@ -19,5 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     calendar();
   } else if (path.endsWith('todo.html')) {
     todoModule();
+  } else if (path.endsWith('budget.html')) {
+    budget();
+  } else if (path.endsWith('portfolio.html')) {
+    portfolio();
   }
 });
