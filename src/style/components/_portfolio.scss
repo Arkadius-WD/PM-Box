@@ -125,7 +125,9 @@ svg {
     padding: 0.5rem;
   }
 
-  .approvals__container {
+  .approvals__container,
+  .tasks__task,
+  .messages__container {
     width: 23rem;
     border: 1px solid $second;
     margin: 1rem;
@@ -208,7 +210,7 @@ svg {
     z-index: 0;
     cursor: pointer;
     &::before {
-      content: '2';
+      content: '1';
       display: flex;
       justify-content: center;
       align-items: center;
@@ -246,7 +248,7 @@ svg {
     z-index: 0;
     cursor: pointer;
     &::before {
-      content: '1';
+      content: '3';
       display: flex;
       justify-content: center;
       align-items: center;
