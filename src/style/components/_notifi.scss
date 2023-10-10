@@ -245,6 +245,9 @@
       }
     }
     &:nth-child(4) {
+      .tasks__task-title {
+        text-decoration: line-through;
+      }
       .tasks__task-progres {
         background-color: $sixth;
       }

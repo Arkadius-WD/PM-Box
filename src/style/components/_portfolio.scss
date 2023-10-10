@@ -115,12 +115,14 @@ svg {
     background-color: $third;
     border-radius: 1rem;
     z-index: 10000;
-    // display: none;
+  }
+
+  .hidden {
+    display: none;
   }
 
   .close-button {
     margin: 0.5rem 0.5rem 0 auto;
-
     cursor: pointer;
     padding: 0.5rem;
   }
@@ -132,6 +134,30 @@ svg {
     border: 1px solid $second;
     margin: 1rem;
     border-radius: 1rem;
+  }
+
+  .messages__container {
+    height: 21rem;
+    overflow-y: scroll;
+  }
+
+  .tasks__task-progres {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+  }
+
+  .tasks__task-title {
+    text-decoration: line-through;
+  }
+
+  .messages__message {
+    min-width: 19rem;
+    margin: 0;
+    background-color: rgba(238, 221, 175, 0.2);
+  }
+
+  .messages__message-project {
+    top: 1rem;
   }
 }
 
