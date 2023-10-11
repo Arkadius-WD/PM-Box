@@ -1,12 +1,39 @@
-const labelWelcome = document.querySelector('.welcome');
-const labelDate = document.querySelector('.date');
-const labelBalance = document.querySelector('.balance__value');
-const labelSumIn = document.querySelector('.summary__value--in');
-const labelSumOut = document.querySelector('.summary__value--out');
-const labelSumInterest = document.querySelector('.summary__value--interest');
-const labelTimer = document.querySelector('.timer');
-
 const budget = () => {
+  const account1 = {
+    owner: 'Project #00015',
+    movements: [500, -400, -130, -70, -100],
+  };
+
+  const account2 = {
+    owner: 'Project #00013',
+    movements: [5000, -3400, -150, -30],
+  };
+
+  const account3 = {
+    owner: 'Project #00011',
+    movements: [200, -20, -80, -100, 50],
+  };
+  const account4 = {
+    owner: 'Project #00010',
+    movements: [2000, -200, 340, -300, -20, -460],
+  };
+
+  const accounts = [account1, account2, account3, account4];
+
+  const currencies = new Map([
+    ['USD', 'United States dollar'],
+    ['EUR', 'Euro'],
+    ['PLN', 'Zloty'],
+  ]);
+
+  const labelWelcome = document.querySelector('.welcome');
+  const labelDate = document.querySelector('.date');
+  const labelBalance = document.querySelector('.balance__value');
+  const labelSumIn = document.querySelector('.summary__value--in');
+  const labelSumOut = document.querySelector('.summary__value--out');
+  const labelSumInterest = document.querySelector('.summary__value--interest');
+  const labelTimer = document.querySelector('.timer');
+
   const containerApp = document.querySelector('.app');
   const containerMovements = document.querySelector('.movements');
 
@@ -24,19 +51,25 @@ const budget = () => {
   const inputCloseUsername = document.querySelector('.form__input--user');
   const inputClosePin = document.querySelector('.form__input--pin');
 
-  // Data
-  const account1 = {
-    owner: 'Arkadius',
-    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-    interestRate: 1.2, // %
-    pin: 12345,
-  };
+  const displayMovements = movements => {
+    containerMovements.innerHTML = '';
 
-  const currencies = new Map([
-    ['USD', 'United States dollar'],
-    ['EUR', 'Euro'],
-    ['PLN', 'Zloty'],
-  ]);
+    movements.forEach((mov, i) => {
+      const type = mov > 0 ? 'ADD_BUDGET' : 'GROSS';
+
+      const html = `
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+        i + 1
+      } ${type}</div>
+          <div class="movements__date">3 days ago</div>
+          <div class="movements__value">${mov}</div>
+        </div>`;
+
+      containerMovements.insertAdjacentHTML('afterbegin', html);
+    });
+  };
+  displayMovements(account1.movements);
 };
 
 export default budget;

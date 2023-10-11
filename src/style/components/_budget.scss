@@ -1,18 +1,16 @@
+@use '../variables/colors' as *;
+
 .budget {
   position: relative;
-  max-width: 80vw;
-  // display: grid;
-  // grid-template-columns: 4fr 3fr;
-  // grid-template-rows: auto repeat(3, 12rem) auto;
-  // gap: 2rem;
-  // transition: all 1s;
+  max-width: 90vw;
 }
 
 .balance {
-  // grid-column: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 4rem;
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
@@ -25,20 +23,22 @@
 
 .balance__date {
   font-size: 1.4rem;
-  color: #888;
+  color: rgba($color: $second, $alpha: 0.7);
 }
 
 .balance__value {
-  font-size: 4.5rem;
+  font-size: 2.8rem;
   font-weight: 400;
+  color: $second;
 }
 
-/* MOVEMENTS */
 .movements {
-  height: 5rem;
-  background-color: #fff;
+  min-height: 8rem;
+  max-height: 30vh;
   border-radius: 1rem;
-  overflow-y: scroll;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 1rem;
+  overflow-y: auto;
 }
 
 .movements__row {
@@ -52,8 +52,8 @@
   font-size: 1.1rem;
   text-transform: uppercase;
   font-weight: 500;
-  color: #fff;
-  padding: 0.1rem 1rem;
+  color: $third;
+  padding: 0.5rem 1rem;
   border-radius: 10rem;
   margin-right: 2rem;
 }
@@ -62,27 +62,26 @@
   font-size: 1.1rem;
   text-transform: uppercase;
   font-weight: 500;
-  color: #666;
+  color: rgba($color: $second, $alpha: 0.5);
 }
 
-.movements__type--deposit {
+.movements__type--GROSS {
+  background-image: linear-gradient(to top left, #e43666, #da9aac);
+}
+
+.movements__type--ADD_BUDGET {
   background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
 
-.movements__type--withdrawal {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
-}
-
 .movements__value {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin-left: auto;
 }
 
-/* SUMMARY */
 .summary {
-  grid-row: 5 / 6;
   display: flex;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
   padding: 0 0.3rem;
   margin-top: 1rem;
 }
@@ -95,13 +94,16 @@
 }
 
 .summary__value {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   margin-right: 2.5rem;
 }
 
-.summary__value--in,
-.summary__value--interest {
+.summary__value--in {
   color: #66c873;
+}
+
+.summary__value--interest {
+  color: $fifth;
 }
 
 .summary__value--out {
@@ -109,27 +111,41 @@
 }
 
 .btn--sort {
+  display: flex;
   margin-left: auto;
+  margin-right: 1rem;
+  margin-top: -0.8rem;
   border: none;
   background: none;
   font-size: 1.3rem;
   font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0rem 1rem 1rem;
+  background-color: rgba($color: $second, $alpha: 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
 }
 
-/* OPERATIONS */
+.operations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
 .operation {
   border-radius: 1rem;
-  padding: 3rem 4rem;
-  color: #333;
+  padding: 1rem;
+  max-width: 25rem;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .operation--transfer {
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  background-color: $eighth;
 }
 
 .operation--loan {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  background-color: $seventh;
 }
 
 .operation--close {
@@ -150,14 +166,12 @@ h2 {
   gap: 0.4rem 1rem;
 }
 
-/* Exceptions for interst */
 .form.form--loan {
   grid-template-columns: 2.5fr 1fr 2.5fr;
 }
 .form__label--loan {
   grid-row: 2;
 }
-/* End exceptions */
 
 .form__input {
   width: 100%;

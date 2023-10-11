@@ -2,7 +2,7 @@ const portfolio = () => {
   const buttonApprovals = document.querySelector('[data-id="12"]');
   const buttonTodo = document.querySelector('[data-id="17"]');
   const buttonMessages = document.querySelector('[data-id="34"]');
-   const approvalWindow = document.querySelector('.notify-1');
+  const approvalWindow = document.querySelector('.notify-1');
   const todoWindow = document.querySelector('.notify-2');
   const messagesWindow = document.querySelector('.notify-3');
   const closeButton1 = document.querySelector(
