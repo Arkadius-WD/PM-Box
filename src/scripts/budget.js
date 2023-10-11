@@ -1,20 +1,20 @@
 const budget = () => {
   const account1 = {
-    owner: 'Project #00015',
-    movements: [500, -400, -130, -70, -100],
+    title: 'Project #00015',
+    movements: [4500, -1000, -130.5, -70, -100],
   };
 
   const account2 = {
-    owner: 'Project #00013',
+    title: 'Project #00013',
     movements: [5000, -3400, -150, -30],
   };
 
   const account3 = {
-    owner: 'Project #00011',
+    title: 'Project #00011',
     movements: [200, -20, -80, -100, 50],
   };
   const account4 = {
-    owner: 'Project #00010',
+    title: 'Project #00010',
     movements: [2000, -200, 340, -300, -20, -460],
   };
 
@@ -70,6 +70,21 @@ const budget = () => {
     });
   };
   displayMovements(account1.movements);
+
+  const calcDisplayBalance = movements => {
+    const balance = movements.reduce((acc, cur) => acc + cur, 0);
+    labelBalance.textContent = `${balance} EUR`;
+  };
+  calcDisplayBalance(account1.movements);
+
+  const createNumberProject = accs => {
+    accs.forEach(acc => {
+      const projectNumber = acc.title.split(' ');
+      const lastWord = projectNumber[projectNumber.length - 1];
+      acc.project = lastWord.slice(-6);
+    });
+  };
+  createNumberProject(accounts);
 };
 
 export default budget;
