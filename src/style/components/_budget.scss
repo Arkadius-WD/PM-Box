@@ -5,6 +5,8 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 90vw;
+  max-height: 70vh;
+  overflow-y: scroll;
 }
 
 .balance {
@@ -132,6 +134,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -168,8 +171,10 @@ h2 {
   gap: 0.4rem 1rem;
 }
 
-.form.form--loan {
-  grid-template-columns: 2.5fr 1fr 2.5fr;
+.form--loan {
+  grid-template-columns: 2.5fr 0.7fr;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 .form__label--loan {
   grid-row: 2;
@@ -198,9 +203,30 @@ h2 {
   text-align: center;
 }
 
+.project-list {
+  display: flex;
+  flex-direction: column;
+  min-width: 25rem;
+  min-height: 10rem;
+  background-color: rgba($color: $second, $alpha: 0.1);
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  input {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: $fifth;
+    color: $third;
+    cursor: pointer;
+  }
+}
+
 .form__btn {
   border: none;
-  border-radius: 0.7rem;
+  border-radius: 0.5rem;
   font-size: 1.8rem;
   background-color: #fff;
   cursor: pointer;
