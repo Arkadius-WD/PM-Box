@@ -1,0 +1,35 @@
+@use '../variables/colors' as *;
+@use '../variables/fonts' as *;
+
+.folders {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+  gap: 3rem;
+}
+
+.folder {
+  width: 12rem;
+  height: 12rem;
+  cursor: pointer;
+
+  img {
+    width: 10rem;
+    height: 10rem;
+    transition: transform 0.3s;
+  }
+
+  h3 {
+    text-align: center;
+    transition: color 0.3s;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+    h3 {
+      color: rgba($color: $first, $alpha: 0.6);
+    }
+  }
+}

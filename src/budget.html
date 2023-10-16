@@ -155,46 +155,52 @@
             <p class="balance__value">0000€</p>
           </div>
 
-          <div class="operations">
-            <div class="operation operation--transfer">
-              <h2>GROSS</h2>
-              <form class="form form--transfer">
-                <input type="text" class="form__input form__input--to" />
-                <input type="number" class="form__input form__input--amount" />
-                <button class="form__btn form__btn--transfer">&rarr;</button>
-                <label class="form__label">Transfer</label>
-                <label class="form__label">Amount</label>
-              </form>
+          <div class="list-container">
+            <div class="operations">
+              <div class="operation operation--transfer">
+                <h2>GROSS</h2>
+                <form class="form form--transfer">
+                  <input type="text" class="form__input form__input--to" />
+                  <input
+                    type="number"
+                    class="form__input form__input--amount"
+                  />
+                  <button class="form__btn form__btn--transfer">&rarr;</button>
+                  <label class="form__label">Transfer</label>
+                  <label class="form__label">Amount</label>
+                </form>
+              </div>
+
+              <div class="operation operation--loan">
+                <h2>ADD MONEY</h2>
+                <form class="form form--loan">
+                  <input
+                    type="number"
+                    class="form__input form__input--loan-amount"
+                  />
+                  <button class="form__btn form__btn--loan">&rarr;</button>
+                  <label class="form__label form__label--loan">Amount</label>
+                </form>
+              </div>
+
+              <div class="project-list operation">
+                <h2>PROJECT</h2>
+                <form class="form">
+                  <select id="change-project" name="change-project">
+                    <option value="#00015">#00015</option>
+                    <option value="#00013">#00013</option>
+                    <option value="#00011">#00011</option>
+                    <option value="#00010" selected>#00010</option>
+                  </select>
+                  <input type="submit" value="CHANGE" />
+                </form>
+              </div>
             </div>
 
-            <div class="operation operation--loan">
-              <h2>ADD MONEY</h2>
-              <form class="form form--loan">
-                <input
-                  type="number"
-                  class="form__input form__input--loan-amount"
-                />
-                <button class="form__btn form__btn--loan">&rarr;</button>
-                <label class="form__label form__label--loan">Amount</label>
-              </form>
-            </div>
-
-            <div class="project-list operation">
-              <h2>PROJECT</h2>
-              <form class="form">
-                <select id="change-project" name="change-project">
-                  <option value="#00015">#00015</option>
-                  <option value="#00013">#00013</option>
-                  <option value="#00011">#00011</option>
-                  <option value="#00010">#00010</option>
-                </select>
-                <input type="submit" value="CHANGE" />
-              </form>
-            </div>
+            <div class="movements"></div>
+            <button class="btn--sort">&downarrow; SORT</button>
           </div>
 
-          <div class="movements"></div>
-          <button class="btn--sort">&downarrow; SORT</button>
           <div class="summary">
             <p class="summary__label">In</p>
             <p class="summary__value summary__value--in">0000€</p>

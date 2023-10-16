@@ -71,25 +71,35 @@ const budget = () => {
   };
   displayMovements(account1.movements);
 
+  let balance = 0;
+  let incomes = 0;
+  let out = 0;
+
   const calcDisplayBalance = movements => {
-    const balance = movements.reduce((acc, cur) => acc + cur, 0);
+    balance = movements.reduce((acc, cur) => acc + cur, 0);
     labelBalance.textContent = `${balance} €`;
-    labelSumInterest.textContent = `${balance} €`;
   };
   calcDisplayBalance(account1.movements);
 
   const calcDisplaySummary = movements => {
-    const incomes = movements
+    incomes = movements
       .filter(mov => mov > 0)
       .reduce((acc, mov) => acc + mov, 0);
     labelSumIn.textContent = `${incomes} €`;
 
-    const out = movements
-      .filter(mov => mov < 0)
-      .reduce((acc, mov) => acc + mov, 0);
-    labelSumOut.textContent = `${Math.abs(out)} €`;
+    out = Math.abs(
+      movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0),
+    );
+    labelSumOut.textContent = `${out} €`;
   };
   calcDisplaySummary(account1.movements);
+
+  const calcRest = () => {
+    const rest = (((incomes - out) / incomes) * 100).toFixed(1);
+    labelSumInterest.textContent = `${rest} %`;
+  };
+
+  calcRest();
 
   const createNumberProject = accs => {
     accs.forEach(acc => {

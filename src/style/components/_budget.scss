@@ -5,7 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 90vw;
-  max-height: 70vh;
+  max-height: 80vh;
   overflow-y: scroll;
 }
 
@@ -36,12 +36,19 @@
   color: $second;
 }
 
+.list-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .movements {
+  position: relative;
   min-height: 8rem;
-  max-height: 30vh;
+  width: 100%;
   border-radius: 1rem;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  margin-bottom: 1rem;
+  margin: 1rem;
+  margin-right: 2rem;
   overflow-y: auto;
 }
 
@@ -87,7 +94,7 @@
   justify-content: center;
   align-items: center;
   padding: 0 0.3rem;
-  margin-top: 1rem;
+  margin-top: 5rem;
 }
 
 .summary__label {
@@ -115,10 +122,13 @@
 }
 
 .btn--sort {
+  position: absolute;
+  right: 30.7rem;
+  bottom: 4.7rem;
+  width: 7rem;
+  height: 3rem;
   display: flex;
   margin-left: auto;
-  margin-right: 1rem;
-  margin-top: -0.8rem;
   border: none;
   background: none;
   font-size: 1.3rem;
@@ -132,11 +142,13 @@
 
 .operations {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
+  margin-right: 1rem;
 }
 .operation {
   border-radius: 1rem;
@@ -215,10 +227,17 @@ h2 {
     justify-content: center;
     align-items: center;
   }
+
+  select {
+    padding: 0.3rem 1rem;
+    color: $first;
+    border-radius: 0.5rem;
+  }
+
   input {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: $fifth;
+    background-color: $first;
     color: $third;
     cursor: pointer;
   }
