@@ -1,6 +1,10 @@
 @use '../variables/colors' as *;
 @use '../variables/fonts' as *;
 
+.files-window {
+  margin-top: 1.5rem;
+}
+
 .folders {
   display: flex;
   flex-wrap: wrap;
@@ -9,9 +13,11 @@
 }
 
 .folder {
-  width: 12rem;
-  height: 12rem;
+  width: 14rem;
+  height: 14rem;
   cursor: pointer;
+  border: 1px solid $second;
+  padding: 1rem;
 
   img {
     width: 10rem;
@@ -21,6 +27,7 @@
 
   h3 {
     text-align: center;
+    text-transform: uppercase;
     transition: color 0.3s;
   }
 

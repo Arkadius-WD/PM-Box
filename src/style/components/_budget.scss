@@ -54,7 +54,7 @@
   padding: 2.25rem 4rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $third;
 }
 
 .movements__type {
@@ -109,7 +109,7 @@
 }
 
 .summary__value--in {
-  color: #66c873;
+  color: $seventh;
 }
 
 .summary__value--interest {
@@ -117,7 +117,7 @@
 }
 
 .summary__value--out {
-  color: #f5465d;
+  color: $fourth;
 }
 
 .btn--sort {
@@ -172,7 +172,7 @@ h2 {
   margin-bottom: 1.5rem;
   font-size: 1.7rem;
   font-weight: 600;
-  color: #333;
+  color: $first;
 }
 
 .form {
@@ -198,7 +198,7 @@ h2 {
   font-family: inherit;
   font-size: 1.5rem;
   text-align: center;
-  color: #333;
+  color: $first;
   padding: 0.3rem 1rem;
   border-radius: 0.7rem;
   transition: all 0.3s;
@@ -246,7 +246,7 @@ h2 {
   border: none;
   border-radius: 0.5rem;
   font-size: 1.8rem;
-  background-color: #fff;
+  background-color: $third;
   cursor: pointer;
   transition: all 0.3s;
 }
