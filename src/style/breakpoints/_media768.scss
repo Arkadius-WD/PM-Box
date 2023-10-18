@@ -1,9 +1,50 @@
-@media (min-width: 576px) {
-  .upper-beam__empty {
-    min-width: 2rem;
+@media (max-width: 768px) {
+  .balance__label {
+    font-size: 2rem;
   }
 
-  .start {
-    background-size: 100rem;
+  .balance__date {
+    font-size: 1.2rem;
+  }
+
+  .balance__value {
+    padding-right: 1.5rem;
+    font-size: 2.5rem;
+  }
+
+  .budget {
+    overflow-y: scroll;
+  }
+  .list-container {
+    flex-direction: column;
+  }
+
+  .movements {
+    width: 100%;
+    max-width: 75vw;
+  }
+
+  .btn--sort {
+    right: 6.7rem;
+    bottom: -25.2rem;
+  }
+
+  .movements__row {
+    padding: 1.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .movements__value {
+    padding-right: 3rem;
+    font-size: 1.3rem;
+  }
+
+  .movements__type,
+  .movements__date {
+    font-size: 1rem;
+  }
+
+  .summary {
+    padding-bottom: 5rem;
   }
 }

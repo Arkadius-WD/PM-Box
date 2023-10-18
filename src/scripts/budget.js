@@ -1,7 +1,7 @@
 const budget = () => {
   const account1 = {
     title: 'Project #00015',
-    movements: [4500, -1000, -130, -70, -100],
+    movements: [4500, -1000, -130, -100, 200, -50, 100],
   };
 
   const account2 = {
@@ -68,6 +68,9 @@ const budget = () => {
 
       containerMovements.insertAdjacentHTML('afterbegin', html);
     });
+
+    const html2 = `<button class="btn--sort">&downarrow; SORT</button>`;
+    containerMovements.insertAdjacentHTML('beforeend', html2);
   };
   displayMovements(account1.movements);
 
@@ -98,7 +101,6 @@ const budget = () => {
     const rest = (((incomes - out) / incomes) * 100).toFixed(1);
     labelSumInterest.textContent = `${rest} %`;
   };
-
   calcRest();
 
   const createNumberProject = accs => {

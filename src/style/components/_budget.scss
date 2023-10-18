@@ -4,9 +4,8 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  max-width: 90vw;
-  max-height: 80vh;
-  overflow-y: scroll;
+  width: 85vw;
+  height: 70vh;
 }
 
 .balance {
@@ -42,8 +41,7 @@
 }
 
 .movements {
-  position: relative;
-  min-height: 8rem;
+  height: 33rem;
   width: 100%;
   border-radius: 1rem;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
@@ -95,6 +93,7 @@
   align-items: center;
   padding: 0 0.3rem;
   margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .summary__label {
@@ -122,22 +121,22 @@
 }
 
 .btn--sort {
-  position: absolute;
-  right: 30.7rem;
-  bottom: 4.7rem;
-  width: 7rem;
+  width: 10rem;
   height: 3rem;
   display: flex;
   margin-left: auto;
+  margin-right: 0.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: none;
   background: none;
   font-size: 1.3rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 0 0rem 1rem 1rem;
-  background-color: rgba($color: $second, $alpha: 0.1);
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  color: $fifth;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .operations {
