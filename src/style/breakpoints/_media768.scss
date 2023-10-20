@@ -46,6 +46,9 @@
 
   .summary {
     padding-bottom: 5rem;
+    &__value {
+      font-size: 1.3rem;
+    }
   }
 
   .folder {

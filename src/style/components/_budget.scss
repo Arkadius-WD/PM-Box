@@ -54,7 +54,7 @@
   padding: 2.25rem 4rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid $third;
+  border-bottom: 1px solid rgba($color: $second, $alpha: 0.2);
 }
 
 .movements__type {
@@ -127,7 +127,7 @@
   margin-left: auto;
   margin-right: 0.7rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border: none;
   background: none;
   font-size: 1.3rem;
