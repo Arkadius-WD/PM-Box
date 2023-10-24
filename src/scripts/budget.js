@@ -103,11 +103,6 @@ const budget = () => {
     labelSumInterest.textContent = `${rest} %`;
   };
 
-  displayMovements(currentAccount.movements);
-  calcDisplayBalance(currentAccount.movements);
-  calcDisplaySummary(currentAccount.movements);
-  calcRest();
-
   const createNumberProject = accs => {
     accs.forEach(acc => {
       const projectNumber = acc.number.split(' ');
@@ -117,6 +112,14 @@ const budget = () => {
   };
   createNumberProject(accounts);
 
+  const displayFunction = () => {
+    displayMovements(currentAccount.movements);
+    calcDisplayBalance(currentAccount.movements);
+    calcDisplaySummary(currentAccount.movements);
+    calcRest();
+  };
+  displayFunction();
+
   inputChangeProject.addEventListener('click', e => {
     e.preventDefault();
     const selectedOption =
@@ -125,11 +128,18 @@ const budget = () => {
     currentAccount = accounts.find(acc => acc.project === selectedOption.value);
 
     if (currentAccount.number === selectedOption.value) {
-      displayMovements(currentAccount.movements);
-      calcDisplayBalance(currentAccount.movements);
-      calcDisplaySummary(currentAccount.movements);
-      calcRest();
+      displayFunction();
     }
+  });
+
+  btnTransfer.addEventListener('click', e => {
+    e.preventDefault();
+    const amount = Number(inputTransferAmount.value);
+    console.log(amount);
+    const receiverAccount = accounts.find(
+      acc => acc.project === inputTransferTo.value,
+    );
+    
   });
 };
 
