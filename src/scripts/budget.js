@@ -77,13 +77,17 @@ const budget = () => {
     containerMovements.insertAdjacentHTML('beforeend', html2);
   };
 
-  let balance = 0;
+  const balance = 0;
   let incomes = 0;
   let out = 0;
 
-  const calcDisplayBalance = movements => {
-    balance = movements.reduce((acc, cur) => acc + cur, 0);
-    labelBalance.textContent = `${balance} €`;
+  const calcDisplayBalance = acc => {
+    acc.balance = balance;
+    acc.balance = acc.movements.reduce(
+      (accumulator, mov) => accumulator + mov,
+      0,
+    );
+    labelBalance.textContent = `${acc.balance} €`;
   };
 
   const calcDisplaySummary = movements => {
@@ -112,13 +116,13 @@ const budget = () => {
   };
   createNumberProject(accounts);
 
-  const displayFunction = () => {
-    displayMovements(currentAccount.movements);
-    calcDisplayBalance(currentAccount.movements);
-    calcDisplaySummary(currentAccount.movements);
+  const displayFunction = acc => {
+    displayMovements(acc.movements);
+    calcDisplayBalance(acc);
+    calcDisplaySummary(acc.movements);
     calcRest();
   };
-  displayFunction();
+  displayFunction(currentAccount);
 
   inputChangeProject.addEventListener('click', e => {
     e.preventDefault();
@@ -128,18 +132,50 @@ const budget = () => {
     currentAccount = accounts.find(acc => acc.project === selectedOption.value);
 
     if (currentAccount.number === selectedOption.value) {
-      displayFunction();
+      displayFunction(currentAccount);
     }
   });
 
   btnTransfer.addEventListener('click', e => {
     e.preventDefault();
     const amount = Number(inputTransferAmount.value);
-    console.log(amount);
-    const receiverAccount = accounts.find(
+    const receiverAcc = accounts.find(
       acc => acc.project === inputTransferTo.value,
     );
-    
+
+    console.log('inputTransferTo:', inputTransferTo.value);
+    console.log('inputTransferAmount:', inputTransferAmount.value);
+    console.log('currentAccount:', currentAccount);
+    console.log('receiverAcc:', receiverAcc);
+    console.log('amount:', receiverAcc);
+
+    inputTransferTo.value = '';
+    inputTransferAmount.value = '';
+
+    // if (inputTransferTo.value === '') {
+    //   receiverAcc.project = currentAccount.project;
+    // }
+
+    if (
+      amount > 0 &&
+      receiverAcc &&
+      currentAccount.balance >= amount &&
+      receiverAcc.project === currentAccount.project
+    ) {
+      currentAccount.movements.push(-amount);
+      displayFunction(currentAccount);
+    }
+
+    if (
+      amount > 0 &&
+      receiverAcc &&
+      currentAccount.balance >= amount &&
+      receiverAcc.project !== currentAccount.project
+    ) {
+      currentAccount.movements.push(-amount);
+      receiverAcc.movements.push(amount);
+      displayFunction(currentAccount);
+    }
   });
 };
 

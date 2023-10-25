@@ -202,9 +202,12 @@ h2 {
   padding: 0.3rem 1rem;
   border-radius: 0.7rem;
   transition: all 0.3s;
-}
 
-.form__input:focus {
+  &--to {
+    font-size: 1.3rem;
+  }
+}
+b .form__input:focus {
   outline: none;
   background-color: rgba(255, 255, 255, 0.6);
 }
@@ -230,11 +233,13 @@ h2 {
   select {
     padding: 0.3rem 1rem;
     color: $first;
-    border-radius: 0.5rem;
+
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 0.7rem;
   }
 
   input {
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 1rem;
     border-radius: 0.5rem;
     background-color: $first;
     color: $third;
