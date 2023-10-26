@@ -26,7 +26,6 @@ const budget = () => {
     ['PLN', 'Zloty'],
   ]);
 
-
   const labelDate = document.querySelector('.date');
   const labelBalance = document.querySelector('.balance__value');
   const labelSumIn = document.querySelector('.summary__value--in');
@@ -173,6 +172,26 @@ const budget = () => {
     }
 
     inputLoanAmount.value = '';
+  });
+
+  let originalMovements = [];
+
+  containerMovements.addEventListener('click', event => {
+    const selectedOption =
+      inputSelectProject.options[inputSelectProject.selectedIndex];
+    currentAccount = accounts.find(acc => acc.project === selectedOption.value);
+
+    if (event.target.classList.contains('btn--sort')) {
+      if (originalMovements.length === 0) {
+        originalMovements = [...currentAccount.movements];
+        currentAccount.movements.sort();
+      } else {
+        currentAccount.movements = [...originalMovements];
+        originalMovements = [];
+      }
+
+      displayFunction(currentAccount);
+    }
   });
 };
 
