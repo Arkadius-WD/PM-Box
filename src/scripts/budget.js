@@ -15,7 +15,7 @@ const budget = () => {
   };
   const project00010 = {
     number: '#00010',
-    movements: [25000, -20000, 3400, -10000, -2000, -4600],
+    movements: [],
   };
 
   const accounts = [project00015, project00013, project00011, project00010];
@@ -138,44 +138,27 @@ const budget = () => {
 
   btnTransfer.addEventListener('click', e => {
     e.preventDefault();
+
     const amount = Number(inputTransferAmount.value);
     const receiverAcc = accounts.find(
       acc => acc.project === inputTransferTo.value,
     );
 
-    console.log('inputTransferTo:', inputTransferTo.value);
-    console.log('inputTransferAmount:', inputTransferAmount.value);
-    console.log('currentAccount:', currentAccount);
-    console.log('receiverAcc:', receiverAcc);
-    console.log('amount:', receiverAcc);
+    if (amount <= 0 || currentAccount.balance < amount) return;
+
+    if (receiverAcc && receiverAcc.project !== currentAccount.project) {
+      currentAccount.movements.push(-amount);
+      receiverAcc.movements.push(amount);
+    } else if (!receiverAcc && inputTransferTo.value === '') {
+      currentAccount.movements.push(-amount);
+    } else if (receiverAcc && receiverAcc.project === currentAccount.project) {
+      currentAccount.movements.push(-amount);
+    }
 
     inputTransferTo.value = '';
     inputTransferAmount.value = '';
 
-    // if (inputTransferTo.value === '') {
-    //   receiverAcc.project = currentAccount.project;
-    // }
-
-    if (
-      amount > 0 &&
-      receiverAcc &&
-      currentAccount.balance >= amount &&
-      receiverAcc.project === currentAccount.project
-    ) {
-      currentAccount.movements.push(-amount);
-      displayFunction(currentAccount);
-    }
-
-    if (
-      amount > 0 &&
-      receiverAcc &&
-      currentAccount.balance >= amount &&
-      receiverAcc.project !== currentAccount.project
-    ) {
-      currentAccount.movements.push(-amount);
-      receiverAcc.movements.push(amount);
-      displayFunction(currentAccount);
-    }
+    displayFunction(currentAccount);
   });
 };
 
