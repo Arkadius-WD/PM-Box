@@ -26,7 +26,7 @@ const budget = () => {
     ['PLN', 'Zloty'],
   ]);
 
-  const labelWelcome = document.querySelector('.welcome');
+
   const labelDate = document.querySelector('.date');
   const labelBalance = document.querySelector('.balance__value');
   const labelSumIn = document.querySelector('.summary__value--in');
@@ -159,6 +159,20 @@ const budget = () => {
     inputTransferAmount.value = '';
 
     displayFunction(currentAccount);
+  });
+
+  btnLoan.addEventListener('click', e => {
+    e.preventDefault();
+    const amount = Number(inputLoanAmount.value);
+
+    if (amount <= 0) return;
+
+    if (amount >= 0) {
+      currentAccount.movements.push(amount);
+      displayFunction(currentAccount);
+    }
+
+    inputLoanAmount.value = '';
   });
 };
 
