@@ -1,0 +1,36 @@
+@use '../variables/colors' as *;
+
+.teams-window {
+  margin-left: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  .avatar {
+    width: 14rem;
+    height: 14rem;
+    border: 1px solid $second;
+    border-radius: 2rem;
+    transition: all 0.3s;
+    &:hover {
+      border: 1px solid rgba($color: $second, $alpha: 0.5);
+    }
+  }
+
+  img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 2rem;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  p {
+    text-align: center;
+    color: $fifth;
+  }
+}

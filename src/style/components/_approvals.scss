@@ -1,0 +1,25 @@
+@use '../variables/colors' as *;
+
+.approval {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 10rem;
+  overflow-y: scroll;
+
+  h3 {
+    width: 16rem;
+  }
+
+  img {
+    width: 4rem;
+    border: 1px solid $second;
+    border-radius: 1rem;
+  }
+
+  .approvals__container {
+    background-color: #fff;
+    margin: 2rem;
+    border-radius: 1rem;
+    border: 1px solid $second;
+  }
+}
