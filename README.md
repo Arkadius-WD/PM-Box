@@ -10,13 +10,13 @@ PIN: **12345**
 
 ---
 
-https://arkadius-wd.github.io/PM-Box/dist/
+[https://arkadius-wd.github.io/PM-Box/](https://arkadius-wd.github.io/PM-Box/dist/)
 
-![tutorial thumbnail](./src/img/screenshot1.jpg)
-![tutorial thumbnail](./src/img/screenshot2.jpg)
-![tutorial thumbnail](./src/img/screenshot3.jpg)
-![tutorial thumbnail](./src/img/screenshot4.jpg)
-![tutorial thumbnail](./src/img/screenshot5.jpg)
+![tutorial thumbnail](./src/img/Screenshot1.jpg)
+![tutorial thumbnail](./src/img/Screenshot2.jpg)
+![tutorial thumbnail](./src/img/Screenshot3.jpg)
+![tutorial thumbnail](./src/img/Screenshot4.jpg)
+![tutorial thumbnail](./src/img/Screenshot5.jpg)
 
 PM-Box Apple built with Vanilla JS. Styling with SASS.
 
